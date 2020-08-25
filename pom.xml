@@ -15,11 +15,14 @@
     </properties>
 
     <modules>
+        <module>cloudmall-admin</module>
+        <module>cloudmall-common</module>
         <module>cloudmall-coupon</module>
         <module>cloudmall-member</module>
         <module>cloudmall-order</module>
         <module>cloudmall-product</module>
         <module>cloudmall-ware</module>
+        <module>renren-generator</module>
     </modules>
 
 </project>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.hungwen.cloudmall.order.dao.OrderItemDao">
+
+	<!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.hungwen.cloudmall.order.entity.OrderItemEntity" id="orderItemMap">
+        <result property="id" column="id"/>
+        <result property="orderId" column="order_id"/>
+        <result property="orderSn" column="order_sn"/>
+        <result property="productId" column="product_id"/>
+        <result property="productPic" column="product_pic"/>
+        <result property="productName" column="product_name"/>
+        <result property="productBrand" column="product_brand"/>
+        <result property="productSn" column="product_sn"/>
+        <result property="productPrice" column="product_price"/>
+        <result property="productQuantity" column="product_quantity"/>
+        <result property="productSkuId" column="product_sku_id"/>
+        <result property="productSkuCode" column="product_sku_code"/>
+        <result property="productCategoryId" column="product_category_id"/>
+        <result property="sp1" column="sp1"/>
+        <result property="sp2" column="sp2"/>
+        <result property="sp3" column="sp3"/>
+        <result property="promotionName" column="promotion_name"/>
+        <result property="promotionAmount" column="promotion_amount"/>
+        <result property="couponAmount" column="coupon_amount"/>
+        <result property="integrationAmount" column="integration_amount"/>
+        <result property="realAmount" column="real_amount"/>
+        <result property="giftIntegration" column="gift_integration"/>
+        <result property="giftGrowth" column="gift_growth"/>
+        <result property="productAttr" column="product_attr"/>
+    </resultMap>
+
+
+</mapper>

@@ -7,6 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class CloudmallCouponApplication {
 
     public static void main(String[] args) {
+
         SpringApplication.run(CloudmallCouponApplication.class, args);
     }
 

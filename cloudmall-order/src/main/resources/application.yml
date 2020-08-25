@@ -1,0 +1,41 @@
+spring:
+  datasource:
+    username: root
+    password: 1234
+    url: jdbc:mysql://192.168.56.10:3306/cloudmall_oms
+    driverClassName: com.mysql.jdbc.Driver
+#  cloud:
+#    nacos:
+#      discovery:
+#        server-addr: 127.0.0.1:8848
+#    alicloud:
+#      access-key: LTAI4FxwBwJsK4Fp4cBX8CgB
+#      secret-key: 6X2Onq0hnQa9whdlsvrRwjt2k0Uevu
+#      oss:
+#        endpoint: oss-cn-hongkong.aliyuncs.com
+#  application:
+#    name: cloudmall-product
+#  jackson:
+#    date-format: yyyy-MM-dd HH:mm:ss
+#  thymeleaf:
+#    cache: false
+#  redis:
+#    host: 192.168.56.10
+#    pool: 6379
+
+mybatis-plus:
+  mapper-locations: classpath:mapper/**/*.xml
+  global-config:
+    db-config:
+      id-type: AUTO
+      logic-delete-value: 1
+      logic-not-delete-value: 0
+
+server:
+  port: 9000
+
+#logging:
+#  level:
+#    com.hungwen.cloudmall: info
+#    org.springframework.cloud.openfeign: debug
+#    org.springframework.cloud.sleuth: debug

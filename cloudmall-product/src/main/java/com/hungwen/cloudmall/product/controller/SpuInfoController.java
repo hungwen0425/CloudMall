@@ -18,7 +18,7 @@ import com.hungwen.common.utils.R;
 
 
 /**
- * spu信息
+ * spu資料
  *
  * @author Hungwen Tseng
  * @email hungwen.tseng@gmail.com
@@ -43,7 +43,7 @@ public class SpuInfoController {
 
 
     /**
-     * 信息
+     * 資料
      */
     @RequestMapping("/info/{id}")
     //@RequiresPermissions("product:spuinfo:info")

@@ -43,7 +43,7 @@ public class BrandController {
 
 
     /**
-     * 信息
+     * 資料
      */
     @RequestMapping("/info/{brandId}")
     //@RequiresPermissions("product:brand:info")

@@ -8,7 +8,7 @@ import java.util.*;
 
 
 /**
- * 解析表之后得到的信息实体
+ * 解析表之后得到的資料实体
  * 换句话说这个类就是一张mongo一张表的内容
  *
  * @author gxz 514190950@qq.com
@@ -28,9 +28,9 @@ public class MongoDefinition implements Serializable {
     public List<MongoGeneratorEntity> getChildrenInfo(String tableName) {
         List<MongoGeneratorEntity> result = new ArrayList<>();
         MongoGeneratorEntity info = new MongoGeneratorEntity();
-        // 表信息
+        // 表資料
         Map<String, String> tableInfo = MongoTableInfoAdaptor.tableInfo(tableName);
-        // 列名信息
+        // 列名資料
         List<Map<String, String>> columnsInfo = new ArrayList<>();
         info.setColumns(columnsInfo);
         info.setTableInfo(tableInfo);

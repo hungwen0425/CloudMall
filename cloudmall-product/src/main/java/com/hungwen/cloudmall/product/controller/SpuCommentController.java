@@ -43,7 +43,7 @@ public class SpuCommentController {
 
 
     /**
-     * 信息
+     * 資料
      */
     @RequestMapping("/info/{id}")
     //@RequiresPermissions("product:spucomment:info")

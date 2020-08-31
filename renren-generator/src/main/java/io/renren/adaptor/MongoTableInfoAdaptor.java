@@ -16,7 +16,7 @@ import java.util.Map;
 public class MongoTableInfoAdaptor {
 
     /**
-     * 查询表信息的时候 mongo只能获得表名 其他只能手动填写
+     * 查询表資料的时候 mongo只能获得表名 其他只能手动填写
      *
      * @param names 表名
      */
@@ -38,7 +38,7 @@ public class MongoTableInfoAdaptor {
     }
 
     /**
-     * 在查询列名的时候 需要将解析出的mongo信息适配成关系型数据库所需要的信息形式
+     * 在查询列名的时候 需要将解析出的mongo資料适配成关系型数据库所需要的資料形式
      * 此方法只针对主Bean
      */
     public static List<Map<String, String>> columnInfo(MongoDefinition mongoDefinition) {

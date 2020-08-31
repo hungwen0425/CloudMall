@@ -42,7 +42,7 @@ public class AttrAttrgroupRelationController {
 
 
     /**
-     * 信息
+     * 資料
      */
     @RequestMapping("/info/{id}")
     public R info(@PathVariable("id") Long id){

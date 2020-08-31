@@ -43,7 +43,7 @@ public class CommentReplayController {
 
 
     /**
-     * 信息
+     * 資料
      */
     @RequestMapping("/info/{id}")
     //@RequiresPermissions("product:commentreplay:info")

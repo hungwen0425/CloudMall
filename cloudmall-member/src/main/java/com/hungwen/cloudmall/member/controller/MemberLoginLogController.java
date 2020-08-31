@@ -43,7 +43,7 @@ public class MemberLoginLogController {
 
 
     /**
-     * 信息
+     * 資料
      */
     @RequestMapping("/info/{id}")
     //@RequiresPermissions("member:memberloginlog:info")

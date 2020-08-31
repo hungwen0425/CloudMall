@@ -43,7 +43,7 @@ public class OrderOperateHistoryController {
 
 
     /**
-     * 信息
+     * 資料
      */
     @RequestMapping("/info/{id}")
     //@RequiresPermissions("order:orderoperatehistory:info")

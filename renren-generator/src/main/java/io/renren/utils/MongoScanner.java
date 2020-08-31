@@ -136,7 +136,7 @@ public class MongoScanner {
 
     /**
      * 功能描述:提供属性名 解析属性类型
-     * 获取相应的属性信息  封装成generator对象
+     * 获取相应的属性資料  封装成generator对象
      *
      * @return : 解析之后的Model {@see #MongoDefinition}
      * @param: propertyName 属性名 可以是层级名  比如 name 也可以是info.name

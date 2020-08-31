@@ -43,7 +43,7 @@ public class MemberController {
 
 
     /**
-     * 信息
+     * 資料
      */
     @RequestMapping("/info/{id}")
     //@RequiresPermissions("member:member:info")

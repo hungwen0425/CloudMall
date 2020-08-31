@@ -43,7 +43,7 @@ public class SpuImagesController {
 
 
     /**
-     * 信息
+     * 資料
      */
     @RequestMapping("/info/{id}")
     //@RequiresPermissions("product:spuimages:info")

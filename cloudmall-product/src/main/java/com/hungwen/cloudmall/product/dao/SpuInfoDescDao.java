@@ -5,7 +5,7 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Mapper;
 
 /**
- * spu信息介紹
+ * spu資料介紹
  * 
  * @author Hungwen Tseng
  * @email hungwen.tseng@gmail.com

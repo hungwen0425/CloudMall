@@ -1,8 +1,10 @@
 package com.hungwen.cloudmall.product.controller;
 
 import java.util.Arrays;
+import java.util.List;
 import java.util.Map;
 
+import com.google.common.collect.Lists;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -27,30 +29,28 @@ import com.hungwen.common.utils.R;
 @RestController
 @RequestMapping("product/category")
 public class CategoryController {
+
     @Autowired
     private CategoryService categoryService;
 
     /**
-     * 列表
+     * 查處所有分類以及子分類，並以樹形結構組裝起來
      */
-    @RequestMapping("/list")
+    @RequestMapping("/list/tree")
     //@RequiresPermissions("product:category:list")
-    public R list(@RequestParam Map<String, Object> params){
-        PageUtils page = categoryService.queryPage(params);
-
-        return R.ok().put("page", page);
+    public R list(){
+        List<CategoryEntity> entities = categoryService.listWithTree();
+        return R.ok().put("data", entities);
     }
 
-
     /**
-     * 信息
+     * 資料
      */
     @RequestMapping("/info/{catId}")
     //@RequiresPermissions("product:category:info")
     public R info(@PathVariable("catId") Long catId){
 		CategoryEntity category = categoryService.getById(catId);
-
-        return R.ok().put("category", category);
+        return R.ok().put("data", category);
     }
 
     /**
@@ -60,7 +60,18 @@ public class CategoryController {
     //@RequiresPermissions("product:category:save")
     public R save(@RequestBody CategoryEntity category){
 		categoryService.save(category);
+        return R.ok();
+    }
 
+    /**
+     * 批量更新
+     *
+     * @param categorys
+     * @return
+     */
+    @RequestMapping("/update/sort")
+    public R updateSort(@RequestBody CategoryEntity[] categorys) {
+        categoryService.updateBatchById(Lists.newArrayList(categorys));
         return R.ok();
     }
 
@@ -71,18 +82,20 @@ public class CategoryController {
     //@RequiresPermissions("product:category:update")
     public R update(@RequestBody CategoryEntity category){
 		categoryService.updateById(category);
-
         return R.ok();
     }
 
     /**
      * 删除
+     * @RequestBody: 取得請求體，必須發送 POST 請求
+     * SpringMVC 自動將請求體的資訊 (Json) ，轉為對應的物件
      */
     @RequestMapping("/delete")
     //@RequiresPermissions("product:category:delete")
     public R delete(@RequestBody Long[] catIds){
-		categoryService.removeByIds(Arrays.asList(catIds));
-
+        //1. 檢查當前刪除的選單，是否被別的地方引用
+        //categoryService.removeByIds(Arrays.asList(catIds));
+        categoryService.removeMenuByIds(Arrays.asList(catIds));
         return R.ok();
     }
 

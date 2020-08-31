@@ -43,7 +43,7 @@ public class RefundInfoController {
 
 
     /**
-     * 信息
+     * 資料
      */
     @RequestMapping("/info/{id}")
     //@RequiresPermissions("order:refundinfo:info")

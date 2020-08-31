@@ -4,7 +4,11 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
+
 import com.hungwen.common.utils.PageUtils;
 import com.hungwen.common.utils.Query;
 
@@ -24,6 +28,54 @@ public class CategoryServiceImpl extends ServiceImpl<CategoryDao, CategoryEntity
         );
 
         return new PageUtils(page);
+    }
+
+    @Override
+    public List<CategoryEntity> listWithTree() {
+        //1. 查出所有分類
+        List<CategoryEntity> entities = baseMapper.selectList(null);
+        //2. 組裝成父子的樹型結構
+        //2.1 找到所有一級分類
+        List<CategoryEntity> level1Menu = entities.stream().filter(
+                categoryEntities -> categoryEntities.getParentCid() == 0
+        ).map((menu)->{
+            menu.setChildren(getChildrens(menu, entities));
+            return menu;
+        }).sorted((menu1, menu2)->{
+            //選單的排序
+            return (menu1.getSort() == null ? 0:menu1.getSort()) - (menu2.getSort() == null ? 0:menu2.getSort());
+        }).collect(Collectors.toList());
+
+        return level1Menu;
+    }
+
+    @Override
+    public void removeMenuByIds(List<Long> asList) {
+        //TODO 1. 檢查當前刪除的選單，是否被別的地方引用
+        baseMapper.deleteBatchIds(asList);
+    }
+
+    /**
+     *
+     * @param root 當前選單
+     * @param all 當前選單的子選單
+     * @return
+     */
+    //遞歸查找所有選單的子選單
+    private List<CategoryEntity> getChildrens(CategoryEntity root, List<CategoryEntity> all){
+
+        List<CategoryEntity> children = all.stream().filter(categoryEntity -> {
+            return categoryEntity.getParentCid() == root.getCatId();
+        }).map(categoryEntity -> {
+            //1. 找到子選單
+            categoryEntity.setChildren(getChildrens(categoryEntity, all));
+            return categoryEntity;
+        }).sorted((menu1, menu2)->{
+            //2. 選單的排序
+            return (menu1.getSort() == null ? 0:menu1.getSort()) - (menu2.getSort() == null ? 0:menu2.getSort());
+        }).collect(Collectors.toList());
+
+        return children;
     }
 
 }

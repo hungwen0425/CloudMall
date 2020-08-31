@@ -7,7 +7,7 @@ import com.hungwen.cloudmall.product.entity.SpuInfoDescEntity;
 import java.util.Map;
 
 /**
- * spu信息介紹
+ * spu資料介紹
  *
  * @author Hungwen Tseng
  * @email hungwen.tseng@gmail.com

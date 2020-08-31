@@ -43,7 +43,7 @@ public class CouponHistoryController {
 
 
     /**
-     * 信息
+     * 資料
      */
     @RequestMapping("/info/{id}")
     //@RequiresPermissions("coupon:couponhistory:info")

@@ -43,7 +43,7 @@ public class WareInfoController {
 
 
     /**
-     * 信息
+     * 資料
      */
     @RequestMapping("/info/{id}")
     //@RequiresPermissions("ware:wareinfo:info")

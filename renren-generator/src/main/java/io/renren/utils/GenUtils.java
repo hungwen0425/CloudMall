@@ -68,11 +68,11 @@ public class GenUtils {
      */
     public static void generatorCode(Map<String, String> table,
                                      List<Map<String, String>> columns, ZipOutputStream zip) {
-        //配置信息
+        //配置資料
         Configuration config = getConfig();
         boolean hasBigDecimal = false;
         boolean hasList = false;
-        //表信息
+        //表資料
         TableEntity tableEntity = new TableEntity();
         tableEntity.setTableName(table.get("tableName"));
         tableEntity.setComments(table.get("tableComment"));
@@ -81,7 +81,7 @@ public class GenUtils {
         tableEntity.setClassName(className);
         tableEntity.setClassname(StringUtils.uncapitalize(className));
 
-        //列信息
+        //列資料
         List<ColumnEntity> columsList = new ArrayList<>();
         for (Map<String, String> column : columns) {
             ColumnEntity columnEntity = new ColumnEntity();
@@ -181,16 +181,16 @@ public class GenUtils {
     }
 
     private static void generatorChildrenBeanCode(MongoGeneratorEntity mongoGeneratorEntity, ZipOutputStream zip) {
-        //配置信息
+        //配置資料
         Configuration config = getConfig();
         boolean hasList = false;
-        //表信息
+        //表資料
         TableEntity tableEntity = mongoGeneratorEntity.toTableEntity();
         //表名转换成Java类名
         String className = tableToJava(tableEntity.getTableName(), config.getStringArray("tablePrefix"));
         tableEntity.setClassName(className);
         tableEntity.setClassname(StringUtils.uncapitalize(className));
-        //列信息
+        //列資料
         List<ColumnEntity> columsList = new ArrayList<>();
         for (Map<String, String> column : mongoGeneratorEntity.getColumns()) {
             ColumnEntity columnEntity = new ColumnEntity();
@@ -282,7 +282,7 @@ public class GenUtils {
     }
 
     /**
-     * 获取配置信息
+     * 获取配置資料
      */
     public static Configuration getConfig() {
         try {

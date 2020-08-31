@@ -43,7 +43,7 @@ public class SeckillSkuNoticeController {
 
 
     /**
-     * 信息
+     * 資料
      */
     @RequestMapping("/info/{id}")
     //@RequiresPermissions("coupon:seckillskunotice:info")

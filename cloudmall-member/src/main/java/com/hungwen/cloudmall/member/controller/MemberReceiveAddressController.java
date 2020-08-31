@@ -43,7 +43,7 @@ public class MemberReceiveAddressController {
 
 
     /**
-     * 信息
+     * 資料
      */
     @RequestMapping("/info/{id}")
     //@RequiresPermissions("member:memberreceiveaddress:info")

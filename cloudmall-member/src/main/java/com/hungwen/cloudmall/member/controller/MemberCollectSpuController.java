@@ -43,7 +43,7 @@ public class MemberCollectSpuController {
 
 
     /**
-     * 信息
+     * 資料
      */
     @RequestMapping("/info/{id}")
     //@RequiresPermissions("member:membercollectspu:info")

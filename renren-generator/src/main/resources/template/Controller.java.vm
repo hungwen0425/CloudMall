@@ -43,7 +43,7 @@ public class ${className}Controller {
 
 
     /**
-     * 信息
+     * 資料
      */
     @RequestMapping("/info/{${pk.attrname}}")
     //@RequiresPermissions("${moduleName}:${pathName}:info")

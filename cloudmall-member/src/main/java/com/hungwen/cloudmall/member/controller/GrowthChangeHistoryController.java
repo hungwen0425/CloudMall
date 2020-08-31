@@ -43,7 +43,7 @@ public class GrowthChangeHistoryController {
 
 
     /**
-     * 信息
+     * 資料
      */
     @RequestMapping("/info/{id}")
     //@RequiresPermissions("member:growthchangehistory:info")

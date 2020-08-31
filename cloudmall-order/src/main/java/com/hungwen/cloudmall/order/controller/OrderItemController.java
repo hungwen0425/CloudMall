@@ -43,7 +43,7 @@ public class OrderItemController {
 
 
     /**
-     * 信息
+     * 資料
      */
     @RequestMapping("/info/{id}")
     //@RequiresPermissions("order:orderitem:info")

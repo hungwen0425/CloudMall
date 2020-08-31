@@ -18,7 +18,7 @@ import com.hungwen.common.utils.R;
 
 
 /**
- * sku信息
+ * sku資料
  *
  * @author Hungwen Tseng
  * @email hungwen.tseng@gmail.com
@@ -43,7 +43,7 @@ public class SkuInfoController {
 
 
     /**
-     * 信息
+     * 資料
      */
     @RequestMapping("/info/{skuId}")
     //@RequiresPermissions("product:skuinfo:info")

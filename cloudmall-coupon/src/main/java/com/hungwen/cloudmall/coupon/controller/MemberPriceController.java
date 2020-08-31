@@ -43,7 +43,7 @@ public class MemberPriceController {
 
 
     /**
-     * 信息
+     * 資料
      */
     @RequestMapping("/info/{id}")
     //@RequiresPermissions("coupon:memberprice:info")

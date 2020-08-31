@@ -43,7 +43,7 @@ public class SkuFullReductionController {
 
 
     /**
-     * 信息
+     * 資料
      */
     @RequestMapping("/info/{id}")
     //@RequiresPermissions("coupon:skufullreduction:info")

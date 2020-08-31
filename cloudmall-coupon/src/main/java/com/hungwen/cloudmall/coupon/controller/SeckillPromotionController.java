@@ -43,7 +43,7 @@ public class SeckillPromotionController {
 
 
     /**
-     * 信息
+     * 資料
      */
     @RequestMapping("/info/{id}")
     //@RequiresPermissions("coupon:seckillpromotion:info")

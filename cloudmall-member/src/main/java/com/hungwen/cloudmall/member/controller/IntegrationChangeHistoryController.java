@@ -43,7 +43,7 @@ public class IntegrationChangeHistoryController {
 
 
     /**
-     * 信息
+     * 資料
      */
     @RequestMapping("/info/{id}")
     //@RequiresPermissions("member:integrationchangehistory:info")

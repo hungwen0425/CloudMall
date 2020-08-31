@@ -9,7 +9,7 @@ import java.util.Date;
 import lombok.Data;
 
 /**
- * sku信息
+ * sku資料
  * 
  * @author Hungwen Tseng
  * @email hungwen.tseng@gmail.com

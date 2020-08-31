@@ -43,7 +43,7 @@ public class CouponSpuCategoryRelationController {
 
 
     /**
-     * 信息
+     * 資料
      */
     @RequestMapping("/info/{id}")
     //@RequiresPermissions("coupon:couponspucategoryrelation:info")

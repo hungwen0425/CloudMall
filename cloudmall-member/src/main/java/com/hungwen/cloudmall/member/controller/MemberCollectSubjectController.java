@@ -43,7 +43,7 @@ public class MemberCollectSubjectController {
 
 
     /**
-     * 信息
+     * 資料
      */
     @RequestMapping("/info/{id}")
     //@RequiresPermissions("member:membercollectsubject:info")

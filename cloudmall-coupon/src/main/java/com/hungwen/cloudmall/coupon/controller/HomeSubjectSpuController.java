@@ -43,7 +43,7 @@ public class HomeSubjectSpuController {
 
 
     /**
-     * 信息
+     * 資料
      */
     @RequestMapping("/info/{id}")
     //@RequiresPermissions("coupon:homesubjectspu:info")

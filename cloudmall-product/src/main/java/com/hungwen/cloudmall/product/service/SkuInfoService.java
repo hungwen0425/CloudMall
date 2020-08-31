@@ -7,7 +7,7 @@ import com.hungwen.cloudmall.product.entity.SkuInfoEntity;
 import java.util.Map;
 
 /**
- * sku信息
+ * sku資料
  *
  * @author Hungwen Tseng
  * @email hungwen.tseng@gmail.com

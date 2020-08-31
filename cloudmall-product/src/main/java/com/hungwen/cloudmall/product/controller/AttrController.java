@@ -43,7 +43,7 @@ public class AttrController {
 
 
     /**
-     * 信息
+     * 資料
      */
     @RequestMapping("/info/{attrId}")
     //@RequiresPermissions("product:attr:info")

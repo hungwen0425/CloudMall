@@ -43,7 +43,7 @@ public class UmsGrowthChangeHistoryController {
 
 
     /**
-     * 信息
+     * 資料
      */
     @RequestMapping("/info/{id}")
     //@RequiresPermissions("order:umsgrowthchangehistory:info")

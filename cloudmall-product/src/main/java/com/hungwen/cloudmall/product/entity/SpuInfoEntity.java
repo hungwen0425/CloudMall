@@ -9,7 +9,7 @@ import java.util.Date;
 import lombok.Data;
 
 /**
- * spu信息
+ * spu資料
  * 
  * @author Hungwen Tseng
  * @email hungwen.tseng@gmail.com

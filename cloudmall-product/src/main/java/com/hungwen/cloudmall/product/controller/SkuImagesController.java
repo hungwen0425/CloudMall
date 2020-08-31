@@ -43,7 +43,7 @@ public class SkuImagesController {
 
 
     /**
-     * 信息
+     * 資料
      */
     @RequestMapping("/info/{id}")
     //@RequiresPermissions("product:skuimages:info")

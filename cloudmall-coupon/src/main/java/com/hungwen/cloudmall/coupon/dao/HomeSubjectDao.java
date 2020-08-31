@@ -5,7 +5,7 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Mapper;
 
 /**
- * 首頁專題表【jd首頁下面很多專題，每個專題鏈接新的頁面，展示專題商品信息】
+ * 首頁專題表【jd首頁下面很多專題，每個專題鏈接新的頁面，展示專題商品資料】
  * 
  * @author Hungwen Tseng
  * @email hungwen.tseng@gmail.com

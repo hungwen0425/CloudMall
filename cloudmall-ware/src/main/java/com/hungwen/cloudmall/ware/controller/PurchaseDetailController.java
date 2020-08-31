@@ -43,7 +43,7 @@ public class PurchaseDetailController {
 
 
     /**
-     * 信息
+     * 資料
      */
     @RequestMapping("/info/{id}")
     //@RequiresPermissions("ware:purchasedetail:info")

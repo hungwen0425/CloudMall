@@ -14,7 +14,7 @@
 	/**
 	 * 添加路由,如果路由已经存在则会覆盖
 	 * @param addr: 地址
-	 * @param callback: 回调函数，调用回调函数的时候同时也会传入相应参数
+	 * @param callback: 回调函數，调用回调函數的時候同時也会传入相应参數
 	 */
 	Router.prototype.add = function(addr, callback) {
 		var self = this;
@@ -74,7 +74,7 @@
 	};
 
 	/**
-	 * 开始路由，实际上只是为了当直接访问路由路由地址的时候能够及时调用回调
+	 * 開始路由，實际上只是為了当直接访问路由路由地址的時候能够及時调用回调
 	 */
 	Router.prototype.start = function() {
 		var self = this;

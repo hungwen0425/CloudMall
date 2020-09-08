@@ -29,7 +29,7 @@ public class MongoDBCollectionFactory {
 
     private static MongoDatabase mongoDatabase;
 
-    // 此处是为了兼容mongo相关内容和关系型数据库的静态耦合所导致的问题
+    // 此处是為了兼容mongo相關内容和關系型資料庫的静態耦合所导致的问题
 
     @Autowired
     private MongoDatabase database;
@@ -39,22 +39,22 @@ public class MongoDBCollectionFactory {
     }
 
     /***
-     * 通过表名获得查询对象
+     * 通過表名获得查询对象
      * @author gxz
      * @date  2020/5/9
      * @param collectionName mongo的集合名(表名)
-     * @return 连接查询对象
+     * @return 連接查询对象
      **/
     public MongoCollection<Document> getCollection(String collectionName) {
         return mongoDatabase.getCollection(collectionName);
     }
 
     /***
-     * 获得当前数据库的集合名称
-     * 注: mongo相对关系型数据库较为特殊，查询表名无法分页，用stream实现
+     * 获得当前資料庫的集合名称
+     * 注: mongo相对關系型資料庫较為特殊，查询表名无法分页，用stream實现
      * @author gxz
      * @date  2020/5/9
-     * @param map 这是查询条件 和关系型数据库一致
+     * @param map 这是查询条件 和關系型資料庫一致
      * @return 集合名称
      **/
     public static List<String>  getCollectionNames(Map<String, Object> map) {
@@ -69,10 +69,10 @@ public class MongoDBCollectionFactory {
         return names.stream().skip(skip).limit(limit).collect(Collectors.toList());
     }
     /***
-     * 获得集合名称总数(表的数量) 为了适配MyBatisPlus的分页插件 提供方法
+     * 获得集合名称总數(表的數量) 為了适配MyBatisPlus的分页插件 提供方法
      * @author gxz
      * @date  2020/5/9
-     * @param map 这是查询条件 和关系型数据库一致
+     * @param map 这是查询条件 和關系型資料庫一致
      * @return int
      **/
     public static int getCollectionTotal(Map<String, Object> map) {

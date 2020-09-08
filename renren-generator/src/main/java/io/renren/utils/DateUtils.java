@@ -11,9 +11,9 @@ import java.util.Date;
  * @date 2016年12月21日 下午12:53:33
  */
 public class DateUtils {
-	/** 时间格式(yyyy-MM-dd) */
+	/** 時間格式(yyyy-MM-dd) */
 	public final static String DATE_PATTERN = "yyyy-MM-dd";
-	/** 时间格式(yyyy-MM-dd HH:mm:ss) */
+	/** 時間格式(yyyy-MM-dd HH:mm:ss) */
 	public final static String DATE_TIME_PATTERN = "yyyy-MM-dd HH:mm:ss";
 	
 	public static String format(Date date) {

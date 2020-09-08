@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2018 人人开源 All rights reserved.
+ * Copyright (c) 2018 人人開源 All rights reserved.
  * <p>
  * https://www.renren.io
  * <p>
@@ -28,7 +28,7 @@ import java.util.Map;
 import java.util.zip.ZipOutputStream;
 
 /**
- * 代码生成器
+ * 代碼生成器
  *
  * @author Mark sunlightcs@gmail.com
  */
@@ -65,7 +65,7 @@ public class SysGeneratorService {
             Map<String, String> table = queryTable(tableName);
             //查询列資料
             List<Map<String, String>> columns = queryColumns(tableName);
-            //生成代码
+            //生成代碼
             GenUtils.generatorCode(table, columns, zip);
         }
         if (MongoManager.isMongo()) {

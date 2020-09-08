@@ -23,7 +23,7 @@ import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
 
 /**
- * 代码生成器   工具类
+ * 代碼生成器   工具類
  *
  * @author chenshun
  * @email sunlightcs@gmail.com
@@ -48,7 +48,7 @@ public class GenUtils {
         templates.add("template/index.vue.vm");
         templates.add("template/add-or-update.vue.vm");
         if (MongoManager.isMongo()) {
-            // mongo不需要mapper、sql   实体类需要替换
+            // mongo不需要mapper、sql   實體類需要替换
             templates.remove(0);
             templates.remove(1);
             templates.remove(2);
@@ -64,11 +64,11 @@ public class GenUtils {
     }
 
     /**
-     * 生成代码
+     * 生成代碼
      */
     public static void generatorCode(Map<String, String> table,
                                      List<Map<String, String>> columns, ZipOutputStream zip) {
-        //配置資料
+        //設定資料
         Configuration config = getConfig();
         boolean hasBigDecimal = false;
         boolean hasList = false;
@@ -76,7 +76,7 @@ public class GenUtils {
         TableEntity tableEntity = new TableEntity();
         tableEntity.setTableName(table.get("tableName"));
         tableEntity.setComments(table.get("tableComment"));
-        //表名转换成Java类名
+        //表名转换成Java類名
         String className = tableToJava(tableEntity.getTableName(), config.getStringArray("tablePrefix"));
         tableEntity.setClassName(className);
         tableEntity.setClassname(StringUtils.uncapitalize(className));
@@ -95,7 +95,7 @@ public class GenUtils {
             columnEntity.setAttrName(attrName);
             columnEntity.setAttrname(StringUtils.uncapitalize(attrName));
 
-            //列的数据类型，转换成Java类型
+            //列的資料類型，转换成Java類型
             String attrType = config.getString(columnEntity.getDataType(), columnToJava(columnEntity.getDataType()));
             columnEntity.setAttrType(attrType);
 
@@ -115,7 +115,7 @@ public class GenUtils {
         }
         tableEntity.setColumns(columsList);
 
-        //没主键，则第一个字段为主键
+        //没主键，则第一個字段為主键
         if (tableEntity.getPk() == null) {
             tableEntity.setPk(tableEntity.getColumns().get(0));
         }
@@ -126,7 +126,7 @@ public class GenUtils {
         Velocity.init(prop);
         String mainPath = config.getString("mainPath");
         mainPath = StringUtils.isBlank(mainPath) ? "io.renren" : mainPath;
-        //封装模板数据
+        //封装模板資料
         Map<String, Object> map = new HashMap<>();
         map.put("tableName", tableEntity.getTableName());
         map.put("comments", tableEntity.getComments());
@@ -166,7 +166,7 @@ public class GenUtils {
     }
 
     /**
-     * 生成mongo其他实体类的代码
+     * 生成mongo其他實體類的代碼
      */
     public static void generatorMongoCode(String[] tableNames, ZipOutputStream zip) {
         for (String tableName : tableNames) {
@@ -181,12 +181,12 @@ public class GenUtils {
     }
 
     private static void generatorChildrenBeanCode(MongoGeneratorEntity mongoGeneratorEntity, ZipOutputStream zip) {
-        //配置資料
+        //設定資料
         Configuration config = getConfig();
         boolean hasList = false;
         //表資料
         TableEntity tableEntity = mongoGeneratorEntity.toTableEntity();
-        //表名转换成Java类名
+        //表名转换成Java類名
         String className = tableToJava(tableEntity.getTableName(), config.getStringArray("tablePrefix"));
         tableEntity.setClassName(className);
         tableEntity.setClassname(StringUtils.uncapitalize(className));
@@ -207,7 +207,7 @@ public class GenUtils {
             columnEntity.setAttrName(attrName);
             columnEntity.setAttrname(StringUtils.uncapitalize(attrName));
 
-            //列的数据类型，转换成Java类型
+            //列的資料類型，转换成Java類型
             String attrType = config.getString(columnEntity.getDataType(), columnToJava(columnEntity.getDataType()));
             columnEntity.setAttrType(attrType);
 
@@ -224,7 +224,7 @@ public class GenUtils {
         Velocity.init(prop);
         String mainPath = config.getString("mainPath");
         mainPath = StringUtils.isBlank(mainPath) ? "io.renren" : mainPath;
-        //封装模板数据
+        //封装模板資料
         Map<String, Object> map = new HashMap<>();
         map.put("tableName", tableEntity.getTableName());
         map.put("comments", tableEntity.getComments());
@@ -270,7 +270,7 @@ public class GenUtils {
     }
 
     /**
-     * 表名转换成Java类名
+     * 表名转换成Java類名
      */
     public static String tableToJava(String tableName, String[] tablePrefixArray) {
         if (null != tablePrefixArray && tablePrefixArray.length > 0) {
@@ -282,13 +282,13 @@ public class GenUtils {
     }
 
     /**
-     * 获取配置資料
+     * 获取設定資料
      */
     public static Configuration getConfig() {
         try {
             return new PropertiesConfiguration("generator.properties");
         } catch (ConfigurationException e) {
-            throw new RRException("获取配置文件失败，", e);
+            throw new RRException("获取設定文件失败，", e);
         }
     }
 

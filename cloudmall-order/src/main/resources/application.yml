@@ -29,8 +29,8 @@ mybatis-plus:
 server:
   port: 9000
 
-#logging:
-#  level:
-#    com.hungwen.cloudmall: info
+logging:
+  level:
+    com.hungwen.cloudmall.order: info
 #    org.springframework.cloud.openfeign: debug
 #    org.springframework.cloud.sleuth: debug

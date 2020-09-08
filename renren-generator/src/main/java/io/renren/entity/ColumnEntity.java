@@ -10,16 +10,16 @@ package io.renren.entity;
 public class ColumnEntity {
 	//列名
     private String columnName;
-    //列名类型
+    //列名類型
     private String dataType;
     //列名备注
     private String comments;
     
-    //属性名称(第一个字母大写)，如：user_name => UserName
+    //属性名称(第一個字母大写)，如：user_name => UserName
     private String attrName;
-    //属性名称(第一个字母小写)，如：user_name => userName
+    //属性名称(第一個字母小写)，如：user_name => userName
     private String attrname;
-    //属性类型
+    //属性類型
     private String attrType;
     //auto_increment
     private String extra;

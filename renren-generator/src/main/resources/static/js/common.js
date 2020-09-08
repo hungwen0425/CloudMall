@@ -1,4 +1,4 @@
-//jqGrid的配置資料
+//jqGrid的設定資料
 $.jgrid.defaults.width = 1000;
 $.jgrid.defaults.responsive = true;
 $.jgrid.defaults.styleUI = 'Bootstrap';
@@ -6,7 +6,7 @@ $.jgrid.defaults.styleUI = 'Bootstrap';
 //工具集合Tools
 window.T = {};
 
-// 获取请求参数
+// 获取请求参數
 // 使用示例
 // location.href = http://localhost:8080/index.html?id=123
 // T.p('id') --> 123;
@@ -17,7 +17,7 @@ var url = function(name) {
 };
 T.p = url;
 
-//全局配置
+//全局設定
 $.ajaxSetup({
 	dataType: "json",
 	contentType: "application/json",

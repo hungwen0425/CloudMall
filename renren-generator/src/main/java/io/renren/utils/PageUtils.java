@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.List;
 
 /**
- * 分页工具类
+ * 分页工具類
  * 
  * @author chenshun
  * @email sunlightcs@gmail.com
@@ -12,23 +12,23 @@ import java.util.List;
  */
 public class PageUtils implements Serializable {
 	private static final long serialVersionUID = 1L;
-	//总记录数
+	//总记录數
 	private int totalCount;
-	//每页记录数
+	//每页记录數
 	private int pageSize;
-	//总页数
+	//总页數
 	private int totalPage;
-	//当前页数
+	//当前页數
 	private int currPage;
-	//列表数据
+	//列表資料
 	private List<?> list;
 	
 	/**
 	 * 分页
-	 * @param list        列表数据
-	 * @param totalCount  总记录数
-	 * @param pageSize    每页记录数
-	 * @param currPage    当前页数
+	 * @param list        列表資料
+	 * @param totalCount  总记录數
+	 * @param pageSize    每页记录數
+	 * @param currPage    当前页數
 	 */
 	public PageUtils(List<?> list, int totalCount, int pageSize, int currPage) {
 		this.list = list;

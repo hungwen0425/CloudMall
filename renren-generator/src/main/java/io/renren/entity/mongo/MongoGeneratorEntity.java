@@ -7,8 +7,8 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * mysql一张表只需要一个表資料和列名資料
- * 但是mongo一张表可能需要多个实体类  所以单独用一个bean封装
+ * mysql一张表只需要一個表資料和列名資料
+ * 但是mongo一张表可能需要多個實體類  所以单独用一個bean封装
  *
  * @author gxz
  * @date 2020/5/10 0:14
@@ -16,7 +16,7 @@ import java.util.Map;
 public class MongoGeneratorEntity {
     /***表資料**/
     private Map<String, String> tableInfo;
-    /***主类的列名資料**/
+    /***主類的列名資料**/
     private List<Map<String, String>> columns;
 
 

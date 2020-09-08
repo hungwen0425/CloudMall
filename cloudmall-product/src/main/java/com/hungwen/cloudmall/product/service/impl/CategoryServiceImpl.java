@@ -3,8 +3,10 @@ package com.hungwen.cloudmall.product.service.impl;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.google.common.collect.Lists;
 import org.springframework.stereotype.Service;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -53,6 +55,29 @@ public class CategoryServiceImpl extends ServiceImpl<CategoryDao, CategoryEntity
     public void removeMenuByIds(List<Long> asList) {
         //TODO 1. 檢查當前刪除的選單，是否被別的地方引用
         baseMapper.deleteBatchIds(asList);
+    }
+
+    // [2, 25, 225]
+    @Override
+    public Long[] findCatelogPath(long catelogId) {
+        List<Long> paths = Lists.newArrayList();
+        List<Long> parentPath = findParentPath(catelogId, paths);
+        // 因為收集的鎮列為 [225, 25, 2]，所以要用 Collections.reverse(paths) 轉為 [2, 25, 225]
+        Collections.reverse(parentPath);
+        return parentPath.toArray(new Long[parentPath.size()]);
+    }
+
+    //225 -> 25 -> 2
+    private List<Long> findParentPath(Long catelogId, List<Long> paths) {
+        //1. 收集當前節點 id
+        paths.add(catelogId);
+        //先找出當前節點
+        CategoryEntity category = this.getById(catelogId);
+        //如果該節點的父節點 id 不等於於 0，找其父節點
+        if (category.getParentCid() != 0) {
+            findParentPath(category.getParentCid(), paths);
+        }
+        return paths;
     }
 
     /**

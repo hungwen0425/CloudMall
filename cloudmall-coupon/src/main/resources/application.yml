@@ -29,6 +29,9 @@ mybatis-plus:
 server:
   port: 7000
 
+logging:
+  level:
+    com.hungwen.cloudmall.coupon: debug
 #logging:
 #  level:
 #    com.hungwen.cloudmall: info

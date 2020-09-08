@@ -34,8 +34,8 @@ mybatis-plus:
 server:
   port: 11000
 
-#logging:
-#  level:
-#    com.hungwen.cloudmall: info
+logging:
+  level:
+    com.hungwen.cloudmall.ware: info
 #    org.springframework.cloud.openfeign: debug
 #    org.springframework.cloud.sleuth: debug

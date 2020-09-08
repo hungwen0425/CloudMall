@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * 返回数据
+ * 返回資料
  * 
  * @author chenshun
  * @email sunlightcs@gmail.com

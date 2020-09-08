@@ -12,8 +12,8 @@ public class ListValueConstraintValidator implements ConstraintValidator<ListVal
     //初始化方法
     @Override
     public void initialize(ListValue constraintAnnotation) {
-        int[] values = constraintAnnotation.vals();
-        for (int val : values) {
+        int[] vals = constraintAnnotation.vals();
+        for (int val : vals) {
             set.add(val);
         }
     }

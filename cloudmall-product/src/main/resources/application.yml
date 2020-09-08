@@ -12,7 +12,7 @@ spring:
     name: cloudmall-product
 #    alicloud:
 #      access-key: LTAI4FxwBwJsK4Fp4cBX8CgB
-#      secret-key: 6X2Onq0hnQa9whdlsvrRwjt2k0Uevu
+#      secret-key: KZgasxP1VGyli7vOf6AlsZlU1mSHbX
 #      oss:
 #        endpoint: oss-cn-hongkong.aliyuncs.com
 #  jackson:

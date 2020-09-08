@@ -34,7 +34,7 @@ public class RRExceptionHandler implements HandlerExceptionResolver {
 				r.put("code", ((RRException) ex).getCode());
 				r.put("msg", ((RRException) ex).getMessage());
 			}else if(ex instanceof DuplicateKeyException){
-				r = R.error("数据库中已存在该记录");
+				r = R.error("資料庫中已存在該记录");
 			}else{
 				r = R.error();
 			}

@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2018 人人开源 All rights reserved.
+ * Copyright (c) 2018 人人開源 All rights reserved.
  * <p>
  * https://www.renren.io
  * <p>
@@ -18,7 +18,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
 
 /**
- * 数据库配置
+ * 資料庫設定
  *
  * @author Mark sunlightcs@gmail.com
  */
@@ -50,7 +50,7 @@ public class DbConfig {
         } else if ("postgresql".equalsIgnoreCase(database)) {
             return postgreSQLGeneratorDao;
         } else {
-            throw new RRException("不支持当前数据库：" + database);
+            throw new RRException("不支持当前資料庫：" + database);
         }
     }
 

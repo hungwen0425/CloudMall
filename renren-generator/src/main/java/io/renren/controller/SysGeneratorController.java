@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2018 人人开源 All rights reserved.
+ * Copyright (c) 2018 人人開源 All rights reserved.
  *
  * https://www.renren.io
  *
@@ -24,7 +24,7 @@ import java.io.IOException;
 import java.util.Map;
 
 /**
- * 代码生成器
+ * 代碼生成器
  * 
  * @author Mark sunlightcs@gmail.com
  */
@@ -46,7 +46,7 @@ public class SysGeneratorController {
 	}
 	
 	/**
-	 * 生成代码
+	 * 生成代碼
 	 */
 	@RequestMapping("/code")
 	public void code(String tables, HttpServletResponse response) throws IOException{

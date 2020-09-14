@@ -4,6 +4,9 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.google.common.collect.Lists;
+import com.hungwen.cloudmall.product.service.CategoryBrandRelationService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.stereotype.Service;
 
 import java.util.Collections;
@@ -17,10 +20,14 @@ import com.hungwen.common.utils.Query;
 import com.hungwen.cloudmall.product.dao.CategoryDao;
 import com.hungwen.cloudmall.product.entity.CategoryEntity;
 import com.hungwen.cloudmall.product.service.CategoryService;
+import org.springframework.transaction.annotation.Transactional;
 
 
 @Service("categoryService")
 public class CategoryServiceImpl extends ServiceImpl<CategoryDao, CategoryEntity> implements CategoryService {
+
+    @Autowired
+    CategoryBrandRelationService categoryBrandRelationService;
 
     @Override
     public PageUtils queryPage(Map<String, Object> params) {
@@ -65,6 +72,25 @@ public class CategoryServiceImpl extends ServiceImpl<CategoryDao, CategoryEntity
         // 因為收集的鎮列為 [225, 25, 2]，所以要用 Collections.reverse(paths) 轉為 [2, 25, 225]
         Collections.reverse(parentPath);
         return parentPath.toArray(new Long[parentPath.size()]);
+    }
+
+    /**
+     * 級聯更新所有關聯的備註
+     * @CacheEvict: 失效模式，選單一但被修改後，即刪除 cache 中的資料
+     * 1. 同時進行多種 cache 操作   @Caching
+     * 2. 指定刪除某個分區下的所有資料
+     * 3. 存儲同一類型的資料，都可以指定成同一個分區，分區名默認就是 cache 的前綴＊
+     *
+     * @Caching(evict = {　@CacheEvict(value = "category", key = "'getLevel1Categorys'"),
+     * @CacheEvict(value = "category", key = "'getCatelogJson'")
+     *
+     */
+    @CacheEvict(value = "category", allEntries = true)
+    @Transactional
+    @Override
+    public void updateCascade(CategoryEntity category) {
+        this.updateById(category);
+        categoryBrandRelationService.updateCategory(category.getCatId(), category.getName());
     }
 
     //225 -> 25 -> 2

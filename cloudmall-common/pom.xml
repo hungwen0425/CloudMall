@@ -91,11 +91,11 @@
 <!--            <artifactId>spring-cloud-starter-alibaba-sentinel</artifactId>-->
 <!--        </dependency>-->
         <!--        為了使用Sentinel1.7.1版本的控制台 -->
-        <!--        <dependency>
-                    <groupId>com.alibaba.csp</groupId>
-                    <artifactId>sentinel-datasource-nacos</artifactId>
-                    <version>1.7.1</version>
-                </dependency>-->
+<!--       <dependency>-->
+<!--            <groupId>com.alibaba.csp</groupId>-->
+<!--            <artifactId>sentinel-datasource-nacos</artifactId>-->
+<!--            <version>1.7.1</version>-->
+<!--       </dependency>-->
 
         <!--        引入sleuth链路追踪 -->
         <!--        <dependency>

@@ -30,6 +30,7 @@ import com.hungwen.common.utils.R;
 @RestController
 @RequestMapping("product/attrgroup")
 public class AttrGroupController {
+
     @Autowired
     private AttrGroupService attrGroupService;
     @Autowired
@@ -39,11 +40,11 @@ public class AttrGroupController {
     @Autowired
     private AttrService attrService;
 
-//    @PostMapping("/attr/relation")
-//    public R addRelation(@RequestBody List<AttrGroupRelationVo> vos){
-//        attrAttrgroupRelationService.saveBatch(vos);
-//        return R.ok();
-//    }
+    @PostMapping("/attr/relation")
+    public R addRelation(@RequestBody List<AttrGroupRelationVo> vos){
+        attrAttrgroupRelationService.saveBatch(vos);
+        return R.ok();
+    }
 
     @GetMapping("/{catelogId}/withattr")
     public R getAttrGroupWithAttrs(@PathVariable("catelogId") Long catelogId){
@@ -66,24 +67,24 @@ public class AttrGroupController {
 
     // /product/{attrgroupId}/attr/relation
     @GetMapping("/{attrgroupId}/attr/relation")
-//    public R attrRelation(@PathVariable("attrgroupId") Long attrgroupId){
-//        List<AttrEntity> entities =  attrService.getRelationAttr(attrgroupId);
-//        return R.ok().put("data", entities);
-//    }
-//
-//    // 頁面傳遞過來的分頁參數，@RequestParam Map<String, Object> params
-//    @GetMapping("/{attrgroupId}/noattr/relation")
-//    public R attrNoRelation(@PathVariable("attrgroupId") Long attrgroupId,
-//                            @RequestParam Map<String, Object> params){
-//        PageUtils page = attrService.getNoRelationAttr(params, attrgroupId);
-//        return R.ok().put("page", page);
-//    }
-//
-//    @PostMapping("/attr/relation/delete")
-//    public R deleteRelation(@RequestBody  AttrGroupRelationVo[] vos){
-//        attrAttrgroupRelationService.deleteRelation(vos);
-//        return R.ok();
-//    }
+    public R attrRelation(@PathVariable("attrgroupId") Long attrgroupId){
+        List<AttrEntity> entities =  attrService.getRelationAttr(attrgroupId);
+        return R.ok().put("data", entities);
+    }
+
+    // 頁面傳遞過來的分頁參數，@RequestParam Map<String, Object> params
+    @GetMapping("/{attrgroupId}/noattr/relation")
+    public R attrNoRelation(@PathVariable("attrgroupId") Long attrgroupId,
+                            @RequestParam Map<String, Object> params){
+        PageUtils page = attrService.getNoRelationAttr(params, attrgroupId);
+        return R.ok().put("page", page);
+    }
+
+    @PostMapping("/attr/relation/delete")
+    public R deleteRelation(@RequestBody AttrGroupRelationVo[] vos){
+        attrService.deleteRelation(vos);
+        return R.ok();
+    }
 
     /**
      *

@@ -17,47 +17,48 @@ import lombok.Data;
 @Data
 @TableName("sms_coupon_history")
 public class CouponHistoryEntity implements Serializable {
+
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * $column.comments
+	 * id
 	 */
 	@TableId
 	private Long id;
 	/**
-	 * $column.comments
+	 * 優惠券id
 	 */
 	private Long couponId;
 	/**
-	 * $column.comments
+	 * 會員id
 	 */
 	private Long memberId;
 	/**
-	 * $column.comments
+	 * 會員名字
 	 */
 	private String memberNickName;
 	/**
-	 * $column.comments
+	 * 獲取方式[0->後台贈送；1->主動領取]
 	 */
 	private Integer getType;
 	/**
-	 * $column.comments
+	 * 創建時間
 	 */
 	private Date createTime;
 	/**
-	 * $column.comments
+	 * 使用狀態 [0->未使用；1->已使用；2->已過期]
 	 */
 	private Integer useType;
 	/**
-	 * $column.comments
+	 * 使用時間
 	 */
 	private Date useTime;
 	/**
-	 * $column.comments
+	 * 訂單id
 	 */
 	private Long orderId;
 	/**
-	 * $column.comments
+	 * 訂單號
 	 */
 	private Long orderSn;
 

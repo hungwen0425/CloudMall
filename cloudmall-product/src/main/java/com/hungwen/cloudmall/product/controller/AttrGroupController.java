@@ -88,7 +88,7 @@ public class AttrGroupController {
 
     /**
      *
-     * 查詢 AttrGroup 備註
+     * 查詢 AttrGroup 資料
      */
     @RequestMapping("/info/{attrGroupId}")
     public R info(@PathVariable("attrGroupId") Long attrGroupId) {
@@ -97,7 +97,6 @@ public class AttrGroupController {
         Long catelogId = attrGroup.getCatelogId();
         Long[] path = categoryService.findCatelogPath(catelogId);
         attrGroup.setCatelogPath(path);
-
         return R.ok().put("attrGroup", attrGroup);
     }
 

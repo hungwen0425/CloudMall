@@ -18,87 +18,88 @@ import lombok.Data;
 @Data
 @TableName("sms_coupon")
 public class CouponEntity implements Serializable {
+
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * $column.comments
+	 * id
 	 */
 	@TableId
 	private Long id;
 	/**
-	 * $column.comments
+	 * 優惠卷類型[0->全場贈券；1->會員贈券；2->購物贈券；3->注冊贈券]
 	 */
 	private Integer couponType;
 	/**
-	 * $column.comments
+	 * 優惠券圖片
 	 */
 	private String couponImg;
 	/**
-	 * $column.comments
+	 * 優惠卷名字
 	 */
 	private String couponName;
 	/**
-	 * $column.comments
+	 * 數量
 	 */
 	private Integer num;
 	/**
-	 * $column.comments
+	 * 金額
 	 */
 	private BigDecimal amount;
 	/**
-	 * $column.comments
+	 * 每人限領張數
 	 */
 	private Integer perLimit;
 	/**
-	 * $column.comments
+	 * 使用門檻
 	 */
 	private BigDecimal minPoint;
 	/**
-	 * $column.comments
+	 * 開始時間
 	 */
 	private Date startTime;
 	/**
-	 * $column.comments
+	 * 結束時間
 	 */
 	private Date endTime;
 	/**
-	 * $column.comments
+	 * 使用類型 [0->全場通用；1->指定分類；2->指定商品]
 	 */
 	private Integer useType;
 	/**
-	 * $column.comments
+	 * 備註
 	 */
 	private String note;
 	/**
-	 * $column.comments
+	 * 發行數量
 	 */
 	private Integer publishCount;
 	/**
-	 * $column.comments
+	 * 已使用數量
 	 */
 	private Integer useCount;
 	/**
-	 * $column.comments
+	 * 領取數量
 	 */
 	private Integer receiveCount;
 	/**
-	 * $column.comments
+	 * 可以領取的開始日期
 	 */
 	private Date enableStartTime;
 	/**
-	 * $column.comments
+	 * 可以領取的結束日期
 	 */
 	private Date enableEndTime;
 	/**
-	 * $column.comments
+	 * 優惠碼
 	 */
 	private String code;
 	/**
-	 * $column.comments
+	 * 可以領取的會員等級 [0->不限等級，其他-對應等級]
 	 */
 	private Integer memberLevel;
 	/**
-	 * $column.comments
+	 * 發布狀態[0-未發布，1-已發布]
 	 */
 	private Integer publish;
 

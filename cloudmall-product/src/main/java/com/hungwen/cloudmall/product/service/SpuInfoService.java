@@ -1,6 +1,7 @@
 package com.hungwen.cloudmall.product.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.hungwen.cloudmall.product.vo.SpuSaveVo;
 import com.hungwen.common.utils.PageUtils;
 import com.hungwen.cloudmall.product.entity.SpuInfoEntity;
 
@@ -16,5 +17,9 @@ import java.util.Map;
 public interface SpuInfoService extends IService<SpuInfoEntity> {
 
     PageUtils queryPage(Map<String, Object> params);
+
+    void saveSpuInfo(SpuSaveVo vo);
+
+    void saveBaseSpuInfo(SpuInfoEntity infoEntity);
 }
 

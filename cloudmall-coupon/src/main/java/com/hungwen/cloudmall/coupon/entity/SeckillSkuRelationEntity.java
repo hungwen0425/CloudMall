@@ -18,39 +18,40 @@ import lombok.Data;
 @Data
 @TableName("sms_seckill_sku_relation")
 public class SeckillSkuRelationEntity implements Serializable {
+
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * $column.comments
+	 * id
 	 */
 	@TableId
 	private Long id;
 	/**
-	 * $column.comments
+	 * 活動id
 	 */
 	private Long promotionId;
 	/**
-	 * $column.comments
+	 * 活動場次id
 	 */
 	private Long promotionSessionId;
 	/**
-	 * $column.comments
+	 * 商品id
 	 */
 	private Long skuId;
 	/**
-	 * $column.comments
+	 * 秒殺價格
 	 */
 	private BigDecimal seckillPrice;
 	/**
-	 * $column.comments
+	 * 秒殺總量
 	 */
 	private BigDecimal seckillCount;
 	/**
-	 * $column.comments
+	 * 每人限購數量
 	 */
 	private BigDecimal seckillLimit;
 	/**
-	 * $column.comments
+	 * 排序
 	 */
 	private Integer seckillSort;
 

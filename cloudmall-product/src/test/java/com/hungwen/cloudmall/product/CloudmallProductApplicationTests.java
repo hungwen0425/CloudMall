@@ -33,14 +33,14 @@ public class CloudmallProductApplicationTests {
 //    @Autowired
 //    AttrGroupDao attrGroupDao;
 
-    @Test
-    public void contextLoads() {
-
-        BrandEntity brandEntity = new BrandEntity();
-        brandEntity.setName("三星");
-        brandService.save(brandEntity);
-        System.out.println("新增成功");
-    }
+//    @Test
+//    public void contextLoads() {
+//
+//        BrandEntity brandEntity = new BrandEntity();
+//        brandEntity.setName("三星");
+//        brandService.save(brandEntity);
+//        System.out.println("新增成功");
+//    }
 
 //    @Test
 //    public void test() {

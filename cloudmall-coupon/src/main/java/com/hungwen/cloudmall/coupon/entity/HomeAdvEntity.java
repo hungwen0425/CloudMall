@@ -17,55 +17,56 @@ import lombok.Data;
 @Data
 @TableName("sms_home_adv")
 public class HomeAdvEntity implements Serializable {
+
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * $column.comments
+	 * id
 	 */
 	@TableId
 	private Long id;
 	/**
-	 * $column.comments
+	 * 名字
 	 */
 	private String name;
 	/**
-	 * $column.comments
+	 * 圖片地址
 	 */
 	private String pic;
 	/**
-	 * $column.comments
+	 * 開始時間
 	 */
 	private Date startTime;
 	/**
-	 * $column.comments
+	 * 結束時間
 	 */
 	private Date endTime;
 	/**
-	 * $column.comments
+	 * 狀態
 	 */
 	private Integer status;
 	/**
-	 * $column.comments
+	 * 點擊數
 	 */
 	private Integer clickCount;
 	/**
-	 * $column.comments
+	 * 廣告詳情連接地址
 	 */
 	private String url;
 	/**
-	 * $column.comments
+	 * 備註
 	 */
 	private String note;
 	/**
-	 * $column.comments
+	 * 排序
 	 */
 	private Integer sort;
 	/**
-	 * $column.comments
+	 * 發布者
 	 */
 	private Long publisherId;
 	/**
-	 * $column.comments
+	 * 審核者
 	 */
 	private Long authId;
 

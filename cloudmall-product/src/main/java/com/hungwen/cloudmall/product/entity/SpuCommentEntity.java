@@ -17,6 +17,7 @@ import lombok.Data;
 @Data
 @TableName("pms_spu_comment")
 public class SpuCommentEntity implements Serializable {
+
 	private static final long serialVersionUID = 1L;
 
 	/**
@@ -45,7 +46,7 @@ public class SpuCommentEntity implements Serializable {
 	 */
 	private Integer star;
 	/**
-	 * 會員ip
+	 * 會員 ip
 	 */
 	private String memberIp;
 	/**
@@ -53,7 +54,7 @@ public class SpuCommentEntity implements Serializable {
 	 */
 	private Date createTime;
 	/**
-	 * 顯示狀態[0-不顯示，1-顯示]
+	 * 顯示狀態 [0-不顯示，1-顯示]
 	 */
 	private Integer showStatus;
 	/**

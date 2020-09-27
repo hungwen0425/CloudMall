@@ -65,7 +65,7 @@ public class MongoScanner {
 
 
     /**
-     * 功能描述:分组发送聚合函數(获得一级属性名)
+     * 功能描述:分组發送聚合函數(获得一级属性名)
      *
      * @author : gxz
      */
@@ -81,7 +81,7 @@ public class MongoScanner {
         filed.append("allkeys", new BasicDBObject("$addToSet", "$arrayofkeyvalue.k"));
         BasicDBObject $group = new BasicDBObject("$group", filed);
         List<BasicDBObject> dbStages = Arrays.asList($project, $skip, $limit, $unwind, $group);
-        // System.out.println(dbStages);  发送的聚合函數   获得所有参數名称
+        // System.out.println(dbStages);  發送的聚合函數   获得所有参數名称
         AggregateIterable<Document> aggregate = collection.aggregate(dbStages);
         Document document = aggregate.first();
         if (document == null) {

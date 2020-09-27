@@ -4,6 +4,7 @@ import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
+import org.springframework.cloud.openfeign.EnableFeignClients;
 //import org.springframework.session.data.redis.config.annotation.web.http.EnableRedisHttpSession;
 
 /*
@@ -74,6 +75,7 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
  *       7.3.2 只需要使用註解就能完成緩存操作
  *
  */
+@EnableFeignClients(basePackages = "com.hungwen.cloudmall.product.feign")
 @EnableDiscoveryClient
 @SpringBootApplication
 @MapperScan("com.hungwen.cloudmall.product.dao") // 參考 1.2.2.1

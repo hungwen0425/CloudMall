@@ -18,6 +18,7 @@ import lombok.Data;
 @Data
 @TableName("pms_spu_info")
 public class SpuInfoEntity implements Serializable {
+
 	private static final long serialVersionUID = 1L;
 
 	/**
@@ -42,7 +43,7 @@ public class SpuInfoEntity implements Serializable {
 	 */
 	private Long brandId;
 	/**
-	 * 
+	 * 比重
 	 */
 	private BigDecimal weight;
 	/**
@@ -50,11 +51,11 @@ public class SpuInfoEntity implements Serializable {
 	 */
 	private Integer publishStatus;
 	/**
-	 * 
+	 * 創建時間
 	 */
 	private Date createTime;
 	/**
-	 * 
+	 * 更新時間
 	 */
 	private Date updateTime;
 

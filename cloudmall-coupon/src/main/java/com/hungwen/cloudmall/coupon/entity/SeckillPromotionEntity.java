@@ -17,35 +17,36 @@ import lombok.Data;
 @Data
 @TableName("sms_seckill_promotion")
 public class SeckillPromotionEntity implements Serializable {
+
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * $column.comments
+	 * id
 	 */
 	@TableId
 	private Long id;
 	/**
-	 * $column.comments
+	 * 活動標題
 	 */
 	private String title;
 	/**
-	 * $column.comments
+	 * 開始日期
 	 */
 	private Date startTime;
 	/**
-	 * $column.comments
+	 * 結束日期
 	 */
 	private Date endTime;
 	/**
-	 * $column.comments
+	 * 上下線狀態
 	 */
 	private Integer status;
 	/**
-	 * $column.comments
+	 * 創建時間
 	 */
 	private Date createTime;
 	/**
-	 * $column.comments
+	 * 創建人
 	 */
 	private Long userId;
 

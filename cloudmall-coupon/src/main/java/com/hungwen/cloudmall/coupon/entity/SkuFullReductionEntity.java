@@ -18,27 +18,28 @@ import lombok.Data;
 @Data
 @TableName("sms_sku_full_reduction")
 public class SkuFullReductionEntity implements Serializable {
+
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * $column.comments
+	 * id
 	 */
 	@TableId
 	private Long id;
 	/**
-	 * $column.comments
+	 * spu_id
 	 */
 	private Long skuId;
 	/**
-	 * $column.comments
+	 * 滿多少
 	 */
 	private BigDecimal fullPrice;
 	/**
-	 * $column.comments
+	 * 減多少
 	 */
 	private BigDecimal reducePrice;
 	/**
-	 * $column.comments
+	 * 是否參與其他優惠
 	 */
 	private Integer addOther;
 

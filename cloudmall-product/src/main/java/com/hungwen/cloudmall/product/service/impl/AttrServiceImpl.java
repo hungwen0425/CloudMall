@@ -61,7 +61,7 @@ public class AttrServiceImpl extends ServiceImpl<AttrDao, AttrEntity> implements
         AttrEntity attrEntity = new AttrEntity();
         //將 AttrVo VO 的值 copy 到 AttrEntity PO 裡面
         BeanUtils.copyProperties(attrVo, attrEntity);
-        //1、保存 AttrEntity 基本備註
+        //1、保存 AttrEntity 基本資料
         this.save(attrEntity);
         //2、保存關聯關係
         // 如果 attr_type == 1，為基本屬性
@@ -95,9 +95,7 @@ public class AttrServiceImpl extends ServiceImpl<AttrDao, AttrEntity> implements
                 wrapper.eq("attr_id", key).or().like("attr_name", key);
             });
         }
-
         IPage<AttrEntity> page = this.page(new Query<AttrEntity>().getPage(params), queryWrapper);
-
         PageUtils pageUtils = new PageUtils(page);
         List<AttrEntity> records = page.getRecords();
         List<AttrRespVo> respVos = records.stream().map((attrEntity) -> {
@@ -130,10 +128,10 @@ public class AttrServiceImpl extends ServiceImpl<AttrDao, AttrEntity> implements
     public AttrRespVo getAttrInfo(Long attrId) {
 
         AttrRespVo respVo = new AttrRespVo();
-        //查詢當前屬性備註
+        //查詢當前屬性資料
         AttrEntity attrEntity = this.getById(attrId);
         BeanUtils.copyProperties(attrEntity, respVo);
-        // 如果 attr_type == 1，才能設定分組備註
+        // 如果 attr_type == 1，才能設定分組資料
         if (attrEntity.getAttrType() == ProductConstant.AttrEnum.ATTR_TYPE_BASE.getCode()) {
             // 1、設定分組資料
             AttrAttrgroupRelationEntity attrgroupRelation = relationDao.selectOne(new QueryWrapper<AttrAttrgroupRelationEntity>().eq("attr_id", attrId));
@@ -186,7 +184,7 @@ public class AttrServiceImpl extends ServiceImpl<AttrDao, AttrEntity> implements
     }
 
     /**
-     * 根據分組 id 查找關聯的所有基本屬性
+     * 根據商品分類 id 查詢關聯的所有基本屬性
      * @param attrgroupId
      * @return
      */

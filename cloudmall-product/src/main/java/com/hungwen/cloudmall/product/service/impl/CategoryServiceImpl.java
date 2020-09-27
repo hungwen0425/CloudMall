@@ -75,7 +75,7 @@ public class CategoryServiceImpl extends ServiceImpl<CategoryDao, CategoryEntity
     }
 
     /**
-     * 級聯更新所有關聯的備註
+     * 級聯更新所有關聯的資料
      * @CacheEvict: 失效模式，選單一但被修改後，即刪除 cache 中的資料
      * 1. 同時進行多種 cache 操作   @Caching
      * 2. 指定刪除某個分區下的所有資料

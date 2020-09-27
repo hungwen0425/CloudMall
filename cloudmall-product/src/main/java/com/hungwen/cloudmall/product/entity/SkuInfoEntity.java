@@ -18,6 +18,7 @@ import lombok.Data;
 @Data
 @TableName("pms_sku_info")
 public class SkuInfoEntity implements Serializable {
+
 	private static final long serialVersionUID = 1L;
 
 	/**

@@ -40,10 +40,10 @@ public class BrandServiceImpl extends ServiceImpl<BrandDao, BrandEntity> impleme
     @Transactional
     @Override
     public void updateDetail(BrandEntity brand) {
-        //保證冗余字段的備註一致
+        //保證冗余字段的資料一致
         this.updateById(brand);
         if (!org.springframework.util.StringUtils.isEmpty(brand.getName())) {
-            //同步更新其他關聯表中的備註
+            //同步更新其他關聯表中的資料
             categoryBrandRelationService.updateBrand(brand.getBrandId(), brand.getName());
             //TODO 更新其他關聯
         }

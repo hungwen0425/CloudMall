@@ -8,9 +8,14 @@ import com.hungwen.cloudmall.product.dao.BrandDao;
 import com.hungwen.cloudmall.product.dao.CategoryDao;
 import com.hungwen.cloudmall.product.entity.BrandEntity;
 import com.hungwen.cloudmall.product.entity.CategoryEntity;
+import com.hungwen.cloudmall.product.service.BrandService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
+
 import com.hungwen.common.utils.PageUtils;
 import com.hungwen.common.utils.Query;
 
@@ -26,6 +31,10 @@ public class CategoryBrandRelationServiceImpl extends ServiceImpl<CategoryBrandR
     private BrandDao brandDao;
     @Autowired
     private CategoryDao categoryDao;
+    @Autowired
+    CategoryBrandRelationDao relationDao;
+    @Autowired
+    private BrandService brandService;
 
     @Override
     public PageUtils queryPage(Map<String, Object> params) {
@@ -63,5 +72,17 @@ public class CategoryBrandRelationServiceImpl extends ServiceImpl<CategoryBrandR
         this.baseMapper.updateCategory(catId, name);
     }
 
+    @Override
+    public List<BrandEntity> getBrandsByCatId(Long catId) {
+        List<CategoryBrandRelationEntity> catelogId = relationDao.selectList(
+                new QueryWrapper<CategoryBrandRelationEntity>().eq("catelog_id", catId));
 
+        List<BrandEntity> collect = catelogId.stream().map(item -> {
+            Long brandId = item.getBrandId();
+            BrandEntity brandEntity = brandService.getById(brandId);
+            return brandEntity;
+        }).collect(Collectors.toList());
+
+        return collect;
+    }
 }

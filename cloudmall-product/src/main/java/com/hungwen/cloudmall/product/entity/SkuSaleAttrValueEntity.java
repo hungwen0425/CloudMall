@@ -17,6 +17,7 @@ import lombok.Data;
 @Data
 @TableName("pms_sku_sale_attr_value")
 public class SkuSaleAttrValueEntity implements Serializable {
+
 	private static final long serialVersionUID = 1L;
 
 	/**

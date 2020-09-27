@@ -3,8 +3,11 @@ package com.hungwen.cloudmall.product.controller;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.hungwen.cloudmall.product.entity.BrandEntity;
+import com.hungwen.cloudmall.product.vo.BrandVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -37,6 +40,27 @@ public class CategoryBrandRelationController {
                 new QueryWrapper<CategoryBrandRelationEntity>().eq("brand_id",brandId)
         );
         return R.ok().put("data", data);
+    }
+
+    /**
+     *  /product/categorybrandrelation/brands/list
+     *  1. Controller：處理請求，接受和校驗資料
+     *  2. Service 接受 controller 傳來的資料，進行業務處理
+     *  3. Controller 接受 Service 處理完的資料，封装成頁面指定的 vo
+     */
+    @GetMapping("/brands/list")
+    public R relationBrandsList(@RequestParam(value="catId", required=true) Long catId){
+
+        List<BrandEntity> vos = categoryBrandRelationService.getBrandsByCatId(catId);
+
+        List<BrandVo> collect = vos.stream().map(item -> {
+            BrandVo brandVo = new BrandVo();
+            brandVo.setBrandId(item.getBrandId());
+            brandVo.setBrandName(item.getName());
+            return brandVo;
+        }).collect(Collectors.toList());
+
+        return R.ok().put("data", collect);
     }
 
     /**

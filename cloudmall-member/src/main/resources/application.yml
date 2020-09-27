@@ -31,6 +31,6 @@ server:
 
 logging:
   level:
-    com.hungwen.cloudmall.member: info
+    com.hungwen.cloudmall.member: debug
 #    org.springframework.cloud.openfeign: debug
 #    org.springframework.cloud.sleuth: debug

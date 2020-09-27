@@ -17,27 +17,28 @@ import lombok.Data;
 @Data
 @TableName("sms_home_subject_spu")
 public class HomeSubjectSpuEntity implements Serializable {
+
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * $column.comments
+	 * id
 	 */
 	@TableId
 	private Long id;
 	/**
-	 * $column.comments
+	 * 專題名字
 	 */
 	private String name;
 	/**
-	 * $column.comments
+	 * 專題id
 	 */
 	private Long subjectId;
 	/**
-	 * $column.comments
+	 * spu_id
 	 */
 	private Long spuId;
 	/**
-	 * $column.comments
+	 * 排序
 	 */
 	private Integer sort;
 

@@ -17,6 +17,7 @@ import lombok.Data;
 @Data
 @TableName("pms_spu_images")
 public class SpuImagesEntity implements Serializable {
+
 	private static final long serialVersionUID = 1L;
 
 	/**

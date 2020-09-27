@@ -17,6 +17,7 @@ import lombok.Data;
 @Data
 @TableName("pms_category_brand_relation")
 public class CategoryBrandRelationEntity implements Serializable {
+
 	private static final long serialVersionUID = 1L;
 
 	/**

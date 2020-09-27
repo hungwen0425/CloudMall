@@ -17,6 +17,7 @@ import lombok.Data;
 @Data
 @TableName("pms_comment_replay")
 public class CommentReplayEntity implements Serializable {
+
 	private static final long serialVersionUID = 1L;
 
 	/**

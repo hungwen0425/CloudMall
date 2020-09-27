@@ -17,23 +17,24 @@ import lombok.Data;
 @Data
 @TableName("sms_coupon_spu_category_relation")
 public class CouponSpuCategoryRelationEntity implements Serializable {
+
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * $column.comments
+	 * id
 	 */
 	@TableId
 	private Long id;
 	/**
-	 * $column.comments
+	 * 優惠券id
 	 */
 	private Long couponId;
 	/**
-	 * $column.comments
+	 * 產品分類id
 	 */
 	private Long categoryId;
 	/**
-	 * $column.comments
+	 * 產品分類名稱
 	 */
 	private String categoryName;
 

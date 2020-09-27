@@ -50,13 +50,14 @@ public class AttrController {
     }
 
     /**
-     * 資料  取得 AttrRespVo 備註
+     * 資料  取得 AttrRespVo 資料
      */
     @RequestMapping("/info/{attrId}")
     public R info(@PathVariable("attrId") Long attrId){
         AttrRespVo attrRespVo = attrService.getAttrInfo(attrId);
         return R.ok().put("attr", attrRespVo);
     }
+
     /**
      * 保存
      */

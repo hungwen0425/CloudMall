@@ -17,31 +17,32 @@ import lombok.Data;
 @Data
 @TableName("sms_seckill_session")
 public class SeckillSessionEntity implements Serializable {
+
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * $column.comments
+	 * id
 	 */
 	@TableId
 	private Long id;
 	/**
-	 * $column.comments
+	 * 場次名稱
 	 */
 	private String name;
 	/**
-	 * $column.comments
+	 * 每日開始時間
 	 */
 	private Date startTime;
 	/**
-	 * $column.comments
+	 * 每日結束時間
 	 */
 	private Date endTime;
 	/**
-	 * $column.comments
+	 * 啟用狀態
 	 */
 	private Integer status;
 	/**
-	 * $column.comments
+	 * 創建時間
 	 */
 	private Date createTime;
 

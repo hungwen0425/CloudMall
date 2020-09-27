@@ -1,9 +1,11 @@
 package com.hungwen.cloudmall.product.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.hungwen.cloudmall.product.entity.BrandEntity;
 import com.hungwen.common.utils.PageUtils;
 import com.hungwen.cloudmall.product.entity.CategoryBrandRelationEntity;
 
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -22,5 +24,7 @@ public interface CategoryBrandRelationService extends IService<CategoryBrandRela
     void updateBrand(Long brandId, String name);
 
     void updateCategory(Long catId, String name);
+
+    List<BrandEntity> getBrandsByCatId(Long catId);
 }
 

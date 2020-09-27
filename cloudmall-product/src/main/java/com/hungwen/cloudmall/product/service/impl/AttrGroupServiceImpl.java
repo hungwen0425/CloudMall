@@ -61,24 +61,22 @@ public class AttrGroupServiceImpl extends ServiceImpl<AttrGroupDao, AttrGroupEnt
     }
 
     /**
-     * 根據分類 id 查出所有屬性分組以及這些組裡面的屬性
+     * 根據商品分類 id 查詢所有屬性分組以及這些組裡面的屬性
      * @Param catelogId
      * @return List<AttrGroupWithAttrsVo>
      */
     @Override
     public List<AttrGroupWithAttrsVo> getAttrGroupWithAttrsByCatelogId(Long catelogId) {
-        //1、查詢分組登入
+        //1、查詢分組資料
         List<AttrGroupEntity> attrGroupEntities = this.list(new QueryWrapper<AttrGroupEntity>().eq("catelog_id", catelogId));
-
         //2、查詢所有屬性
         List<AttrGroupWithAttrsVo> collect = attrGroupEntities.stream().map(attrGroup -> {
             AttrGroupWithAttrsVo attrsVo = new AttrGroupWithAttrsVo();
             BeanUtils.copyProperties(attrGroup, attrsVo);
-            //Todo List<AttrEntity> attrs = attrService.getRelationAttr(attrsVo.getAttrGroupId());
-            //Todo attrsVo.setAttrs(attrs);
+            List<AttrEntity> attrs = attrService.getRelationAttr(attrsVo.getAttrGroupId());
+            attrsVo.setAttrs(attrs);
             return attrsVo;
         }).collect(Collectors.toList());
-
         return collect;
     }
 

@@ -18,31 +18,32 @@ import lombok.Data;
 @Data
 @TableName("sms_sku_ladder")
 public class SkuLadderEntity implements Serializable {
+
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * $column.comments
+	 * id
 	 */
 	@TableId
 	private Long id;
 	/**
-	 * $column.comments
+	 * spu_id
 	 */
 	private Long skuId;
 	/**
-	 * $column.comments
+	 * 滿幾件
 	 */
 	private Integer fullCount;
 	/**
-	 * $column.comments
+	 * 打幾折
 	 */
 	private BigDecimal discount;
 	/**
-	 * $column.comments
+	 * 折後價
 	 */
 	private BigDecimal price;
 	/**
-	 * $column.comments
+	 * 是否疊加其他優惠[0-不可疊加，1-可疊加]
 	 */
 	private Integer addOther;
 

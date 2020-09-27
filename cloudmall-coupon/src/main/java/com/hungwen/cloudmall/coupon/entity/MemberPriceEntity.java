@@ -18,31 +18,32 @@ import lombok.Data;
 @Data
 @TableName("sms_member_price")
 public class MemberPriceEntity implements Serializable {
+
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * $column.comments
+	 * id
 	 */
 	@TableId
 	private Long id;
 	/**
-	 * $column.comments
+	 * sku_id
 	 */
 	private Long skuId;
 	/**
-	 * $column.comments
+	 * 會員等級id
 	 */
 	private Long memberLevelId;
 	/**
-	 * $column.comments
+	 * 會員等級名
 	 */
 	private String memberLevelName;
 	/**
-	 * $column.comments
+	 * 會員對應價格
 	 */
 	private BigDecimal memberPrice;
 	/**
-	 * $column.comments
+	 * 可否疊加其他優惠 [0-不可疊加優惠，1-可疊加]
 	 */
 	private Integer addOther;
 

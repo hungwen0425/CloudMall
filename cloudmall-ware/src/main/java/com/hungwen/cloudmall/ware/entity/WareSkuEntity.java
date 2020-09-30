@@ -17,31 +17,32 @@ import lombok.Data;
 @Data
 @TableName("wms_ware_sku")
 public class WareSkuEntity implements Serializable {
+
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * $column.comments
+	 * id
 	 */
 	@TableId
 	private Long id;
 	/**
-	 * $column.comments
+	 * 商品 id
 	 */
 	private Long skuId;
 	/**
-	 * $column.comments
+	 * 倉庫 id
 	 */
 	private Long wareId;
 	/**
-	 * $column.comments
+	 * 庫存數量
 	 */
 	private Integer stock;
 	/**
-	 * $column.comments
+	 * 商品名稱
 	 */
 	private String skuName;
 	/**
-	 * $column.comments
+	 * 庫存鎖定
 	 */
 	private Integer stockLocked;
 

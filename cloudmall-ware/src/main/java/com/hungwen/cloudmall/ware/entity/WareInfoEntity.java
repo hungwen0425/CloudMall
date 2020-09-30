@@ -17,23 +17,24 @@ import lombok.Data;
 @Data
 @TableName("wms_ware_info")
 public class WareInfoEntity implements Serializable {
+
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * $column.comments
+	 * 倉庫 id
 	 */
 	@TableId
 	private Long id;
 	/**
-	 * $column.comments
+	 * 倉庫名稱
 	 */
 	private String name;
 	/**
-	 * $column.comments
+	 * 倉庫地址
 	 */
 	private String address;
 	/**
-	 * $column.comments
+	 * 郵遞區號
 	 */
 	private String areacode;
 

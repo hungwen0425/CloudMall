@@ -18,35 +18,36 @@ import lombok.Data;
 @Data
 @TableName("wms_purchase_detail")
 public class PurchaseDetailEntity implements Serializable {
+
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * $column.comments
+	 * id
 	 */
 	@TableId
 	private Long id;
 	/**
-	 * $column.comments
+	 * 採購 id
 	 */
 	private Long purchaseId;
 	/**
-	 * $column.comments
+	 * 商品 id
 	 */
 	private Long skuId;
 	/**
-	 * $column.comments
+	 * 商品數量
 	 */
 	private Integer skuNum;
 	/**
-	 * $column.comments
+	 * 商價價格
 	 */
 	private BigDecimal skuPrice;
 	/**
-	 * $column.comments
+	 * 倉庫 id
 	 */
 	private Long wareId;
 	/**
-	 * $column.comments
+	 * 狀態
 	 */
 	private Integer status;
 

@@ -6,7 +6,7 @@ public class WareConstant {
 
         CREATED(0,"新建"),
         ASSIGNED(1,"已分配"),
-        RECEIVE(2,"已領取"),
+        RECEIVED(2,"已領取"),
         FINISH(3,"已完成"),
         HASERROR(4,"有異常");
 

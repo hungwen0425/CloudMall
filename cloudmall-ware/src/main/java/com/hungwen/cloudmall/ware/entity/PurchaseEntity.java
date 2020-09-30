@@ -18,47 +18,48 @@ import lombok.Data;
 @Data
 @TableName("wms_purchase")
 public class PurchaseEntity implements Serializable {
+
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * $column.comments
+	 * 採購 id
 	 */
 	@TableId
 	private Long id;
 	/**
-	 * $column.comments
+	 * 受託人 id
 	 */
 	private Long assigneeId;
 	/**
-	 * $column.comments
+	 * 受託人名稱
 	 */
 	private String assigneeName;
 	/**
-	 * $column.comments
+	 * 聯繫電話
 	 */
 	private String phone;
 	/**
-	 * $column.comments
+	 * 優先級別
 	 */
 	private Integer priority;
 	/**
-	 * $column.comments
+	 * 狀態
 	 */
 	private Integer status;
 	/**
-	 * $column.comments
+	 * 倉庫 id
 	 */
 	private Long wareId;
 	/**
-	 * $column.comments
+	 * 數量
 	 */
 	private BigDecimal amount;
 	/**
-	 * $column.comments
+	 * 創建時間
 	 */
 	private Date createTime;
 	/**
-	 * $column.comments
+	 * 更新時間
 	 */
 	private Date updateTime;
 

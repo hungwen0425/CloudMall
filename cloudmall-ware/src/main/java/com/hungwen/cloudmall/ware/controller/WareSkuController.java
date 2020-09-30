@@ -27,6 +27,7 @@ import com.hungwen.common.utils.R;
 @RestController
 @RequestMapping("ware/waresku")
 public class WareSkuController {
+
     @Autowired
     private WareSkuService wareSkuService;
 
@@ -34,22 +35,17 @@ public class WareSkuController {
      * 列表
      */
     @RequestMapping("/list")
-    //@RequiresPermissions("ware:waresku:list")
     public R list(@RequestParam Map<String, Object> params){
         PageUtils page = wareSkuService.queryPage(params);
-
         return R.ok().put("page", page);
     }
-
 
     /**
      * 資料
      */
     @RequestMapping("/info/{id}")
-    //@RequiresPermissions("ware:waresku:info")
     public R info(@PathVariable("id") Long id){
 		WareSkuEntity wareSku = wareSkuService.getById(id);
-
         return R.ok().put("wareSku", wareSku);
     }
 
@@ -57,10 +53,8 @@ public class WareSkuController {
      * 保存
      */
     @RequestMapping("/save")
-    //@RequiresPermissions("ware:waresku:save")
     public R save(@RequestBody WareSkuEntity wareSku){
 		wareSkuService.save(wareSku);
-
         return R.ok();
     }
 
@@ -68,10 +62,8 @@ public class WareSkuController {
      * 修改
      */
     @RequestMapping("/update")
-    //@RequiresPermissions("ware:waresku:update")
     public R update(@RequestBody WareSkuEntity wareSku){
 		wareSkuService.updateById(wareSku);
-
         return R.ok();
     }
 

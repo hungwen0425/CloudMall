@@ -17,63 +17,64 @@ import lombok.Data;
 @Data
 @TableName("wms_ware_order_task")
 public class WareOrderTaskEntity implements Serializable {
+
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * $column.comments
+	 * id
 	 */
 	@TableId
 	private Long id;
 	/**
-	 * $column.comments
+	 * 訂單 id
 	 */
 	private Long orderId;
 	/**
-	 * $column.comments
+	 * 訂單流水號
 	 */
 	private String orderSn;
 	/**
-	 * $column.comments
+	 * 收貨人
 	 */
 	private String consignee;
 	/**
-	 * $column.comments
+	 * 收貨人電話
 	 */
 	private String consigneeTel;
 	/**
-	 * $column.comments
+	 * 收貨地址
 	 */
 	private String deliveryAddress;
 	/**
-	 * $column.comments
+	 * 訂單備註
 	 */
 	private String orderComment;
 	/**
-	 * $column.comments
+	 * 付款方式
 	 */
 	private Integer paymentWay;
 	/**
-	 * $column.comments
+	 * 工作單狀態
 	 */
 	private Integer taskStatus;
 	/**
-	 * $column.comments
+	 * 訂單實體
 	 */
 	private String orderBody;
 	/**
-	 * $column.comments
+	 * 追蹤號碼
 	 */
 	private String trackingNo;
 	/**
-	 * $column.comments
+	 * 創建時間
 	 */
 	private Date createTime;
 	/**
-	 * $column.comments
+	 * 倉庫 id
 	 */
 	private Long wareId;
 	/**
-	 * $column.comments
+	 * 發貨備註
 	 */
 	private String taskComment;
 

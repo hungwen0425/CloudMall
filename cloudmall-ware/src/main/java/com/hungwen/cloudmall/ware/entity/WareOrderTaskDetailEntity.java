@@ -17,27 +17,28 @@ import lombok.Data;
 @Data
 @TableName("wms_ware_order_task_detail")
 public class WareOrderTaskDetailEntity implements Serializable {
+
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * $column.comments
+	 * id
 	 */
 	@TableId
 	private Long id;
 	/**
-	 * $column.comments
+	 * 商品 id
 	 */
 	private Long skuId;
 	/**
-	 * $column.comments
+	 * 商品名稱
 	 */
 	private String skuName;
 	/**
-	 * $column.comments
+	 * 商品數量
 	 */
 	private Integer skuNum;
 	/**
-	 * $column.comments
+	 * 工作單 id
 	 */
 	private Long taskId;
 

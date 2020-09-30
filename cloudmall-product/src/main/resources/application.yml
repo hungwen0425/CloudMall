@@ -10,13 +10,8 @@ spring:
         server-addr: 127.0.0.1:8848
   application:
     name: cloudmall-product
-#    alicloud:
-#      access-key: LTAI4FxwBwJsK4Fp4cBX8CgB
-#      secret-key: KZgasxP1VGyli7vOf6AlsZlU1mSHbX
-#      oss:
-#        endpoint: oss-cn-hongkong.aliyuncs.com
-#  jackson:
-#    date-format: yyyy-MM-dd HH:mm:ss
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
 #  thymeleaf:
 #    cache: false
 #  redis:

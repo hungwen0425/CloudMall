@@ -40,6 +40,9 @@ public class AttrGroupController {
     @Autowired
     private AttrService attrService;
 
+    /*
+     * 添加屬性與分組關聯關系
+     */
     @PostMapping("/attr/relation")
     public R addRelation(@RequestBody List<AttrGroupRelationVo> vos){
         attrAttrgroupRelationService.saveBatch(vos);
@@ -57,7 +60,7 @@ public class AttrGroupController {
     }
 
     /**
-     * 列表
+     * 查詢分類屬性分組
      */
     @RequestMapping("/list/{catelogId}")
     public R list(@RequestParam Map<String, Object> params, @PathVariable("catelogId") Long catelogId) {
@@ -65,14 +68,18 @@ public class AttrGroupController {
         return R.ok().put("page", page);
     }
 
-    // /product/{attrgroupId}/attr/relation
+    /*
+     * 查詢屬性分組的關聯的所有屬性
+     */
     @GetMapping("/{attrgroupId}/attr/relation")
     public R attrRelation(@PathVariable("attrgroupId") Long attrgroupId){
         List<AttrEntity> entities =  attrService.getRelationAttr(attrgroupId);
         return R.ok().put("data", entities);
     }
 
-    // 頁面傳遞過來的分頁參數，@RequestParam Map<String, Object> params
+    /*
+     * 查詢屬性分組沒有關聯的其他屬性
+     */
     @GetMapping("/{attrgroupId}/noattr/relation")
     public R attrNoRelation(@PathVariable("attrgroupId") Long attrgroupId,
                             @RequestParam Map<String, Object> params){
@@ -80,6 +87,9 @@ public class AttrGroupController {
         return R.ok().put("page", page);
     }
 
+    /*
+     * 删除属性与分组的关联关系
+     */
     @PostMapping("/attr/relation/delete")
     public R deleteRelation(@RequestBody AttrGroupRelationVo[] vos){
         attrService.deleteRelation(vos);
@@ -88,12 +98,11 @@ public class AttrGroupController {
 
     /**
      *
-     * 查詢 AttrGroup 資料
+     * 查詢 AttrGroup 資料，查詢屬性分組詳情
      */
     @RequestMapping("/info/{attrGroupId}")
     public R info(@PathVariable("attrGroupId") Long attrGroupId) {
         AttrGroupEntity attrGroup = attrGroupService.getById(attrGroupId);
-
         Long catelogId = attrGroup.getCatelogId();
         Long[] path = categoryService.findCatelogPath(catelogId);
         attrGroup.setCatelogPath(path);
@@ -101,7 +110,7 @@ public class AttrGroupController {
     }
 
     /**
-     * 保存
+     * 新增
      */
     @RequestMapping("/save")
     public R save(@RequestBody AttrGroupEntity attrGroup) {

@@ -1,8 +1,11 @@
 package com.hungwen.cloudmall.product.controller;
 
 import java.util.Arrays;
+import java.util.List;
 import java.util.Map;
 
+import com.hungwen.cloudmall.product.entity.ProductAttrValueEntity;
+import com.hungwen.cloudmall.product.service.ProductAttrValueService;
 import com.hungwen.cloudmall.product.vo.AttrRespVo;
 import com.hungwen.cloudmall.product.vo.AttrVo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,12 +28,24 @@ import com.hungwen.common.utils.R;
 @RestController
 @RequestMapping("product/attr")
 public class AttrController {
-
     @Autowired
     private AttrService attrService;
+    @Autowired
+    private ProductAttrValueService productAttrValueService;
 
-    // product/attr/sale/list/{catelogId}
-    // product/attr/base/list/{catelogId}
+    /*
+     * 根據spuId信息查詢出對應的規格參數信息
+     */
+    @GetMapping("/base/listforspu/{spuId}")
+    public R listForSpu(@PathVariable("spuId") Long spuId){
+        List<ProductAttrValueEntity> entityList = productAttrValueService.baseAttrListForSpu(spuId);
+        return  R.ok().put("data", entityList);
+    };
+
+    /*
+     * 查詢分類規格參數
+     * 查詢分類銷售屬性
+     */
     @GetMapping("/{attrType}/list/{catelogId}")
     public R baseAttrList(@RequestParam Map<String, Object> params,
                           @PathVariable("catelogId") Long catelogId,
@@ -59,7 +74,7 @@ public class AttrController {
     }
 
     /**
-     * 保存
+     * 新增屬性【規格參數，銷售屬性】
      */
     @RequestMapping("/save")
     public R save(@RequestBody AttrVo attrVo) {
@@ -73,6 +88,18 @@ public class AttrController {
     @RequestMapping("/update")
     public R update(@RequestBody AttrVo attrVo) {
         attrService.updateAttr(attrVo);
+        return R.ok();
+    }
+
+    /*
+     * 修改商品規格
+     * @param spuId
+     * @param entities
+     * @return
+     */
+    @PostMapping("/update/{spuId}")
+    public R update(@PathVariable("spuId") Long spuId,@RequestBody List<ProductAttrValueEntity> entities){
+        productAttrValueService.updateSpuAttr(spuId,entities);
         return R.ok();
     }
 

@@ -34,7 +34,7 @@ public class CategoryController {
     private CategoryService categoryService;
 
     /**
-     * 查處所有分類以及子分類，並以樹形結構組裝起來
+     * 查詢所有分類以及子分類，並以樹形結構組裝起來
      */
     @RequestMapping("/list/tree")
     public R list(){

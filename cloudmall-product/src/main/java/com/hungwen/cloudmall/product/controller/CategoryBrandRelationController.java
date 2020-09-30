@@ -32,7 +32,7 @@ public class CategoryBrandRelationController {
     private CategoryBrandRelationService categoryBrandRelationService;
 
     /**
-     * 取得當前品牌關聯的所有分類列表
+     * 查詢品牌關聯的分類
      */
     @GetMapping("/catelog/list")
     public R cateloglist(@RequestParam("brandId")Long brandId){
@@ -43,7 +43,7 @@ public class CategoryBrandRelationController {
     }
 
     /**
-     *  /product/categorybrandrelation/brands/list
+     *  查詢分類關聯的品牌
      *  1. Controller：處理請求，接受和校驗資料
      *  2. Service 接受 controller 傳來的資料，進行業務處理
      *  3. Controller 接受 Service 處理完的資料，封装成頁面指定的 vo

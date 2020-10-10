@@ -3,7 +3,7 @@ server:
 
 spring:
   datasource:
-    #MySQL配置
+    #MySQL設定
     driverClassName: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://192.168.56.10:3306/cloudmall_wms?useUnicode=true&characterEncoding=UTF-8&useSSL=false
     username: root

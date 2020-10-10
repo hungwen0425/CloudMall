@@ -1,9 +1,11 @@
 package com.hungwen.cloudmall.ware.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.hungwen.cloudmall.ware.vo.SkuHasStockVo;
 import com.hungwen.common.utils.PageUtils;
 import com.hungwen.cloudmall.ware.entity.WareSkuEntity;
 
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -18,6 +20,8 @@ public interface WareSkuService extends IService<WareSkuEntity> {
     PageUtils queryPage(Map<String, Object> params);
 
     void addStock(Long skuId, Long wareId, Integer skuNum);
+
+    List<SkuHasStockVo> getSkuHasStock(List<Long> skuIds);
 
 }
 

@@ -8,7 +8,7 @@ import java.util.Map;
 
 /**
  * mysql一张表只需要一個表資料和列名資料
- * 但是mongo一张表可能需要多個實體類  所以单独用一個bean封装
+ * 但是mongo一张表可能需要多個實體類  所以單独用一個bean封装
  *
  * @author gxz
  * @date 2020/5/10 0:14

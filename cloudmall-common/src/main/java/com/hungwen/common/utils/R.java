@@ -50,6 +50,11 @@ public class R extends HashMap<String, Object> {
 		return t;
 	}
 
+	public R setData(Object data) {
+		put("data",data);
+		return this;
+	}
+
 	public R() {
 		put("code", 0);
 		put("msg", "success");

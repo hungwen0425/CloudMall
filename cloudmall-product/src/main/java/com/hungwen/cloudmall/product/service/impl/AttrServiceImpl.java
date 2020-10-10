@@ -17,6 +17,7 @@ import com.hungwen.cloudmall.product.vo.AttrRespVo;
 import com.hungwen.cloudmall.product.vo.AttrVo;
 import com.hungwen.common.constant.ProductConstant;
 import org.apache.commons.lang.StringUtils;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -257,5 +258,11 @@ public class AttrServiceImpl extends ServiceImpl<AttrDao, AttrEntity> implements
         IPage<AttrEntity> page = this.page(new Query<AttrEntity>().getPage(params), wrapper);
 
         return new PageUtils(page);
+    }
+
+    @Override
+    public List<Long> selectSearchAttrs(List<Long> attrIds) {
+        List<Long> selectSearchAttrIds = this.baseMapper.selectSearchAttrIds(attrIds);
+        return selectSearchAttrIds;
     }
 }

@@ -88,7 +88,7 @@ public class AttrGroupController {
     }
 
     /*
-     * 删除属性与分组的关联关系
+     * 删除属性与分组的關联關系
      */
     @PostMapping("/attr/relation/delete")
     public R deleteRelation(@RequestBody AttrGroupRelationVo[] vos){

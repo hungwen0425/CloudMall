@@ -34,7 +34,7 @@ public class AttrController {
     private ProductAttrValueService productAttrValueService;
 
     /*
-     * 根據spuId信息查詢出對應的規格參數信息
+     * 根據spuId資料查詢出對應的規格參數資料
      */
     @GetMapping("/base/listforspu/{spuId}")
     public R listForSpu(@PathVariable("spuId") Long spuId){

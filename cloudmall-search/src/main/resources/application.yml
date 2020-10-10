@@ -1,0 +1,40 @@
+server:
+  port: 12000
+
+spring:
+  application:
+    name: cloudmall-search
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+
+#    sentinel:
+#      transport:
+#        #設定sentinel dashboard地址
+#        dashboard: localhost:8080
+  redis:
+    host: 192.168.56.10
+    port: 6379
+
+#開啟feign對sentinel的支持
+#feign:
+#  sentinel:
+#    enabled: true
+#  thymeleaf:
+#    cache: false
+#  session:
+#    store-type: redis
+
+logging:
+  level:
+    com.xunqi.gulimall.search: debug
+  pattern:
+    console: "%d{yyyy-MM-dd} [%thread] - %msg%n"
+
+#暴露所有端點
+#management:
+#  endpoints:
+#    web:
+#      exposure:
+#        include: '*'

@@ -42,7 +42,7 @@ spring:
         - id: cloudmall_host_route
           uri: lb://cloudmall-product
           predicates:
-            - Host=cloudmall.com,item.cloudmall.com
+            - Host=cloudmall.com
 
         - id: cloudmall_search_route
           uri: lb://cloudmall-search

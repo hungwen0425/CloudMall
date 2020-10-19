@@ -50,7 +50,7 @@ public class CloudmallSearchApplicationTests {
 		private Integer age;
 	}
 	/**
-	 * 測試ES數據
+	 * 測試ES資料
 	 * 更新也可以
 	 * https://www.elastic.co/guide/en/elasticsearch/client/java-rest/current/java-rest-high-document-index.html
 	 */
@@ -148,7 +148,7 @@ public class CloudmallSearchApplicationTests {
 			System.out.println(account);
 		}
 
-		//4. 獲取聚合信息
+		//4. 獲取聚合資料
 		Aggregations aggregations = searchResponse.getAggregations();
 		Terms ageAgg1 = aggregations.get("ageAgg");
 		for (Terms.Bucket bucket : ageAgg1.getBuckets()) {

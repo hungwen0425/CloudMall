@@ -1,4 +1,4 @@
-package com.hungwen.cloudmall.product.controller;
+package com.hungwen.cloudmall.product.app;
 
 import java.util.Arrays;
 import java.util.List;
@@ -11,7 +11,6 @@ import com.hungwen.cloudmall.product.vo.AttrVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import com.hungwen.cloudmall.product.entity.AttrEntity;
 import com.hungwen.cloudmall.product.service.AttrService;
 import com.hungwen.common.utils.PageUtils;
 import com.hungwen.common.utils.R;

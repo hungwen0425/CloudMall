@@ -4,6 +4,7 @@ import com.hungwen.cloudmall.product.entity.AttrGroupEntity;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.hungwen.cloudmall.product.vo.SpuItemAttrGroupVo;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -17,5 +18,5 @@ import java.util.List;
 @Mapper
 public interface AttrGroupDao extends BaseMapper<AttrGroupEntity> {
 
-    List<SpuItemAttrGroupVo> getAttrGroupWithAttrsBySpuId(Long catalogId, Long spuId);
+    List<SpuItemAttrGroupVo> getAttrGroupWithAttrsBySpuId(@Param("catalogId") Long catalogId, @Param("spuId")Long spuId);
 }

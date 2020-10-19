@@ -1,4 +1,4 @@
-package com.hungwen.cloudmall.product.controller;
+package com.hungwen.cloudmall.product.app;
 
 import java.util.Arrays;
 import java.util.Map;
@@ -10,33 +10,32 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.hungwen.cloudmall.product.entity.SkuImagesEntity;
-import com.hungwen.cloudmall.product.service.SkuImagesService;
+import com.hungwen.cloudmall.product.entity.AttrAttrgroupRelationEntity;
+import com.hungwen.cloudmall.product.service.AttrAttrgroupRelationService;
 import com.hungwen.common.utils.PageUtils;
 import com.hungwen.common.utils.R;
 
 
 
 /**
- * sku圖片
+ * 屬性&屬性分組關聯
  *
  * @author Hungwen Tseng
  * @email hungwen.tseng@gmail.com
  * @date 2020-08-25 10:21:04
  */
 @RestController
-@RequestMapping("product/skuimages")
-public class SkuImagesController {
+@RequestMapping("product/attrattrgrouprelation")
+public class AttrAttrgroupRelationController {
     @Autowired
-    private SkuImagesService skuImagesService;
+    private AttrAttrgroupRelationService attrAttrgroupRelationService;
 
     /**
      * 列表
      */
     @RequestMapping("/list")
-    //@RequiresPermissions("product:skuimages:list")
     public R list(@RequestParam Map<String, Object> params){
-        PageUtils page = skuImagesService.queryPage(params);
+        PageUtils page = attrAttrgroupRelationService.queryPage(params);
 
         return R.ok().put("page", page);
     }
@@ -46,20 +45,18 @@ public class SkuImagesController {
      * 資料
      */
     @RequestMapping("/info/{id}")
-    //@RequiresPermissions("product:skuimages:info")
     public R info(@PathVariable("id") Long id){
-		SkuImagesEntity skuImages = skuImagesService.getById(id);
+		AttrAttrgroupRelationEntity attrAttrgroupRelation = attrAttrgroupRelationService.getById(id);
 
-        return R.ok().put("skuImages", skuImages);
+        return R.ok().put("attrAttrgroupRelation", attrAttrgroupRelation);
     }
 
     /**
      * 保存
      */
     @RequestMapping("/save")
-    //@RequiresPermissions("product:skuimages:save")
-    public R save(@RequestBody SkuImagesEntity skuImages){
-		skuImagesService.save(skuImages);
+    public R save(@RequestBody AttrAttrgroupRelationEntity attrAttrgroupRelation){
+		attrAttrgroupRelationService.save(attrAttrgroupRelation);
 
         return R.ok();
     }
@@ -68,9 +65,8 @@ public class SkuImagesController {
      * 修改
      */
     @RequestMapping("/update")
-    //@RequiresPermissions("product:skuimages:update")
-    public R update(@RequestBody SkuImagesEntity skuImages){
-		skuImagesService.updateById(skuImages);
+    public R update(@RequestBody AttrAttrgroupRelationEntity attrAttrgroupRelation){
+		attrAttrgroupRelationService.updateById(attrAttrgroupRelation);
 
         return R.ok();
     }
@@ -79,9 +75,8 @@ public class SkuImagesController {
      * 删除
      */
     @RequestMapping("/delete")
-    //@RequiresPermissions("product:skuimages:delete")
     public R delete(@RequestBody Long[] ids){
-		skuImagesService.removeByIds(Arrays.asList(ids));
+		attrAttrgroupRelationService.removeByIds(Arrays.asList(ids));
 
         return R.ok();
     }

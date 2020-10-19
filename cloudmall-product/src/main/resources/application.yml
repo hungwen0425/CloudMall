@@ -12,11 +12,11 @@ spring:
     name: cloudmall-product
   jackson:
     date-format: yyyy-MM-dd HH:mm:ss
-#  thymeleaf:
-#    cache: false
-#  redis:
-#    host: 192.168.56.10
-#    pool: 6379
+  thymeleaf:
+    cache: false
+  redis:
+    host: 192.168.56.10
+    pool: 6379
 
 mybatis-plus:
   mapper-locations: classpath:mapper/**/*.xml
@@ -31,6 +31,7 @@ server:
 
 logging:
   level:
-    com.hungwen.cloudmall.product: debug
-#    org.springframework.cloud.openfeign: debug
-#    org.springframework.cloud.sleuth: debug
+    #com.hungwen.cloudmall.product: debug
+    root: warn
+  pattern:
+    console: "%d{yyyy-MM-dd} [%thread] - %msg%n"

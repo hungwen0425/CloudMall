@@ -3,6 +3,7 @@ package com.hungwen.cloudmall.ware.dao;
 import com.hungwen.cloudmall.ware.entity.WareSkuEntity;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 /**
  * 商品庫存主檔
@@ -14,7 +15,7 @@ import org.apache.ibatis.annotations.Mapper;
 @Mapper
 public interface WareSkuDao extends BaseMapper<WareSkuEntity> {
 
-    void addStock(Long skuId, Long wareId, Integer skuNum);
+    void addStock(@Param("spuId")Long skuId, @Param("wareId")Long wareId, @Param("skuNum")Integer skuNum);
 
-    Long getSkuStock(Long item);
+    Long getSkuStock(@Param("item") Long item);
 }

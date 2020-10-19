@@ -232,7 +232,7 @@ public class SpuInfoServiceImpl extends ServiceImpl<SpuInfoDao, SpuInfoEntity> i
     @Override
     public void up(Long spuId) {
 
-        // 1. 查出當前 spuId 對應的所有 sku 信息、品牌的名稱
+        // 1. 查出當前 spuId 對應的所有 sku 資料、品牌的名稱
         List<SkuInfoEntity> skuInfoEntities = skuInfoService.getSkusBySpuId(spuId);
 
         // 2. 根據 spId 查出當前 sku 的所有可以被用來檢索的規格屬性
@@ -265,7 +265,7 @@ public class SpuInfoServiceImpl extends ServiceImpl<SpuInfoDao, SpuInfoEntity> i
             log.error("庫存服務查詢異常：原因{}",e);
         }
 
-        //4. 封裝每個 sku 的信息
+        //4. 封裝每個 sku 的資料
         Map<Long, Boolean> finalStockMap = stockMap;
         List<SkuEsModel> collect = skuInfoEntities.stream().map(sku -> {
             // 組裝需要的資料
@@ -281,7 +281,7 @@ public class SpuInfoServiceImpl extends ServiceImpl<SpuInfoDao, SpuInfoEntity> i
             //TODO 1、熱度評分。0
             esModel.setHotScore(0L);
 
-            // 5、根據 sku 的 brandId 查詢品牌和分類的名稱信息
+            // 5、根據 sku 的 brandId 查詢品牌和分類的名稱資料
             BrandEntity brandEntity = brandService.getById(sku.getBrandId());
             esModel.setBrandName(brandEntity.getName());
             esModel.setBrandId(brandEntity.getBrandId());
@@ -296,7 +296,7 @@ public class SpuInfoServiceImpl extends ServiceImpl<SpuInfoDao, SpuInfoEntity> i
             return esModel;
         }).collect(Collectors.toList());
 
-        //6. 發送遠程調用，將數據發給 es 進行保存：cloudmall-search
+        //6. 發送遠程調用，將資料發給 es 進行保存：cloudmall-search
         R r = searchFeignService.productStatusUp(collect);
         if (r.getCode() == 0) {
             // 遠程調用成功

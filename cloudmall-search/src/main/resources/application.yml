@@ -8,7 +8,8 @@ spring:
     nacos:
       discovery:
         server-addr: 127.0.0.1:8848
-
+  thymeleaf:
+    cache: false
 #    sentinel:
 #      transport:
 #        #設定sentinel dashboard地址
@@ -28,7 +29,7 @@ spring:
 
 logging:
   level:
-    com.xunqi.gulimall.search: debug
+    com.hungwen.cloudmall.search: debug
   pattern:
     console: "%d{yyyy-MM-dd} [%thread] - %msg%n"
 

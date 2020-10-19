@@ -1,6 +1,7 @@
 package com.hungwen.cloudmall.product.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.hungwen.cloudmall.product.vo.Catelog2Vo;
 import com.hungwen.common.utils.PageUtils;
 import com.hungwen.cloudmall.product.entity.CategoryEntity;
 
@@ -30,5 +31,10 @@ public interface CategoryService extends IService<CategoryEntity> {
     Long[] findCatelogPath(long catelogId);
 
     void updateCascade(CategoryEntity category);
+
+    List<CategoryEntity> getLevel1Categorys();
+
+    Map<String, List<Catelog2Vo>> getCatalogJson();
+
 }
 

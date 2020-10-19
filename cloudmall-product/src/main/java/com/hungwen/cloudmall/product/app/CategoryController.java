@@ -1,20 +1,17 @@
-package com.hungwen.cloudmall.product.controller;
+package com.hungwen.cloudmall.product.app;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.Map;
 
 import com.google.common.collect.Lists;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.hungwen.cloudmall.product.entity.CategoryEntity;
 import com.hungwen.cloudmall.product.service.CategoryService;
-import com.hungwen.common.utils.PageUtils;
 import com.hungwen.common.utils.R;
 
 

@@ -25,5 +25,5 @@ mybatis-plus:
 
 logging:
   level:
-    com.bigdata.gulimall.ware: error
+    com.hungwen.cloudmall.ware: error
 

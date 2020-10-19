@@ -32,13 +32,13 @@ public class PageUtils implements Serializable {
 	 */
 	private int currPage;
 	/**
-	 * 列表數據
+	 * 列表資料
 	 */
 	private List<?> list;
 
 	/**
 	 * 分頁
-	 * @param list        列表數據
+	 * @param list        列表資料
 	 * @param totalCount  總記錄數
 	 * @param pageSize    每頁記錄數
 	 * @param currPage    當前頁數

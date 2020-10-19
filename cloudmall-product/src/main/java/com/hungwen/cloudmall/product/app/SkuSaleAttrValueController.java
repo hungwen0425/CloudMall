@@ -1,4 +1,4 @@
-package com.hungwen.cloudmall.product.controller;
+package com.hungwen.cloudmall.product.app;
 
 import java.util.Arrays;
 import java.util.Map;
@@ -10,32 +10,33 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.hungwen.cloudmall.product.entity.AttrAttrgroupRelationEntity;
-import com.hungwen.cloudmall.product.service.AttrAttrgroupRelationService;
+import com.hungwen.cloudmall.product.entity.SkuSaleAttrValueEntity;
+import com.hungwen.cloudmall.product.service.SkuSaleAttrValueService;
 import com.hungwen.common.utils.PageUtils;
 import com.hungwen.common.utils.R;
 
 
 
 /**
- * 屬性&屬性分組關聯
+ * sku銷售屬性&值
  *
  * @author Hungwen Tseng
  * @email hungwen.tseng@gmail.com
  * @date 2020-08-25 10:21:04
  */
 @RestController
-@RequestMapping("product/attrattrgrouprelation")
-public class AttrAttrgroupRelationController {
+@RequestMapping("product/skusaleattrvalue")
+public class SkuSaleAttrValueController {
     @Autowired
-    private AttrAttrgroupRelationService attrAttrgroupRelationService;
+    private SkuSaleAttrValueService skuSaleAttrValueService;
 
     /**
      * 列表
      */
     @RequestMapping("/list")
+    //@RequiresPermissions("product:skusaleattrvalue:list")
     public R list(@RequestParam Map<String, Object> params){
-        PageUtils page = attrAttrgroupRelationService.queryPage(params);
+        PageUtils page = skuSaleAttrValueService.queryPage(params);
 
         return R.ok().put("page", page);
     }
@@ -45,18 +46,20 @@ public class AttrAttrgroupRelationController {
      * 資料
      */
     @RequestMapping("/info/{id}")
+    //@RequiresPermissions("product:skusaleattrvalue:info")
     public R info(@PathVariable("id") Long id){
-		AttrAttrgroupRelationEntity attrAttrgroupRelation = attrAttrgroupRelationService.getById(id);
+		SkuSaleAttrValueEntity skuSaleAttrValue = skuSaleAttrValueService.getById(id);
 
-        return R.ok().put("attrAttrgroupRelation", attrAttrgroupRelation);
+        return R.ok().put("skuSaleAttrValue", skuSaleAttrValue);
     }
 
     /**
      * 保存
      */
     @RequestMapping("/save")
-    public R save(@RequestBody AttrAttrgroupRelationEntity attrAttrgroupRelation){
-		attrAttrgroupRelationService.save(attrAttrgroupRelation);
+    //@RequiresPermissions("product:skusaleattrvalue:save")
+    public R save(@RequestBody SkuSaleAttrValueEntity skuSaleAttrValue){
+		skuSaleAttrValueService.save(skuSaleAttrValue);
 
         return R.ok();
     }
@@ -65,8 +68,9 @@ public class AttrAttrgroupRelationController {
      * 修改
      */
     @RequestMapping("/update")
-    public R update(@RequestBody AttrAttrgroupRelationEntity attrAttrgroupRelation){
-		attrAttrgroupRelationService.updateById(attrAttrgroupRelation);
+    //@RequiresPermissions("product:skusaleattrvalue:update")
+    public R update(@RequestBody SkuSaleAttrValueEntity skuSaleAttrValue){
+		skuSaleAttrValueService.updateById(skuSaleAttrValue);
 
         return R.ok();
     }
@@ -75,8 +79,9 @@ public class AttrAttrgroupRelationController {
      * 删除
      */
     @RequestMapping("/delete")
+    //@RequiresPermissions("product:skusaleattrvalue:delete")
     public R delete(@RequestBody Long[] ids){
-		attrAttrgroupRelationService.removeByIds(Arrays.asList(ids));
+		skuSaleAttrValueService.removeByIds(Arrays.asList(ids));
 
         return R.ok();
     }

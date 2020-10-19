@@ -8,8 +8,11 @@ import com.hungwen.cloudmall.product.vo.SpuItemAttrGroupVo;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.redisson.api.RedissonClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.redis.core.StringRedisTemplate;
+import org.springframework.data.redis.core.ValueOperations;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.io.FileInputStream;
@@ -28,8 +31,15 @@ public class CloudmallProductApplicationTests {
     BrandService brandService;
     @Autowired
     CategoryService categoryService;
-//    @Autowired
-//    StringRedisTemplate springRedisTemplate;
+    @Autowired
+    StringRedisTemplate stringRedisTemplate;
+    @Autowired
+    RedissonClient redissonClient;
+
+    @Test
+    public void testRedison(){
+        System.out.println(redissonClient);
+    }
 //    @Autowired
 //    AttrGroupDao attrGroupDao;
 
@@ -48,14 +58,14 @@ public class CloudmallProductApplicationTests {
 //        System.out.println(spuItemAttrGroupVo.toString());
 //    }
 
-//    @Test
-//    public void testspringRedisTemplate() {
-//        ValueOperations<String, String> ops = springRedisTemplate.opsForValue();
-//        // save
-//        ops.set("hello", "word"+ UUID.randomUUID().toString());
-//        // query
-//        System.out.println(ops.get("hello"));
-//    }
+    @Test
+    public void testSpringRedisTemplate() {
+        ValueOperations<String, String> ops = stringRedisTemplate.opsForValue();
+        // save
+        ops.set("hello", "word"+ UUID.randomUUID().toString());
+        // query
+        System.out.println("保存的資料：" + ops.get("hello"));
+    }
 
     @Test
     public void testUpload() throws FileNotFoundException {

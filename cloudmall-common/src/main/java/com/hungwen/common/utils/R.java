@@ -13,17 +13,8 @@ import java.util.Map;
  * @author hungwen.tseng@gmail.com
  */
 public class R extends HashMap<String, Object> {
-	private static final long serialVersionUID = 1L;
 
-//	private T data;
-//
-//	public T getData() {
-//		return data;
-//	}
-//
-//	public void setData(T data) {
-//		this.data = data;
-//	}
+	private static final long serialVersionUID = 1L;
 
 	public R data(Object data) {
 		put("data", data);
@@ -51,7 +42,7 @@ public class R extends HashMap<String, Object> {
 	}
 
 	public R setData(Object data) {
-		put("data",data);
+		put("data", data);
 		return this;
 	}
 

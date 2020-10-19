@@ -27,7 +27,7 @@ public class CouponEntity implements Serializable {
 	@TableId
 	private Long id;
 	/**
-	 * 優惠卷類型[0->全場贈券；1->會員贈券；2->購物贈券；3->注冊贈券]
+	 * 優惠卷類型[0->全場贈券；1->會員贈券；2->購物贈券；3->註冊贈券]
 	 */
 	private Integer couponType;
 	/**

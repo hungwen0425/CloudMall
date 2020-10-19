@@ -88,7 +88,7 @@ public class MemberRespVo implements Serializable {
      */
     private Date createTime;
     /**
-     * 會員社交登錄識別標識
+     * 會員社交登入識別標識
      */
     private String socialUid;
     /**

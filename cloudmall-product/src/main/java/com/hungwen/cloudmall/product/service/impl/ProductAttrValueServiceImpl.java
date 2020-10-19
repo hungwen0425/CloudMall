@@ -55,7 +55,7 @@ public class ProductAttrValueServiceImpl extends ServiceImpl<ProductAttrValueDao
         //1、刪除 spuId 之前對應的所有屬性
         this.baseMapper.delete(new QueryWrapper<ProductAttrValueEntity>().eq("spu_id",spuId));
 
-        //2、添加商品規格信息
+        //2、添加商品規格資料
         List<ProductAttrValueEntity> collect = entities.stream().map(item -> {
             item.setSpuId(spuId);
             return item;

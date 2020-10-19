@@ -11,8 +11,6 @@ import lombok.Data;
  **/
 @Data
 public class StockLockedTo {
-
     private Long id; // 庫存工作單 id
-
     private StockDetailTo stockDetail; // 工作單詳情 id
 }

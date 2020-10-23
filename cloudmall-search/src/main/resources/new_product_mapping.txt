@@ -1,4 +1,4 @@
-//PUT cloudmall_product
+PUT cloudmall_product
 {
   "mappings": {
     "properties": {

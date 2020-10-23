@@ -22,6 +22,7 @@ public class SearchController {
 
     @Autowired
     private MallSearchService mallSearchService;
+
     /**
      * 自動將頁面提交過來的所有請求參數封裝成我們指定的物件
      * @param param

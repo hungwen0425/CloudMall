@@ -168,7 +168,9 @@ public class CategoryServiceImpl extends ServiceImpl<CategoryDao, CategoryEntity
         // 1.查出所有一級分類
         List<CategoryEntity> level1Categorys = getParent_cid(selectList, 0L);
         //封裝資料
-        Map<String, List<Catelog2Vo>> parentCid = level1Categorys.stream().collect(Collectors.toMap(k -> k.getCatId().toString(), v -> {
+        Map<String, List<Catelog2Vo>> parentCid = level1Categorys.stream().collect(Collectors.toMap(
+        k -> k.getCatId().toString(),
+        v -> {
             // 2. 每一個的一級分類,查到這個一級分類的二級分類
             List<CategoryEntity> categoryEntities = getParent_cid(selectList, v.getCatId());
             // 封裝資料

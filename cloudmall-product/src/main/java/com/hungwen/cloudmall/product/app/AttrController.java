@@ -27,13 +27,14 @@ import com.hungwen.common.utils.R;
 @RestController
 @RequestMapping("product/attr")
 public class AttrController {
+
     @Autowired
     private AttrService attrService;
     @Autowired
     private ProductAttrValueService productAttrValueService;
 
     /*
-     * 根據spuId資料查詢出對應的規格參數資料
+     * 根據 spuId 資料查詢出對應的規格參數資料
      */
     @GetMapping("/base/listforspu/{spuId}")
     public R listForSpu(@PathVariable("spuId") Long spuId){

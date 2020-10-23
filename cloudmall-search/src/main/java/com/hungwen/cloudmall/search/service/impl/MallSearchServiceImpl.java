@@ -71,7 +71,7 @@ public class MallSearchServiceImpl implements MallSearchService {
             // 2.執行檢索請求
             SearchResponse response = esRestClient.search(searchRequest, CloudmallElasticSearchConfig.COMMON_OPTIONS);
             // 3.分析響應資料，封裝成我們需要的格式
-            result = buildSearchResult(response,param);
+            result = buildSearchResult(response, param);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -84,7 +84,7 @@ public class MallSearchServiceImpl implements MallSearchService {
      * @param response
      * @return
      */
-    private SearchResult buildSearchResult(SearchResponse response,SearchParam param) {
+    private SearchResult buildSearchResult(SearchResponse response, SearchParam param) {
         SearchResult result = new SearchResult();
         // 1.返回的所有查詢到的商品
         SearchHits hits = response.getHits();
@@ -94,9 +94,9 @@ public class MallSearchServiceImpl implements MallSearchService {
             for (SearchHit hit : hits.getHits()) {
                 String sourceAsString = hit.getSourceAsString();
                 SkuEsModel esModel = JSON.parseObject(sourceAsString, SkuEsModel.class);
-                //判斷是否按關鍵字檢索，若是就顯示高亮，否則不顯示
+                // 判斷是否按關鍵字檢索，若是就顯示高亮，否則不顯示
                 if (!StringUtils.isEmpty(param.getKeyword())) {
-                    //拿到高亮資料顯示標題
+                    // 拿到高亮資料顯示標題
                     HighlightField skuTitle = hit.getHighlightFields().get("skuTitle");
                     String skuTitleValue = skuTitle.getFragments()[0].string();
                     esModel.setSkuTitle(skuTitleValue);
@@ -105,6 +105,7 @@ public class MallSearchServiceImpl implements MallSearchService {
             }
         }
         result.setProduct(esModels);
+
         // 2.當前商品涉及到的所有屬性資料
         List<SearchResult.AttrVo> attrVos = new ArrayList<>();
         // 查詢屬性資料的聚合
@@ -112,14 +113,14 @@ public class MallSearchServiceImpl implements MallSearchService {
         ParsedLongTerms attrIdAgg = attrsAgg.getAggregations().get("attr_id_agg");
         for (Terms.Bucket bucket : attrIdAgg.getBuckets()) {
             SearchResult.AttrVo attrVo = new SearchResult.AttrVo();
-            // 1.得到屬性的id
+            // 2.1 得到屬性的id
             long attrId = bucket.getKeyAsNumber().longValue();
             attrVo.setAttrId(attrId);
-            // 2.得到屬性的名字
+            // 2.2 得到屬性的名字
             ParsedStringTerms attrNameAgg = bucket.getAggregations().get("attr_name_agg");
             String attrName = attrNameAgg.getBuckets().get(0).getKeyAsString();
             attrVo.setAttrName(attrName);
-            // 3.得到屬性的所有值
+            // 2.3  得到屬性的所有值
             ParsedStringTerms attrValueAgg = bucket.getAggregations().get("attr_value_agg");
             List<String> attrValues = attrValueAgg.getBuckets().stream().map(item -> item.getKeyAsString()).collect(Collectors.toList());
             attrVo.setAttrValue(attrValues);
@@ -127,20 +128,21 @@ public class MallSearchServiceImpl implements MallSearchService {
             attrVos.add(attrVo);
         }
         result.setAttrs(attrVos);
+
         // 3.當前商品涉及到的所有品牌資料
         List<SearchResult.BrandVo> brandVos = new ArrayList<>();
         // 查詢到品牌的聚合
         ParsedLongTerms brandAgg = response.getAggregations().get("brand_agg");
         for (Terms.Bucket bucket : brandAgg.getBuckets()) {
             SearchResult.BrandVo brandVo = new SearchResult.BrandVo();
-            // 1.得到品牌的id
+            // 3.1  得到品牌的id
             long brandId = bucket.getKeyAsNumber().longValue();
             brandVo.setBrandId(brandId);
-            // 2.得到品牌的名字
+            // 3.2  得到品牌的名字
             ParsedStringTerms brandNameAgg = bucket.getAggregations().get("brand_name_agg");
             String brandName = brandNameAgg.getBuckets().get(0).getKeyAsString();
             brandVo.setBrandName(brandName);
-            // 3.得到品牌的圖片
+            // 3.3 得到品牌的圖片
             ParsedStringTerms brandImgAgg = bucket.getAggregations().get("brand_img_agg");
             String brandImg = brandImgAgg.getBuckets().get(0).getKeyAsString();
             brandVo.setBrandImg(brandImg);
@@ -149,21 +151,20 @@ public class MallSearchServiceImpl implements MallSearchService {
         }
         result.setBrands(brandVos);
         // 4.當前商品涉及到的所有分類資料
-        // 查詢到分類的聚合
+        // 4.1  查詢到分類的聚合
         List<SearchResult.CatalogVo> catalogVos = new ArrayList<>();
         ParsedLongTerms catalogAgg = response.getAggregations().get("catalog_agg");
         for (Terms.Bucket bucket : catalogAgg.getBuckets()) {
             SearchResult.CatalogVo catalogVo = new SearchResult.CatalogVo();
-            // 得到分類id
+            // 4.2 得到分類 id
             String keyAsString = bucket.getKeyAsString();
             catalogVo.setCatalogId(Long.parseLong(keyAsString));
-            // 得到分類名
+            // 4.3  得到分類名
             ParsedStringTerms catalogNameAgg = bucket.getAggregations().get("catalog_name_agg");
             String catalogName = catalogNameAgg.getBuckets().get(0).getKeyAsString();
             catalogVo.setCatalogName(catalogName);
             catalogVos.add(catalogVo);
         }
-
         result.setCatalogs(catalogVos);
         //===============以上可以從聚合資料中獲取====================//
         // 5.分頁資料-頁碼
@@ -184,7 +185,7 @@ public class MallSearchServiceImpl implements MallSearchService {
         // 6.構建麵包屑導航
         if (param.getAttrs() != null && param.getAttrs().size() > 0) {
             List<SearchResult.NavVo> collect = param.getAttrs().stream().map(attr -> {
-                // 1.分析每一個 attrs 傳過來的參數值
+                // 6.1  分析每一個 attrs 傳過來的參數值
                 SearchResult.NavVo navVo = new SearchResult.NavVo();
                 String[] s = attr.split("_");
                 navVo.setNavValue(s[1]);
@@ -196,13 +197,12 @@ public class MallSearchServiceImpl implements MallSearchService {
                 } else {
                     navVo.setNavName(s[0]);
                 }
-
-                // 2.取消了這個麵包屑以後，我們要跳轉到哪個地方，將請求的地址 url 裡面的當前置空
+                // 6.2  取消了這個麵包屑以後，我們要跳轉到哪個地方，將請求的地址 url 裡面的當前置空
                 // 拿到所有的查詢條件，去掉當前
                 String encode = null;
                 try {
                     encode = URLEncoder.encode(attr,"UTF-8");
-                    encode.replace("+","%20");  //瀏覽器對空格的編碼和Java不一樣，差異化處理
+                    encode.replace("+", "%20");  //瀏覽器對空格的編碼和Java不一樣，差異化處理
                 } catch (UnsupportedEncodingException e) {
                     e.printStackTrace();
                 }
@@ -215,7 +215,6 @@ public class MallSearchServiceImpl implements MallSearchService {
         }
         return result;
     }
-
 
     /**
      * 準備檢索請求
@@ -281,10 +280,7 @@ public class MallSearchServiceImpl implements MallSearchService {
         }
         // 封裝所有的查詢條件
         searchSourceBuilder.query(boolQueryBuilder);
-        /**
-         * 排序，分頁，高亮
-         */
-        // 排序
+        // 排序，分頁，高亮
         // 形式為 sort = hotScore_asc / desc
         if(!StringUtils.isEmpty(param.getSort())){
             String sort = param.getSort();
@@ -293,7 +289,7 @@ public class MallSearchServiceImpl implements MallSearchService {
             searchSourceBuilder.sort(sortFileds[0],sortOrder);
         }
         // 分頁
-        searchSourceBuilder.from((param.getPageNum()-1)*EsConstant.PRODUCT_PAGESIZE);
+        searchSourceBuilder.from((param.getPageNum() - 1) * EsConstant.PRODUCT_PAGESIZE);
         searchSourceBuilder.size(EsConstant.PRODUCT_PAGESIZE);
         //高亮
         if(!StringUtils.isEmpty(param.getKeyword())){
@@ -303,9 +299,7 @@ public class MallSearchServiceImpl implements MallSearchService {
             highlightBuilder.postTags("</b>");
             searchSourceBuilder.highlighter(highlightBuilder);
         }
-        /**
-         * 聚合分析
-         */
+        // 聚合分析
         // 1.按照品牌進行聚合
         TermsAggregationBuilder brand_agg = AggregationBuilders.terms("brand_agg");
         brand_agg.field("brandId").size(50);

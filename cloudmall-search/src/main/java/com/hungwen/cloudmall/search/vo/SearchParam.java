@@ -10,7 +10,6 @@ import java.util.List;
  * @author: Hungwen Tseng
  * @createTime: 2020-10-13 14:17
  **/
-
 @Data
 public class SearchParam {
     /**

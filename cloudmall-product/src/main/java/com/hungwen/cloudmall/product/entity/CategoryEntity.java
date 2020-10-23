@@ -24,7 +24,6 @@ import lombok.Data;
 public class CategoryEntity implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-
 	/**
 	 * 分類id
 	 */
@@ -43,16 +42,16 @@ public class CategoryEntity implements Serializable {
 	 */
 	private Integer catLevel;
 	/**
-	 * 是否顯示[0-不顯示，1顯示]
+	 * 是否顯示(0->不顯示，1->顯示)
 	 */
-	@TableLogic(value = "1",delval = "0")
+	@TableLogic(value = "1", delval = "0")
 	private Integer showStatus;
 	/**
 	 * 排序
 	 */
 	private Integer sort;
 	/**
-	 * 圖標地址
+	 * 圖示地址
 	 */
 	private String icon;
 	/**

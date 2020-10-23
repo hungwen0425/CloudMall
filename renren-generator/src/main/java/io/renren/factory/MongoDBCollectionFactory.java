@@ -51,7 +51,7 @@ public class MongoDBCollectionFactory {
 
     /***
      * 获得当前資料庫的集合名称
-     * 注: mongo相对關系型資料庫较為特殊，查询表名无法分页，用stream實现
+     * 注: mongo相对關系型資料庫较為特殊，查询表名无法分頁，用stream實现
      * @author gxz
      * @date  2020/5/9
      * @param map 这是查询条件 和關系型資料庫一致
@@ -69,7 +69,7 @@ public class MongoDBCollectionFactory {
         return names.stream().skip(skip).limit(limit).collect(Collectors.toList());
     }
     /***
-     * 获得集合名称总數(表的數量) 為了适配MyBatisPlus的分页插件 提供方法
+     * 获得集合名称总數(表的數量) 為了适配MyBatisPlus的分頁插件 提供方法
      * @author gxz
      * @date  2020/5/9
      * @param map 这是查询条件 和關系型資料庫一致

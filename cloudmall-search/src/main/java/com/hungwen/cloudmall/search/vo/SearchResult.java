@@ -11,7 +11,6 @@ import java.util.List;
  * @author: Hungwen Tseng
  * @createTime: 2020-10-13 14:41
  **/
-
 @Data
 public class SearchResult {
     /**
@@ -53,7 +52,6 @@ public class SearchResult {
         private String navValue;
         private String link;
     }
-
 
     @Data
     public static class BrandVo {

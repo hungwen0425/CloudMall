@@ -33,8 +33,8 @@
 	};
 
 	/**
-	 * 设置主页地址
-	 * @param index: 主页地址
+	 * 设置主頁地址
+	 * @param index: 主頁地址
 	 */
 	Router.prototype.setIndex = function(index) {
 		var self = this;
@@ -54,7 +54,7 @@
 	};
 
 	/**
-	 * 重载页面
+	 * 重载頁面
 	 */
 	Router.prototype.reload = function() {
 		var self = this;

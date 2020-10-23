@@ -8,6 +8,6 @@ package com.hungwen.cloudmall.search.constant;
  **/
 public class EsConstant {
     //在 es 中的索引
-    public static final String PRODUCT_INDEX = "product";
+    public static final String PRODUCT_INDEX = "cloudmall_product2";
     public static final Integer PRODUCT_PAGESIZE = 16;
 }

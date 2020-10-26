@@ -38,7 +38,7 @@ public class CouponHistoryEntity implements Serializable {
 	 */
 	private String memberNickName;
 	/**
-	 * 獲取方式[0->後台贈送；1->主動領取]
+	 * 查詢方式[0->後台贈送；1->主動領取]
 	 */
 	private Integer getType;
 	/**

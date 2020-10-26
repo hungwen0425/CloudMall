@@ -21,7 +21,7 @@ public enum BizCodeEnum {
     UNKNOW_EXCEPTION(10000,"系統未知異常"),
     VAILD_EXCEPTION(10001,"參數格式校驗失敗"),
     TO_MANY_REQUEST(10002,"請求流量過大，請稍後再試"),
-    SMS_CODE_EXCEPTION(10002,"驗證碼獲取頻率太高，請稍後再試"),
+    SMS_CODE_EXCEPTION(10002,"驗證碼查詢頻率太高，請稍後再試"),
     PRODUCT_UP_EXCEPTION(11000,"商品上架異常"),
     USER_EXIST_EXCEPTION(15001,"存在相同的用戶"),
     PHONE_EXIST_EXCEPTION(15002,"存在相同的手機號"),

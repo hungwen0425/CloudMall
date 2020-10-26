@@ -148,7 +148,7 @@ public class CloudmallSearchApplicationTests {
 			System.out.println(account);
 		}
 
-		//4. 獲取聚合資料
+		//4. 查詢聚合資料
 		Aggregations aggregations = searchResponse.getAggregations();
 		Terms ageAgg1 = aggregations.get("ageAgg");
 		for (Terms.Bucket bucket : ageAgg1.getBuckets()) {

@@ -166,7 +166,7 @@ public class MallSearchServiceImpl implements MallSearchService {
             catalogVos.add(catalogVo);
         }
         result.setCatalogs(catalogVos);
-        //===============以上可以從聚合資料中獲取====================//
+        //===============以上可以從聚合資料中查詢====================//
         // 5.分頁資料-頁碼
         result.setPageNum(param.getPageNum());
         // 5、1 分頁資料、總記錄數

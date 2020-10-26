@@ -1,11 +1,13 @@
 package com.hungwen.cloudmall.product.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.hungwen.cloudmall.product.vo.SkuItemVo;
 import com.hungwen.common.utils.PageUtils;
 import com.hungwen.cloudmall.product.entity.SkuInfoEntity;
 
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.ExecutionException;
 
 /**
  * sku資料
@@ -23,6 +25,8 @@ public interface SkuInfoService extends IService<SkuInfoEntity> {
     PageUtils queryPageByCondition(Map<String, Object> params);
 
     List<SkuInfoEntity> getSkusBySpuId(Long spuId);
+
+    SkuItemVo item(Long skuId) throws ExecutionException, InterruptedException;
 
 }
 

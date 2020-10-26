@@ -249,11 +249,11 @@ public class CategoryServiceImpl extends ServiceImpl<CategoryDao, CategoryEntity
         // 1. 先從 Redis 緩存中查詢，如果有資料，則返回查詢結果
         String catelogJson = springRedisTemplate.opsForValue().get("catelogJson");
         if(!StringUtils.isEmpty(catelogJson)){
-            log.warn("從緩存中獲取資料");
+            log.warn("從緩存中查詢資料");
             return JSON.parseObject(catelogJson, new TypeReference<Map<String, List<Catelog2Vo>>>(){});
         }
         log.warn("查詢資料庫");
-        // 一次性查詢出所有的分類資料，減少對於資料庫的訪問次數，後面的資料操作並不是到資料庫中查詢，而是直接從這個集合中獲取，
+        // 一次性查詢出所有的分類資料，減少對於資料庫的訪問次數，後面的資料操作並不是到資料庫中查詢，而是直接從這個集合中查詢，
         // 由於分類資料的量並不大，所以這種方式是可行的
         List<CategoryEntity> categoryEntities = this.baseMapper.selectList(null);
         // 查出所有一級分類
@@ -295,7 +295,7 @@ public class CategoryServiceImpl extends ServiceImpl<CategoryDao, CategoryEntity
 
 //    5.@Override
 //    public Map<String, List<Catelog2Vo>> getCatalogJson() {
-//        // 先從緩存中獲取分類資料，如果沒有再從資料庫中查詢，並且分類資料是以 JSON 的形式存放到 Reids 中的
+//        // 先從緩存中查詢分類資料，如果沒有再從資料庫中查詢，並且分類資料是以 JSON 的形式存放到 Reids 中的
 //        String catelogJson = springRedisTemplate.opsForValue().get("catelogJson");
 //        //1. 空結果緩存：解決緩存穿透
 //        //2. 設置過期時間 (加隨機值)：解決緩存雪崩
@@ -313,7 +313,7 @@ public class CategoryServiceImpl extends ServiceImpl<CategoryDao, CategoryEntity
 //    /**
 //     * 使用分布式鎖來實現多個服務共享同一緩存中的資料
 //     *  1. 設置讀寫鎖，失敗則表明其他線程先於該線程獲取到了鎖，則執行自旋，成功則表明獲取到了鎖
-//     *  2. 獲取鎖成功，查詢資料庫，獲取分類資料
+//     *  2. 獲取鎖成功，查詢資料庫，查詢分類資料
 //     *  3. 釋放鎖
 //     * @return
 //     */
@@ -328,7 +328,7 @@ public class CategoryServiceImpl extends ServiceImpl<CategoryDao, CategoryEntity
 //            } catch (InterruptedException e) {
 //
 //            }
-//            log.warn("獲取鎖失敗，重新獲取...");
+//            log.warn("獲取鎖失敗，重新查詢...");
 //            return getCatelogJsonFromDbWithRedisLock();
 //        }else{
 //            // 加鎖成功
@@ -362,11 +362,11 @@ public class CategoryServiceImpl extends ServiceImpl<CategoryDao, CategoryEntity
 //        // 1. 先從 Redis 緩存中查詢，如果有資料，則返回查詢結果
 //        String catelogJson = springRedisTemplate.opsForValue().get("catelogJson");
 //        if(!StringUtils.isEmpty(catelogJson)){
-//            log.warn("從緩存中獲取資料");
+//            log.warn("從緩存中查詢資料");
 //            return JSON.parseObject(catelogJson, new TypeReference<Map<String, List<Catelog2Vo>>>(){});
 //        }
 //        log.warn("查詢資料庫");
-//        // 一次性查詢出所有的分類資料，減少對於資料庫的訪問次數，後面的資料操作並不是到資料庫中查詢，而是直接從這個集合中獲取，
+//        // 一次性查詢出所有的分類資料，減少對於資料庫的訪問次數，後面的資料操作並不是到資料庫中查詢，而是直接從這個集合中查詢，
 //        // 由於分類資料的量並不大，所以這種方式是可行的
 //        List<CategoryEntity> categoryEntities = this.baseMapper.selectList(null);
 //        // 查出所有一級分類
@@ -414,7 +414,7 @@ public class CategoryServiceImpl extends ServiceImpl<CategoryDao, CategoryEntity
 //     */
 //    @Override
 //    public Map<String, List<Catelog2Vo>> getCatalogJson() {
-//        //先從緩存中獲取分類資料，如果沒有再從資料庫中查詢，並且分類資料是以JSON的形式存放到Reids中的
+//        //先從緩存中查詢分類資料，如果沒有再從資料庫中查詢，並且分類資料是以JSON的形式存放到Reids中的
 //        String catelogJson = springRedisTemplate.opsForValue().get("catelogJson");
 //        //1. 空結果緩存：解決緩存穿透
 //        //2. 設置過期時間(加隨機值)：解決緩存雪崩
@@ -488,7 +488,7 @@ public class CategoryServiceImpl extends ServiceImpl<CategoryDao, CategoryEntity
 
 //    3.@Override
 //    public Map<String, List<Catelog2Vo>> getCatalogJson() {
-//        // 先從緩存中獲取分類資料，如果沒有再從資料庫中查詢，並且分類資料是以 JSON 的形式存放到 reids 中的
+//        // 先從緩存中查詢分類資料，如果沒有再從資料庫中查詢，並且分類資料是以 JSON 的形式存放到 reids 中的
 //        String catelogJson = springRedisTemplate.opsForValue().get("catelogJson");
 //        // 如果緩存中沒有，則查詢資料庫
 //        if(StringUtils.isEmpty(catelogJson)){

@@ -18,5 +18,5 @@ import java.util.List;
 @Mapper
 public interface AttrGroupDao extends BaseMapper<AttrGroupEntity> {
 
-    List<SpuItemAttrGroupVo> getAttrGroupWithAttrsBySpuId(@Param("catalogId") Long catalogId, @Param("spuId")Long spuId);
+    List<SpuItemAttrGroupVo> getAttrGroupWithAttrsBySpuId(@Param("spuId") Long spuId, @Param("catalogId") Long catalogId);
 }

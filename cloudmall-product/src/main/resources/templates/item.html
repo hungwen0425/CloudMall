@@ -17,12 +17,10 @@
                             <a href="http://auth.cloudmall.com/login.html" class="aa" >你好，請登入</a>
                         </li>
                         <li style="border: 0;" th:if="${session.loginUser != null}">
-                            <a href="">
-                                [[${session.loginUser.nickname == null? '歡迎' : session.loginUser.nickname}]]
-                            </a>
+                            [[${session.loginUser.nickname == null ? '歡迎' : session.loginUser.nickname}]]
                         </li>
                         <li th:if="${session.loginUser == null}">
-                            <a href="" style="color: red;">免費註冊</a> |
+                            <a href="http://auth.cloudmall.com/reg.html" style="color: red;">免費註冊</a> |
                         </li>
                         <li><a href="http://order.cloudmall.com/list.html" class="aa">我的訂單</a> |</li>
                     </ul>
@@ -491,8 +489,8 @@
                                         <div class="quanLi">
                                             <h4>權利聲明:</h4>
                                             <div class="jingDong">
-                                                商城上的所有商品信息、客戶評價、商品咨詢、網友討論等內容，是商城重要的經營資源，未經許可，禁止非法轉載使用。<br/>
-                                                <span class="oZhu">註</span>：本站商品信息均來自於合作方，其真實性、準確性和合法性由信息擁有者（合作方）負責。本站不提供任何保證，並不承擔任何法律責任。
+                                                商城上的所有商品資料、客戶評價、商品咨詢、網友討論等內容，是商城重要的經營資源，未經許可，禁止非法轉載使用。<br/>
+                                                <span class="oZhu">註</span>：本站商品資料均來自於合作方，其真實性、準確性和合法性由資料擁有者（合作方）負責。本站不提供任何保證，並不承擔任何法律責任。
                                             </div>
                                         </div>
                                         <div class="quanLi jiaGe">
@@ -501,7 +499,7 @@
                                                 <span class="oZhu">商城價</span>：商城價為商品的銷售價，是您最終決定是否購買商品的依據。<br/>
                                                 <span class="oZhu">劃線價</span>：商品展示的劃橫線價格為參考價，該價格可能是品牌專櫃標價、商品弔牌價或由品牌供應商提供的正品零售價（如廠商指導價、建議零售價等）或該商品在商城平臺上曾經展示過的銷售價；由於地區、時間的差異性和市場行情波動，品牌專櫃標價、商品弔牌價等可能會與您購物時展示的不一致，該價格僅供您參考。<br/>
                                                 <span class="oZhu">折扣</span>：如無特殊說明，折扣指銷售商在原價、或劃線價（如品牌專櫃標價、商品弔牌價、廠商指導價、廠商建議零售價）等某一價格基礎上計算出的優惠比例或優惠金額；如有疑問，您可在購買前聯系銷售商進行咨詢。<br/>
-                                                <span class="oZhu">異常問題</span>：商品促銷信息以商品詳情頁“促銷”欄中的信息為準；商品的具體售價以訂單結算頁價格為準；如您發現活動商品售價或促銷信息有異常，建議購買前先聯系銷售商咨詢。
+                                                <span class="oZhu">異常問題</span>：商品促銷資料以商品詳情頁“促銷”欄中的資料為準；商品的具體售價以訂單結算頁價格為準；如您發現活動商品售價或促銷資料有異常，建議購買前先聯系銷售商咨詢。
                                             </div>
                                         </div>
                                     </div>

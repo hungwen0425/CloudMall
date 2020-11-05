@@ -17,32 +17,32 @@ import lombok.Data;
 @Data
 @TableName("ums_member_login_log")
 public class MemberLoginLogEntity implements Serializable {
+
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * $column.comments
+	 * id
 	 */
 	@TableId
 	private Long id;
 	/**
-	 * $column.comments
+	 * member_id
 	 */
 	private Long memberId;
 	/**
-	 * $column.comments
+	 * 創建時間
 	 */
 	private Date createTime;
 	/**
-	 * $column.comments
+	 * ip
 	 */
 	private String ip;
 	/**
-	 * $column.comments
+	 * city
 	 */
 	private String city;
 	/**
-	 * $column.comments
+	 * 登入類型[1-web，2-app]
 	 */
 	private Integer loginType;
-
 }

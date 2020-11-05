@@ -70,6 +70,12 @@
             </exclusions>
         </dependency>
 
+        <!-- 整合 SpringSession 整合 session 共享問題 -->
+        <dependency>
+            <groupId>org.springframework.session</groupId>
+            <artifactId>spring-session-data-redis</artifactId>
+        </dependency>
+
         <dependency>
             <groupId>redis.clients</groupId>
             <artifactId>jedis</artifactId>

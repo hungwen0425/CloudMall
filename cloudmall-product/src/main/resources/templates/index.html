@@ -89,17 +89,19 @@
       </b>
       <ul>
         <li>
-          <a href="/static//登入頁面\index.html">你好，請登入</a>
+          <a th:if="${session.loginUser != null}">歡迎, [[${session.loginUser.nickname}]]</a>
+          <a th:if="${session.loginUser == null}" href="http://auth.cloudmall.com/login.html">你好，請登入</a>
         </li>
         <li>
-          <a href="/static//注冊頁面\index.html" class="li_2">免費注冊</a>
+          <a th:if="${session.loginUser == null}" href="http://auth.cloudmall.com/reg.html" class="li_2">免費註冊</a>
+        </li>
+        <li>
+          <a th:if="${session.loginUser != null}" href="http://auth.cloudmall.com/loguot.html" class="li_2">立即退出</a>
         </li>
         <span>|</span>
         <li>
           <a href="/static/#">我的訂單</a>
         </li>
-
-
       </ul>
     </div>
   </div>
@@ -238,7 +240,7 @@
               <p class="">Hi, 歡迎來到!</p>
               <p>
                 <a href="/static/#" class="">登入</a>
-                <a href="/static/#" class="">注冊</a>
+                <a href="/static/#" class="">註冊</a>
               </p>
             </div>
           </div>

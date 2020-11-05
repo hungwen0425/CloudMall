@@ -17,31 +17,32 @@ import lombok.Data;
 @Data
 @TableName("ums_growth_change_history")
 public class GrowthChangeHistoryEntity implements Serializable {
+
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * $column.comments
+	 * id
 	 */
 	@TableId
 	private Long id;
 	/**
-	 * $column.comments
+	 * member_id
 	 */
 	private Long memberId;
 	/**
-	 * $column.comments
+	 * create_time
 	 */
 	private Date createTime;
 	/**
-	 * $column.comments
+	 * 改變的值（正負計數）
 	 */
 	private Integer changeCount;
 	/**
-	 * $column.comments
+	 * 備註
 	 */
 	private String note;
 	/**
-	 * $column.comments
+	 * 積分來源[0-購物，1-管理員修改]
 	 */
 	private Integer sourceType;
 

@@ -113,7 +113,7 @@ public class SkuInfoServiceImpl extends ServiceImpl<SkuInfoDao, SkuInfoEntity> i
         SkuItemVo skuItemVo = new SkuItemVo();
 
         CompletableFuture<SkuInfoEntity> infoFuture = CompletableFuture.supplyAsync(() -> {
-            // 1. 查詢 sku 基本信息  pms_sku_info
+            // 1. 查詢 sku 基本資料  pms_sku_info
             SkuInfoEntity info = this.getById(skuId);
             skuItemVo.setInfo(info);
             return info;
@@ -132,13 +132,13 @@ public class SkuInfoServiceImpl extends ServiceImpl<SkuInfoDao, SkuInfoEntity> i
         }, executor);
 
         CompletableFuture<Void> baseAttrFuture = infoFuture.thenAcceptAsync((res) -> {
-            // 5. 查詢 spu 的規格參數信息
+            // 5. 查詢 spu 的規格參數資料
             List<SpuItemAttrGroupVo> attrGroupVos = attrGroupService.getAttrGroupWithAttrsBySpuId(res.getSpuId(), res.getCatalogId());
             skuItemVo.setAttrGroups(attrGroupVos);
         }, executor);
 
         CompletableFuture<Void> imageFuture = CompletableFuture.runAsync(() -> {
-            // 2. sku 的圖片信息    pms_sku_images
+            // 2. sku 的圖片資料    pms_sku_images
             List<SkuImagesEntity> imagesEntities = skuImagesService.getImagesBySkuId(skuId);
             skuItemVo.setImages(imagesEntities);
         }, executor);

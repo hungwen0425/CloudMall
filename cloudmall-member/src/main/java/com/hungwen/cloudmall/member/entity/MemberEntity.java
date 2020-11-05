@@ -17,92 +17,96 @@ import lombok.Data;
 @Data
 @TableName("ums_member")
 public class MemberEntity implements Serializable {
+
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * $column.comments
+	 * id
 	 */
 	@TableId
 	private Long id;
 	/**
-	 * $column.comments
+	 * 會員等級id
 	 */
 	private Long levelId;
 	/**
-	 * $column.comments
+	 * 使用者名
 	 */
 	private String username;
 	/**
-	 * $column.comments
+	 * 密碼
 	 */
 	private String password;
 	/**
-	 * $column.comments
+	 * 昵稱
 	 */
 	private String nickname;
 	/**
-	 * $column.comments
+	 * 手機號碼
 	 */
 	private String mobile;
 	/**
-	 * $column.comments
+	 * 郵箱
 	 */
 	private String email;
 	/**
-	 * $column.comments
+	 * 頭像
 	 */
 	private String header;
 	/**
-	 * $column.comments
+	 * 性別
 	 */
 	private Integer gender;
 	/**
-	 * $column.comments
+	 * 生日
 	 */
 	private Date birth;
 	/**
-	 * $column.comments
+	 * 所在城市
 	 */
 	private String city;
 	/**
-	 * $column.comments
+	 * 職業
 	 */
 	private String job;
 	/**
-	 * $column.comments
+	 * 個性簽名
 	 */
 	private String sign;
 	/**
-	 * $column.comments
+	 * 使用者來源
 	 */
 	private Integer sourceType;
 	/**
-	 * $column.comments
+	 * 積分
 	 */
 	private Integer integration;
 	/**
-	 * $column.comments
+	 * 成長值
 	 */
 	private Integer growth;
 	/**
-	 * $column.comments
+	 * 啟用狀態
 	 */
 	private Integer status;
 	/**
-	 * $column.comments
+	 * 註冊時間
 	 */
 	private Date createTime;
+
 	/**
-	 * $column.comments
+	 * 社交登入UID
 	 */
-	private String socialuid;
+	private String socialUid;
+
 	/**
-	 * $column.comments
+	 * 社交登入TOKEN
 	 */
-	private String accesstoken;
+	private String accessToken;
+
 	/**
-	 * $column.comments
+	 * 社交登入過期時間
 	 */
-	private Long expiresin;
+	private long expiresIn;
 
 }

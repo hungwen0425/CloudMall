@@ -78,7 +78,7 @@ public class SpuCommentEntity implements Serializable {
 	 */
 	private String content;
 	/**
-	 * 用戶頭像
+	 * 使用者頭像
 	 */
 	private String memberIcon;
 	/**

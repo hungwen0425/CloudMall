@@ -23,10 +23,11 @@ public enum BizCodeEnum {
     TO_MANY_REQUEST(10002,"請求流量過大，請稍後再試"),
     SMS_CODE_EXCEPTION(10002,"驗證碼查詢頻率太高，請稍後再試"),
     PRODUCT_UP_EXCEPTION(11000,"商品上架異常"),
-    USER_EXIST_EXCEPTION(15001,"存在相同的用戶"),
-    PHONE_EXIST_EXCEPTION(15002,"存在相同的手機號"),
-    NO_STOCK_EXCEPTION(21000,"商品庫存不足"),
-    LOGINACCT_PASSWORD_EXCEPTION(15003,"賬號或密碼錯誤");
+    USER_EXIST_EXCEPTION(15001,"存在相同的使用者"),
+    PHONE_EXIST_EXCEPTION(15002,"存在相同的手機號碼"),
+    LOGINACCT_PASSWORD_EXCEPTION(15003,"賬號或密碼錯誤"),
+    NO_STOCK_EXCEPTION(21000,"商品庫存不足");
+
 
     private int code;
     private String message;

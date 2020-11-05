@@ -63,10 +63,11 @@
         </b>
         <ul>
             <li>
-                <a href="#" class="li_2">你好，請登入</a>
+                <a th:if="${session.loginUser != null}">歡迎, [[${session.loginUser.nickname}]]</a>
+                <a th:if="${session.loginUser == null}" href="http://auth.cloudmall.com/login.html">你好，請登入</a>
             </li>
             <li>
-                <a href="#">免費註冊</a>
+                <a th:if="${session.loginUser == null}" href="http://auth.cloudmall.com/reg.html" class="li_2">免費註冊</a>
             </li>
             <span>|</span>
             <li>
@@ -513,7 +514,7 @@
                             <a href="/static/search/#" style="color: #999;">手機殼</a>
                             <a href="/static/search/#" style="color: #999;">貼膜</a>
                             <a href="/static/search/#" style="color: #999;">手機儲存卡</a>
-                            <a href="/static/search/#" style="color: #999;">數據線</a>
+                            <a href="/static/search/#" style="color: #999;">資料線</a>
                             <a href="/static/search/#" style="color: #999;">存電器</a>
                             <a href="/static/search/#" style="color: #999;">手機耳機</a>
                             <a href="/static/search/#" style="color: #999;">創業配件</a>
@@ -943,7 +944,7 @@
                                 </li>
                                 <li>
                                     <a href="/static/search/#" title="vivo X9s 全網通 4GB+64GB 磨砂黑 移動聯通電信4G手機 雙卡雙待"><img
-                                            src="/static/search/img/5919637an271a1301.jpg" alt=""></a>
+                                            src="/static/search/img/5919637an271a1301_1.jpg" alt=""></a>
                                     <a href="/static/search/#"
                                        title="【預約版】華為 HUAWEI 暢享7S 全面屏雙攝 4GB +64GB 黑色 移動聯通電信4G手機 雙卡雙待">
                                         <em>vivo Xplay6 全網通 6GB+64GB 磨砂黑 移動聯通電信4G手機 雙卡雙待</em>
@@ -1009,7 +1010,7 @@
                                 </li>
                                 <li>
                                     <a href="/static/search/#" title="vivo X9s 全網通 4GB+64GB 磨砂黑 移動聯通電信4G手機 雙卡雙待"><img
-                                            src="/static/search/img/5919637an271a1301.jpg" alt=""></a>
+                                            src="/static/search/img/5919637an271a1301_1.jpg" alt=""></a>
                                     <a href="/static/search/#">
                                         <em>vivo Xplay6 全網通 6GB+64GB 磨砂黑 移動聯通電信4G手機 雙卡雙待</em>
                                     </a>
@@ -1030,7 +1031,7 @@
                         <div class="mc">
                             <ul>
                                 <li>
-                                    <a href="/static/search/#"><img src="/static/search/img/599a806bn9d829c1c.jpg"
+                                    <a href="/static/search/#"><img src="/static/search/img/599a806bn9d829c1c_1.jpg"
                                                                     alt=""></a>
                                 </li>
                                 <li>
@@ -1783,7 +1784,7 @@
             <span></span>
             <a href="/static/search/#">京ICP證070359號</a>
             <span></span>
-            <a href="/static/search/#">網際網路藥品信息服務資格證編號(京)-經營性-2014-0008</a>
+            <a href="/static/search/#">網際網路藥品資料服務資格證編號(京)-經營性-2014-0008</a>
             <span></span>
             <a href="/static/search/#">新出發京零 字第大120007號</a>
         </p>
@@ -1794,7 +1795,7 @@
             <span></span>
             <a href="/static/search/#">網路文化經營許可證京網文[2014]2148-348號</a>
             <span></span>
-            <a href="/static/search/#">違法和不良信息舉報電話：4006561155</a>
+            <a href="/static/search/#">違法和不良資料舉報電話：4006561155</a>
         </p>
         <p class="footer_p">
             <a href="/static/search/#">Copyright © 2004 - 2017 雲端商城JD.com 版權所有</a>

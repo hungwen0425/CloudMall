@@ -18,47 +18,48 @@ import lombok.Data;
 @Data
 @TableName("ums_member_level")
 public class MemberLevelEntity implements Serializable {
+
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * $column.comments
+	 * id
 	 */
 	@TableId
 	private Long id;
 	/**
-	 * $column.comments
+	 * 等級名稱
 	 */
 	private String name;
 	/**
-	 * $column.comments
+	 * 等級需要的成長值
 	 */
 	private Integer growthPoint;
 	/**
-	 * $column.comments
+	 * 是否為默認等級[0->不是；1->是]
 	 */
 	private Integer defaultStatus;
 	/**
-	 * $column.comments
+	 * 免運費標準
 	 */
 	private BigDecimal freeFreightPoint;
 	/**
-	 * $column.comments
+	 * 每次評價獲取的成長值
 	 */
 	private Integer commentGrowthPoint;
 	/**
-	 * $column.comments
+	 * 是否有免郵特權
 	 */
 	private Integer priviledgeFreeFreight;
 	/**
-	 * $column.comments
+	 * 是否有會員價格特權
 	 */
 	private Integer priviledgeMemberPrice;
 	/**
-	 * $column.comments
+	 * 是否有生日特權
 	 */
 	private Integer priviledgeBirthday;
 	/**
-	 * $column.comments
+	 * 備註
 	 */
 	private String note;
 

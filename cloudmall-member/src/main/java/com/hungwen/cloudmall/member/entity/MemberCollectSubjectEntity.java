@@ -17,27 +17,28 @@ import lombok.Data;
 @Data
 @TableName("ums_member_collect_subject")
 public class MemberCollectSubjectEntity implements Serializable {
+
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * $column.comments
+	 * id
 	 */
 	@TableId
 	private Long id;
 	/**
-	 * $column.comments
+	 * subject_id
 	 */
 	private Long subjectId;
 	/**
-	 * $column.comments
+	 * subject_name
 	 */
 	private String subjectName;
 	/**
-	 * $column.comments
+	 * subject_img
 	 */
 	private String subjectImg;
 	/**
-	 * $column.comments
+	 * 活動url
 	 */
 	private String subjectUrll;
 

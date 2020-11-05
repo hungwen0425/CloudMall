@@ -6,7 +6,7 @@ $.jgrid.defaults.styleUI = 'Bootstrap';
 //工具集合Tools
 window.T = {};
 
-// 获取请求参數
+// 获取請求参數
 // 使用示例
 // location.href = http://localhost:8080/index.html?id=123
 // T.p('id') --> 123;
@@ -57,7 +57,7 @@ function getSelectedRow() {
     var grid = $("#jqGrid");
     var rowKey = grid.getGridParam("selrow");
     if(!rowKey){
-    	alert("请选择一条记录");
+    	alert("請选择一条记录");
     	return ;
     }
     
@@ -75,7 +75,7 @@ function getSelectedRows() {
     var grid = $("#jqGrid");
     var rowKey = grid.getGridParam("selrow");
     if(!rowKey){
-    	alert("请选择一条记录");
+    	alert("請选择一条记录");
     	return ;
     }
     

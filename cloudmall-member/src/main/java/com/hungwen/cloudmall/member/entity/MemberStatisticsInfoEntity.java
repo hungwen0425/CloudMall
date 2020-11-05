@@ -18,67 +18,68 @@ import lombok.Data;
 @Data
 @TableName("ums_member_statistics_info")
 public class MemberStatisticsInfoEntity implements Serializable {
+
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * $column.comments
+	 * id
 	 */
 	@TableId
 	private Long id;
 	/**
-	 * $column.comments
+	 * 會員id
 	 */
 	private Long memberId;
 	/**
-	 * $column.comments
+	 * 累計消費金額
 	 */
 	private BigDecimal consumeAmount;
 	/**
-	 * $column.comments
+	 * 累計優惠金額
 	 */
 	private BigDecimal couponAmount;
 	/**
-	 * $column.comments
+	 * 訂單數量
 	 */
 	private Integer orderCount;
 	/**
-	 * $column.comments
+	 * 優惠券數量
 	 */
 	private Integer couponCount;
 	/**
-	 * $column.comments
+	 * 評價數
 	 */
 	private Integer commentCount;
 	/**
-	 * $column.comments
+	 * 退貨數量
 	 */
 	private Integer returnOrderCount;
 	/**
-	 * $column.comments
+	 * 登入次數
 	 */
 	private Integer loginCount;
 	/**
-	 * $column.comments
+	 * 關註數量
 	 */
 	private Integer attendCount;
 	/**
-	 * $column.comments
+	 * 粉絲數量
 	 */
 	private Integer fansCount;
 	/**
-	 * $column.comments
+	 * 收藏的商品數量
 	 */
 	private Integer collectProductCount;
 	/**
-	 * $column.comments
+	 * 收藏的專題活動數量
 	 */
 	private Integer collectSubjectCount;
 	/**
-	 * $column.comments
+	 * 收藏的評論數量
 	 */
 	private Integer collectCommentCount;
 	/**
-	 * $column.comments
+	 * 邀請的朋友數量
 	 */
 	private Integer inviteFriendCount;
 

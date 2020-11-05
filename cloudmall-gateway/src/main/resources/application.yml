@@ -48,6 +48,11 @@ spring:
           uri: lb://cloudmall-search
           predicates:
             - Host=search.cloudmall.com
+
+        - id: cloudmall_auth_route
+          uri: lb://cloudmall-auth-server
+          predicates:
+            - Host=auth.cloudmall.com
     nacos:
       discovery:
         server-addr: 127.0.0.1:8848

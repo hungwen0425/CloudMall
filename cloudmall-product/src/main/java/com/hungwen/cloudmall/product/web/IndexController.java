@@ -151,7 +151,7 @@ public class IndexController {
     @ResponseBody
     public String park() throws InterruptedException {
         RSemaphore park = redissonClient.getSemaphore("park");
-        park.acquire();     //獲取一個信號、獲取一個值,占一個車位
+        park.acquire();     //查詢一個信號、查詢一個值,占一個車位
         boolean flag = park.tryAcquire();
         if (flag) {
             //執行業務

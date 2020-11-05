@@ -17,51 +17,52 @@ import lombok.Data;
 @Data
 @TableName("ums_member_receive_address")
 public class MemberReceiveAddressEntity implements Serializable {
+
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * $column.comments
+	 * id
 	 */
 	@TableId
 	private Long id;
 	/**
-	 * $column.comments
+	 * member_id
 	 */
 	private Long memberId;
 	/**
-	 * $column.comments
+	 * 收貨人姓名
 	 */
 	private String name;
 	/**
-	 * $column.comments
+	 * 電話
 	 */
 	private String phone;
 	/**
-	 * $column.comments
+	 * 郵政編碼
 	 */
 	private String postCode;
 	/**
-	 * $column.comments
+	 * 省份/直轄市
 	 */
 	private String province;
 	/**
-	 * $column.comments
+	 * 城市
 	 */
 	private String city;
 	/**
-	 * $column.comments
+	 * 區
 	 */
 	private String region;
 	/**
-	 * $column.comments
+	 * 詳細地址(街道)
 	 */
 	private String detailAddress;
 	/**
-	 * $column.comments
+	 * 省市區代碼
 	 */
 	private String areacode;
 	/**
-	 * $column.comments
+	 * 是否默認
 	 */
 	private Integer defaultStatus;
 

@@ -16,32 +16,22 @@ public class R extends HashMap<String, Object> {
 
 	private static final long serialVersionUID = 1L;
 
-	public R data(Object data) {
-		put("data", data);
-		return this;
-	}
-
-	/**
-	 * 把 map 裡 key 為 data 的資料轉換成某個類型的資料
-	 * @param typeReference
-	 * @param <T>
-	 * @return
-	 */
-	public <T> T getData(TypeReference<T> typeReference) {
-		Object obj = get("data");
-		String json = JSON.toJSONString(obj);
-		T t = JSON.parseObject(json, typeReference);
+	// 利用 fastjson
+	public <T> T getData(TypeReference<T> typeReference){
+		Object data = get("data"); //默认map
+		String jsonString = JSON.toJSONString(data);
+		T t = JSON.parseObject(jsonString, typeReference);
 		return t;
 	}
 
-	public <T> T getData(String key, TypeReference<T> typeReference) {
-		Object obj = get(key);
-		String json = JSON.toJSONString(obj);
-		T t = JSON.parseObject(json, typeReference);
+	public <T> T getData(String key, TypeReference<T> typeReference){
+		Object data = get(key); // 默認 map
+		String jsonString = JSON.toJSONString(data);
+		T t = JSON.parseObject(jsonString, typeReference);
 		return t;
 	}
 
-	public R setData(Object data) {
+	public R setData(Object data){
 		put("data", data);
 		return this;
 	}
@@ -87,7 +77,7 @@ public class R extends HashMap<String, Object> {
 		return this;
 	}
 
-	public  Integer getCode() {
+	public Integer getCode(){
 		return (Integer) this.get("code");
 	}
 }

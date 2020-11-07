@@ -16,6 +16,7 @@
 
     <modules>
         <module>cloudmall-auth-server</module>
+        <module>cloudmall-cart</module>
         <module>cloudmall-common</module>
         <module>cloudmall-coupon</module>
         <module>cloudmall-gateway</module>

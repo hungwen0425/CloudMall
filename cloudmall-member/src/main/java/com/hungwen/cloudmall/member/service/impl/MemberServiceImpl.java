@@ -52,7 +52,7 @@ public class MemberServiceImpl extends ServiceImpl<MemberDao, MemberEntity> impl
         // 設置默認等級
         MemberLevelEntity levelEntity = memberLevelDao.getDefaultLevel();
         memberEntity.setLevelId(levelEntity.getId());
-        // 設置其它的默認信息
+        // 設置其它的默認資料
         // 檢查使用者名和手機號碼是否唯一。感知異常，異常機制
         checkPhoneUnique(vo.getPhone());
         checkUserNameUnique(vo.getUserName());
@@ -112,9 +112,9 @@ public class MemberServiceImpl extends ServiceImpl<MemberDao, MemberEntity> impl
 
     @Override
     public MemberEntity login(SocialUser socialUser) throws Exception {
-        // 具有登錄和註冊邏輯
+        // 具有登入和註冊邏輯
         String uid = socialUser.getUid();
-        // 1. 判斷當前社交使用者是否已經登錄過系統
+        // 1. 判斷當前社交使用者是否已經登入過系統
         MemberEntity memberEntity = this.baseMapper.selectOne(new QueryWrapper<MemberEntity>().eq("social_uid", uid));
         if (memberEntity != null) {
             // 這個使用者已經註冊過
@@ -131,7 +131,7 @@ public class MemberServiceImpl extends ServiceImpl<MemberDao, MemberEntity> impl
         } else {
             // 2. 沒有查到當前社交使用者對應的記錄我們就需要註冊一個
             MemberEntity register = new MemberEntity();
-            // 3. 查詢當前社交使用者的社交賬號信息（昵稱、性別等）
+            // 3. 查詢當前社交使用者的社交賬號資料（昵稱、性別等）
             Map<String,String> query = new HashMap<>();
             query.put("access_token", socialUser.getAccess_token());
             query.put("uid",socialUser.getUid());
@@ -152,7 +152,7 @@ public class MemberServiceImpl extends ServiceImpl<MemberDao, MemberEntity> impl
                 register.setSocialUid(socialUser.getUid());
                 register.setAccessToken(socialUser.getAccess_token());
                 register.setExpiresIn(socialUser.getExpires_in());
-                //把使用者信息插入到數據庫中
+                //把使用者資料插入到資料庫中
                 this.baseMapper.insert(register);
             }
             return register;

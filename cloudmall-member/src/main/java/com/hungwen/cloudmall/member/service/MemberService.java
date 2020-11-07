@@ -45,7 +45,7 @@ public interface MemberService extends IService<MemberEntity> {
      */
     MemberEntity login(MemberUserLoginVo vo);
     /**
-     * 社交使用者的登錄
+     * 社交使用者的登入
      * @param socialUser
      * @return
      */

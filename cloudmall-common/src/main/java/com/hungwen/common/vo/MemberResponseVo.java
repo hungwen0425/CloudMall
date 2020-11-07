@@ -21,66 +21,89 @@ public class MemberResponseVo implements Serializable {
 
     private static final long serialVersionUID = 5573669251256409786L;
 
-    /**
-     * id
-     */
-    @TableId
     private Long id;
     /**
-     * 會員id
+     * 會員等級id
      */
-    private Long memberId;
+    private Long levelId;
     /**
-     * 累計消費金額
+     * 用戶名
      */
-    private BigDecimal consumeAmount;
+    private String username;
     /**
-     * 累計優惠金額
+     * 密碼
      */
-    private BigDecimal couponAmount;
+    private String password;
     /**
-     * 訂單數量
+     * 昵稱
      */
-    private Integer orderCount;
+    private String nickname;
     /**
-     * 優惠券數量
+     * 手機號碼
      */
-    private Integer couponCount;
+    private String mobile;
     /**
-     * 評價數
+     * 郵箱
      */
-    private Integer commentCount;
+    private String email;
     /**
-     * 退貨數量
+     * 頭像
      */
-    private Integer returnOrderCount;
+    private String header;
     /**
-     * 登入次數
+     * 性別
      */
-    private Integer loginCount;
+    private Integer gender;
     /**
-     * 關註數量
+     * 生日
      */
-    private Integer attendCount;
+    private Date birth;
     /**
-     * 粉絲數量
+     * 所在城市
      */
-    private Integer fansCount;
+    private String city;
     /**
-     * 收藏的商品數量
+     * 職業
      */
-    private Integer collectProductCount;
+    private String job;
     /**
-     * 收藏的專題活動數量
+     * 個性簽名
      */
-    private Integer collectSubjectCount;
+    private String sign;
     /**
-     * 收藏的評論數量
+     * 用戶來源
      */
-    private Integer collectCommentCount;
+    private Integer sourceType;
     /**
-     * 邀請的朋友數量
+     * 積分
      */
-    private Integer inviteFriendCount;
+    private Integer integration;
+    /**
+     * 成長值
+     */
+    private Integer growth;
+    /**
+     * 啟用狀態
+     */
+    private Integer status;
+    /**
+     * 註冊時間
+     */
+    private Date createTime;
+
+    /**
+     * 社交登錄UID
+     */
+    private String socialUid;
+
+    /**
+     * 社交登錄TOKEN
+     */
+    private String accessToken;
+
+    /**
+     * 社交登錄過期時間
+     */
+    private long expiresIn;
 
 }

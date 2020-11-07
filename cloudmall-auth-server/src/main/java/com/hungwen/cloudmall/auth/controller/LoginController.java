@@ -10,6 +10,7 @@ import com.hungwen.common.exception.BizCodeEnum;
 import com.hungwen.common.utils.R;
 import com.hungwen.common.vo.MemberResponseVo;
 import org.apache.commons.lang.StringUtils;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Controller;
@@ -25,6 +26,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
@@ -126,7 +128,7 @@ public class LoginController {
 
     @GetMapping(value = "/login.html")
     public String loginPage(HttpSession session) {
-        //從 session 先取出來使用者的信息，判斷使用者是否已經登入過了
+        //從 session 先取出來使用者的資料，判斷使用者是否已經登入過了
         Object attribute = session.getAttribute(AuthServerConstant.LOGIN_USER);
         //如果使用者沒登入那就跳轉到登入頁面
         if (attribute == null) {
@@ -141,14 +143,13 @@ public class LoginController {
         //遠程登入
         R login = memberFeignService.login(vo);
         if (login.getCode() == 0) {
-            Map<String, LinkedHashMap> data = (Map<String, LinkedHashMap>) login.get("data");
-            //MemberResponseVo data = login.getData("data", new LinkedHashMap<MemberResponseVo>() {});
+            MemberResponseVo data = login.getData("data", new TypeReference<MemberResponseVo>() {});
             session.setAttribute(AuthServerConstant.LOGIN_USER, data);
             return "redirect:http://cloudmall.com";
         } else {
             Map<String,String> errors = new HashMap<>();
-            errors.put("msg",login.getData("msg", new TypeReference<String>(){}));
-            attributes.addFlashAttribute("errors", errors);
+            errors.put("msg",login.getData("msg",new TypeReference<String>(){}));
+            attributes.addFlashAttribute("errors",errors);
             return "redirect:http://auth.cloudmall.com/login.html";
         }
     }

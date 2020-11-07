@@ -1,14 +1,11 @@
 package com.hungwen.cloudmall.product.app;
 
+import java.math.BigDecimal;
 import java.util.Arrays;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.hungwen.cloudmall.product.entity.SkuInfoEntity;
 import com.hungwen.cloudmall.product.service.SkuInfoService;
@@ -30,6 +27,20 @@ public class SkuInfoController {
 
     @Autowired
     private SkuInfoService skuInfoService;
+
+    /**
+     * 根據 skuId 查詢當前商品的最新價格
+     * @param skuId
+     * @return
+     */
+    @GetMapping(value = "/{skuId}/price")
+    public BigDecimal getPrice(@PathVariable("skuId") Long skuId) {
+        // 查詢當前商品的資料
+        SkuInfoEntity skuInfo = skuInfoService.getById(skuId);
+        // 查詢商品的價格
+        BigDecimal price = skuInfo.getPrice();
+        return price;
+    }
 
     /**
      * 列表

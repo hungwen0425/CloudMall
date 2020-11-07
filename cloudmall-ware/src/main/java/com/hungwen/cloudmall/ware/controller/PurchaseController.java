@@ -72,7 +72,7 @@ public class PurchaseController {
     }
 
     /*
-     * 合並採購需求
+     * 合併採購需求
      * @param purchaseId: 1 整單id
      * @param items:[1,2,3,4] 合并項集合
      */

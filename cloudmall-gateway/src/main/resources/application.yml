@@ -53,6 +53,11 @@ spring:
           uri: lb://cloudmall-auth-server
           predicates:
             - Host=auth.cloudmall.com
+
+        - id: cloudmall_cart_route
+          uri: lb://cloudmall-cart
+          predicates:
+            - Host=cart.cloudmall.com
     nacos:
       discovery:
         server-addr: 127.0.0.1:8848

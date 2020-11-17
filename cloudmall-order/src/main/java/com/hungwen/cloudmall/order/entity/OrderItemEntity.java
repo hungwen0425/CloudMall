@@ -18,104 +18,87 @@ import lombok.Data;
 @Data
 @TableName("oms_order_item")
 public class OrderItemEntity implements Serializable {
-	private static final long serialVersionUID = 1L;
 
+	private static final long serialVersionUID = 1L;
 	/**
-	 * $column.comments
+	 * id
 	 */
 	@TableId
 	private Long id;
 	/**
-	 * $column.comments
+	 * order_id
 	 */
 	private Long orderId;
 	/**
-	 * $column.comments
+	 * order_sn
 	 */
 	private String orderSn;
 	/**
-	 * $column.comments
+	 * spu_id
 	 */
-	private Long productId;
+	private Long spuId;
 	/**
-	 * $column.comments
+	 * spu_name
 	 */
-	private String productPic;
+	private String spuName;
 	/**
-	 * $column.comments
+	 * spu_pic
 	 */
-	private String productName;
+	private String spuPic;
 	/**
-	 * $column.comments
+	 * 品牌
 	 */
-	private String productBrand;
+	private String spuBrand;
 	/**
-	 * $column.comments
+	 * 商品分類id
 	 */
-	private String productSn;
+	private Long categoryId;
 	/**
-	 * $column.comments
+	 * 商品sku編號
 	 */
-	private BigDecimal productPrice;
+	private Long skuId;
 	/**
-	 * $column.comments
+	 * 商品sku名字
 	 */
-	private Integer productQuantity;
+	private String skuName;
 	/**
-	 * $column.comments
+	 * 商品sku圖片
 	 */
-	private Long productSkuId;
+	private String skuPic;
 	/**
-	 * $column.comments
+	 * 商品sku價格
 	 */
-	private String productSkuCode;
+	private BigDecimal skuPrice;
 	/**
-	 * $column.comments
+	 * 商品購買的數量
 	 */
-	private Long productCategoryId;
+	private Integer skuQuantity;
 	/**
-	 * $column.comments
+	 * 商品銷售屬性組合（JSON）
 	 */
-	private String sp1;
+	private String skuAttrsVals;
 	/**
-	 * $column.comments
-	 */
-	private String sp2;
-	/**
-	 * $column.comments
-	 */
-	private String sp3;
-	/**
-	 * $column.comments
-	 */
-	private String promotionName;
-	/**
-	 * $column.comments
+	 * 商品促銷分解金額
 	 */
 	private BigDecimal promotionAmount;
 	/**
-	 * $column.comments
+	 * 優惠券優惠分解金額
 	 */
 	private BigDecimal couponAmount;
 	/**
-	 * $column.comments
+	 * 積分優惠分解金額
 	 */
 	private BigDecimal integrationAmount;
 	/**
-	 * $column.comments
+	 * 該商品經過優惠後的分解金額
 	 */
 	private BigDecimal realAmount;
 	/**
-	 * $column.comments
+	 * 贈送積分
 	 */
 	private Integer giftIntegration;
 	/**
-	 * $column.comments
+	 * 贈送成長值
 	 */
 	private Integer giftGrowth;
-	/**
-	 * $column.comments
-	 */
-	private String productAttr;
-
 }

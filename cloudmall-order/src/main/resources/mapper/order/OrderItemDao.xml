@@ -3,32 +3,28 @@
 
 <mapper namespace="com.hungwen.cloudmall.order.dao.OrderItemDao">
 
-	<!-- 可根据自己的需求，是否要使用 -->
+	<!-- 可根據自己的需求，是否要使用 -->
     <resultMap type="com.hungwen.cloudmall.order.entity.OrderItemEntity" id="orderItemMap">
         <result property="id" column="id"/>
         <result property="orderId" column="order_id"/>
         <result property="orderSn" column="order_sn"/>
-        <result property="productId" column="product_id"/>
-        <result property="productPic" column="product_pic"/>
-        <result property="productName" column="product_name"/>
-        <result property="productBrand" column="product_brand"/>
-        <result property="productSn" column="product_sn"/>
-        <result property="productPrice" column="product_price"/>
-        <result property="productQuantity" column="product_quantity"/>
-        <result property="productSkuId" column="product_sku_id"/>
-        <result property="productSkuCode" column="product_sku_code"/>
-        <result property="productCategoryId" column="product_category_id"/>
-        <result property="sp1" column="sp1"/>
-        <result property="sp2" column="sp2"/>
-        <result property="sp3" column="sp3"/>
-        <result property="promotionName" column="promotion_name"/>
+        <result property="spuId" column="spu_id"/>
+        <result property="spuName" column="spu_name"/>
+        <result property="spuPic" column="spu_pic"/>
+        <result property="spuBrand" column="spu_brand"/>
+        <result property="categoryId" column="category_id"/>
+        <result property="skuId" column="sku_id"/>
+        <result property="skuName" column="sku_name"/>
+        <result property="skuPic" column="sku_pic"/>
+        <result property="skuPrice" column="sku_price"/>
+        <result property="skuQuantity" column="sku_quantity"/>
+        <result property="skuAttrsVals" column="sku_attrs_vals"/>
         <result property="promotionAmount" column="promotion_amount"/>
         <result property="couponAmount" column="coupon_amount"/>
         <result property="integrationAmount" column="integration_amount"/>
         <result property="realAmount" column="real_amount"/>
         <result property="giftIntegration" column="gift_integration"/>
         <result property="giftGrowth" column="gift_growth"/>
-        <result property="productAttr" column="product_attr"/>
     </resultMap>
 
 

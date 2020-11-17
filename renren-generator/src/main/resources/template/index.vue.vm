@@ -5,7 +5,7 @@
         <el-input v-model="dataForm.key" placeholder="参數名" clearable></el-input>
       </el-form-item>
       <el-form-item>
-        <el-button @click="getDataList()">查询</el-button>
+        <el-button @click="getDataList()">查詢</el-button>
         <el-button v-if="isAuth('${moduleName}:${pathName}:save')" type="primary" @click="addOrUpdateHandle()">新增</el-button>
         <el-button v-if="isAuth('${moduleName}:${pathName}:delete')" type="danger" @click="deleteHandle()" :disabled="dataListSelections.length <= 0">批量删除</el-button>
       </el-form-item>
@@ -80,7 +80,7 @@
       this.getDataList()
     },
     methods: {
-      // 获取資料列表
+      // 獲取資料列表
       getDataList () {
         this.dataListLoading = true
         #[[this.$http({]]#
@@ -108,7 +108,7 @@
         this.pageIndex = 1
         this.getDataList()
       },
-      // 当前頁
+      // 當前頁
       currentChangeHandle (val) {
         this.pageIndex = val
         this.getDataList()
@@ -129,7 +129,7 @@
         var ids = id ? [id] : this.dataListSelections.map(item => {
           return item.${pk.attrname}
         })
-        #[[this.$confirm(`确定对[id=${ids.join(',')}]进行[${id ? '删除' : '批量删除'}]操作?`, '提示', {]]#
+        #[[this.$confirm(`确定對[id=${ids.join(',')}]進行[${id ? '删除' : '批量删除'}]操作?`, '提示', {]]#
           confirmButtonText: '确定',
           cancelButtonText: '取消',
           type: 'warning'

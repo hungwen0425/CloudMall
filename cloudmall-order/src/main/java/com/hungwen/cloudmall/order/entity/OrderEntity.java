@@ -1,11 +1,14 @@
 package com.hungwen.cloudmall.order.entity;
 
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 
 import java.math.BigDecimal;
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
+
 import lombok.Data;
 
 /**
@@ -18,184 +21,179 @@ import lombok.Data;
 @Data
 @TableName("oms_order")
 public class OrderEntity implements Serializable {
+
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * $column.comments
+	 * id
 	 */
 	@TableId
 	private Long id;
 	/**
-	 * $column.comments
+	 * member_id
 	 */
 	private Long memberId;
 	/**
-	 * $column.comments
-	 */
-	private Long couponId;
-	/**
-	 * $column.comments
+	 * 訂單號
 	 */
 	private String orderSn;
 	/**
-	 * $column.comments
+	 * 使用的優惠券
+	 */
+	private Long couponId;
+	/**
+	 * create_time
 	 */
 	private Date createTime;
 	/**
-	 * $column.comments
+	 * 用戶名
 	 */
 	private String memberUsername;
 	/**
-	 * $column.comments
+	 * 訂單總額
 	 */
 	private BigDecimal totalAmount;
 	/**
-	 * $column.comments
+	 * 應付總額
 	 */
 	private BigDecimal payAmount;
 	/**
-	 * $column.comments
+	 * 運費金額
 	 */
 	private BigDecimal freightAmount;
 	/**
-	 * $column.comments
+	 * 促銷優化金額（促銷價、滿減、階梯價）
 	 */
 	private BigDecimal promotionAmount;
 	/**
-	 * $column.comments
+	 * 積分抵扣金額
 	 */
 	private BigDecimal integrationAmount;
 	/**
-	 * $column.comments
+	 * 優惠券抵扣金額
 	 */
 	private BigDecimal couponAmount;
 	/**
-	 * $column.comments
+	 * 後台調整訂單使用的折扣金額
 	 */
 	private BigDecimal discountAmount;
 	/**
-	 * $column.comments
+	 * 支付方式【1->支付寶；2->微信；3->銀聯； 4->貨到付款；】
 	 */
 	private Integer payType;
 	/**
-	 * $column.comments
+	 * 訂單來源[0->PC訂單；1->app訂單]
 	 */
 	private Integer sourceType;
 	/**
-	 * $column.comments
+	 * 訂單狀態【0->待付款；1->待發貨；2->已發貨；3->已完成；4->已關閉；5->無效訂單】
 	 */
 	private Integer status;
 	/**
-	 * $column.comments
-	 */
-	private Integer orderType;
-	/**
-	 * $column.comments
+	 * 物流公司(配送方式)
 	 */
 	private String deliveryCompany;
 	/**
-	 * $column.comments
+	 * 物流單號
 	 */
 	private String deliverySn;
 	/**
-	 * $column.comments
+	 * 自動確認時間（天）
 	 */
 	private Integer autoConfirmDay;
 	/**
-	 * $column.comments
+	 * 可以獲得的積分
 	 */
 	private Integer integration;
 	/**
-	 * $column.comments
+	 * 可以獲得的成長值
 	 */
 	private Integer growth;
 	/**
-	 * $column.comments
-	 */
-	private String promotionInfo;
-	/**
-	 * $column.comments
+	 * 發票類型[0->不開發票；1->電子發票；2->紙質發票]
 	 */
 	private Integer billType;
 	/**
-	 * $column.comments
+	 * 發票抬頭
 	 */
 	private String billHeader;
 	/**
-	 * $column.comments
+	 * 發票內容
 	 */
 	private String billContent;
 	/**
-	 * $column.comments
+	 * 收票人電話
 	 */
 	private String billReceiverPhone;
 	/**
-	 * $column.comments
+	 * 收票人郵箱
 	 */
 	private String billReceiverEmail;
 	/**
-	 * $column.comments
+	 * 收貨人姓名
 	 */
 	private String receiverName;
 	/**
-	 * $column.comments
+	 * 收貨人電話
 	 */
 	private String receiverPhone;
 	/**
-	 * $column.comments
+	 * 收貨人郵編
 	 */
 	private String receiverPostCode;
 	/**
-	 * $column.comments
+	 * 省份/直轄市
 	 */
 	private String receiverProvince;
 	/**
-	 * $column.comments
+	 * 城市
 	 */
 	private String receiverCity;
 	/**
-	 * $column.comments
+	 * 區
 	 */
 	private String receiverRegion;
 	/**
-	 * $column.comments
+	 * 詳細地址
 	 */
 	private String receiverDetailAddress;
 	/**
-	 * $column.comments
+	 * 訂單備註
 	 */
 	private String note;
 	/**
-	 * $column.comments
+	 * 確認收貨狀態[0->未確認；1->已確認]
 	 */
 	private Integer confirmStatus;
 	/**
-	 * $column.comments
+	 * 刪除狀態【0->未刪除；1->已刪除】
 	 */
 	private Integer deleteStatus;
 	/**
-	 * $column.comments
+	 * 下單時使用的積分
 	 */
 	private Integer useIntegration;
 	/**
-	 * $column.comments
+	 * 支付時間
 	 */
 	private Date paymentTime;
 	/**
-	 * $column.comments
+	 * 發貨時間
 	 */
 	private Date deliveryTime;
 	/**
-	 * $column.comments
+	 * 確認收貨時間
 	 */
 	private Date receiveTime;
 	/**
-	 * $column.comments
+	 * 評價時間
 	 */
 	private Date commentTime;
 	/**
-	 * $column.comments
+	 * 修改時間
 	 */
 	private Date modifyTime;
 
+	@TableField(exist = false)
+	private List<OrderItemEntity> orderItemEntityList;
 }

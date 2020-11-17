@@ -34,12 +34,12 @@ public class SkuInfoController {
      * @return
      */
     @GetMapping(value = "/{skuId}/price")
-    public BigDecimal getPrice(@PathVariable("skuId") Long skuId) {
+    public R getPrice(@PathVariable("skuId") Long skuId) {
         // 查詢當前商品的資料
         SkuInfoEntity skuInfo = skuInfoService.getById(skuId);
         // 查詢商品的價格
         BigDecimal price = skuInfo.getPrice();
-        return price;
+        return R.ok().setData(price.toString());
     }
 
     /**

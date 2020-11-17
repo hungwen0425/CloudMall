@@ -25,6 +25,9 @@
                             <a th:if="${session.loginUser != null}">歡迎, [[${session.loginUser.nickname}]]</a>
                         </li>
                         <li>
+                            <a th:if="${session.loginUser != null}" href="http://auth.cloudmall.com/loguot.html" class="li_2">立即退出</a>
+                        </li>
+                        <li>
                             <a th:if="${session.loginUser == null}" href="http://auth.cloudmall.com/reg.html"
                                style="color: red;">免費註冊</a>
                         </li>
@@ -95,7 +98,7 @@
                                         </dd>
                                     </li>
                                     <li>
-                                        <p class="dj" th:text="'NT ' + ${#numbers.formatDecimal(item.price,3,2)}">NT 4599.00</p>
+                                        <p class="dj" th:text="'NT ' + ${#numbers.formatDecimal(item.price, 3, 0)}">NT 4599</p>
                                     </li>
                                     <li>
                                         <p th:attr="skuId=${item.skuId}">
@@ -104,7 +107,7 @@
                                             <span class="countOpsBtn">+</span>
                                         </p>
                                     </li>
-                                    <li style="font-weight:bold"><p class="zj">NT [[${#numbers.formatDecimal(item.totalPrice,3,2)}]]</p></li>
+                                    <li style="font-weight:bold"><p class="zj">NT [[${#numbers.formatDecimal(item.totalPrice, 3, 0)}]]</p></li>
                                     <li>
                                         <p class="deleteItemBtn" th:attr="skuId=${item.skuId}">刪除</p>
                                     </li>
@@ -131,8 +134,8 @@
                     </div>
                     <div>
                         <ol>
-                            <li>總價:<span style="color:#e64346;font-weight:bold;font-size:16px;" class="fnt">NT [[${#numbers.formatDecimal(cart.totalAmount, 3, 2)}]]</span>
-                            <li>優惠：NT [[${#numbers.formatDecimal(cart.reduce,1,2)}]]</li>
+                            <li>總價:<span style="color:#e64346;font-weight:bold;font-size:16px;" class="fnt">NT [[${#numbers.formatDecimal(cart.totalAmount, 3, 0)}]]</span>
+                            <li>優惠：NT [[${#numbers.formatDecimal(cart.reduce, 1, 0)}]]</li>
                         </ol>
                     </div>
                     <div>
@@ -143,11 +146,11 @@
         </div>
         <div class="One_isDel">
             <p>
-                <span>刪除</span><span><img src="/static/cart/img/錯誤.png" alt=""></span>
+                <span>刪除</span><span><img src="/static/cart/img/error.png" alt=""></span>
             </p>
             <div>
                 <dl>
-                    <dt><img src="/static/cart/img/感嘆三角形 (2).png" alt=""></dt>
+                    <dt><img src="/static/cart/img/triangle.png" alt=""></dt>
                     <dd>
                         <li>刪除商品？</li>
                         <li>您可以選擇移到關註，或刪除商品。</li>
@@ -160,20 +163,20 @@
         </div>
         <div class="One_moveGzIfNull">
             <p>
-                <span>刪除</span><span><img src="/static/cart/img/錯誤.png" alt=""></span>
+                <span>刪除</span><span><img src="/static/cart/img/error.png" alt=""></span>
             </p>
             <dl>
-                <dt><img src="/static/cart/img/感嘆三角形 (2).png" alt=""></dt>
+                <dt><img src="/static/cart/img/triangle.png" alt=""></dt>
                 <dd>請至少選中一件商品！</dd>
             </dl>
         </div>
         <div class="One_moveMyGz">
             <p>
-                <span>刪除</span><span><img src="/static/cart/img/錯誤.png" alt=""></span>
+                <span>刪除</span><span><img src="/static/cart/img/error.png" alt=""></span>
             </p>
             <div>
                 <dl>
-                    <dt><img src="/static/cart/img/感嘆三角形 (2).png" alt=""></dt>
+                    <dt><img src="/static/cart/img/triangle.png" alt=""></dt>
                     <dd>
                         <li>移到關註</li>
                         <li>移動後選中商品將不再購物車中顯示</li>
@@ -187,10 +190,10 @@
         </div>
         <div class="One_clearShop">
             <p>
-                <span>提示</span><span><img src="/static/cart/img/錯誤.png" alt=""></span>
+                <span>提示</span><span><img src="/static/cart/img/error.png" alt=""></span>
             </p>
             <dl>
-                <dt><img src="/static/cart/img/感嘆三角形 (2).png" alt=""></dt>
+                <dt><img src="/static/cart/img/triangle.png" alt=""></dt>
                 <dd>沒有下櫃商品!</dd>
             </dl>
         </div>
@@ -206,11 +209,11 @@
         }
 
         function toItem(skuId) {
-            window.location.href = "http://item.cloudmall.com:8084/" + skuId + ".html";
+            window.location.href = "http://item.cloudmall.com/" + skuId + ".html";
         }
 
         function login() {
-            var s = encodeURIComponent("http://cart.cloudmall.com:8087/cartList");
+            var s = encodeURIComponent("http://cart.cloudmall.com/cartList");
             window.location.href = "http://auth.cloudmall.com/login.html";
         }
 
@@ -235,7 +238,7 @@
             //                 var zj = $(this).parents("ol").find(".zj").html().substring(1);
             //                 zzj=zzj+parseFloat(zj);
             //             }
-            //             $(".fnt").html("NT "+zzj+".00")
+            //             $(".fnt").html("NT "+zzj+"")
             //         });
         }
 
@@ -459,7 +462,7 @@
                       if($(".check").length==0){
                           $(".allCheck").prop("checked",false);
                           $(".sumNum").html("0");
-                          $(".fnt").html("NT  0.00");
+                          $(".fnt").html("NT  0");
                       }
                   })*/
         })
@@ -530,7 +533,7 @@
             //總價
             var dj = $(this).parent().parent().prev().children(".dj").html().substring(1);
             var sl = $(this).prev("span").html();
-            $(this).parent().parent().parent().children("li:nth-child(5)").children(".zj").html("NT " + dj * sl + ".00")
+            $(this).parent().parent().parent().children("li:nth-child(5)").children(".zj").html("NT " + dj * sl + "")
             sumSumPrice();
 
         })
@@ -545,7 +548,7 @@
             //總價
             var dj = $(this).parent().parent().prev().children(".dj").html().substring(1);
             var sl = $(this).next("span").html();
-            $(this).parent().parent().parent().children("li:nth-child(5)").children(".zj").html("NT " + dj * sl + ".00")
+            $(this).parent().parent().parent().children("li:nth-child(5)").children(".zj").html("NT " + dj * sl + "")
             sumSumPrice();
 
         })
@@ -609,7 +612,7 @@
                         if($(".check").length==0){
                             $(".allCheck").prop("checked",false);
                             $(".sumNum").html("0");
-                            $(".fnt").html("NT  0.00");
+                            $(".fnt").html("NT  0");
                         }
                     })*/
         })
@@ -642,13 +645,13 @@
                     console.log(" 價格：" + zj);
                     zzj = zzj + parseFloat(zj);
                 }
-                $(".fnt").html("NT " + zzj + ".00")
+                $(".fnt").html("NT " + zzj + "")
             })
 
             /*        $(".One_ShopCon ul li>div:nth-child(2) ol li:nth-child(5) .zj").each(function(){
                         kong+=parseFloat($(this).html().substring(1))
                     })
-                    $(".fnt").html("NT "+kong+".00")*/
+                    $(".fnt").html("NT "+kong+"")*/
         }
         //封裝總數量函數
         function sumSumNum() {

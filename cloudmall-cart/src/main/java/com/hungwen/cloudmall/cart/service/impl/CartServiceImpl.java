@@ -108,7 +108,7 @@ public class CartServiceImpl implements CartService {
     @Override
     public CartVo getCart() throws ExecutionException, InterruptedException {
         CartVo cartVo = new CartVo();
-        UserInfoTo userInfoTo = CartInterceptor.toThreadLocal.get();
+        UserInfoTo userInfoTo = CartInterceptor.threadLocal.get();
         if (userInfoTo.getUserId() != null) {
             // 1. 登入
             String cartKey = CartConstant.CART_PREFIX + userInfoTo.getUserId();
@@ -143,7 +143,7 @@ public class CartServiceImpl implements CartService {
      */
     private BoundHashOperations<String, Object, Object> getCartOps() {
         // 先得到當前用戶資料
-        UserInfoTo userInfoTo = CartInterceptor.toThreadLocal.get();
+        UserInfoTo userInfoTo = CartInterceptor.threadLocal.get();
         String cartKey = "";
         if (userInfoTo.getUserId() != null) {
             // cloudmall:cart:1
@@ -228,29 +228,34 @@ public class CartServiceImpl implements CartService {
         cartOps.delete(skuId.toString());
     }
 
+    /**
+     * 查詢當前用戶的購物車商品項
+     * @return
+     */
     @Override
     public List<CartItemVo> getUserCartItems() {
         List<CartItemVo> cartItemVoList = new ArrayList<>();
         // 查詢當前用戶登入的資料
-        UserInfoTo userInfoTo = CartInterceptor.toThreadLocal.get();
-        // 如果用戶未登入直接返回null
+        UserInfoTo userInfoTo = CartInterceptor.threadLocal.get();
+        // 如果用戶未登入直接返回 null
         if (userInfoTo.getUserId() == null) {
             return null;
         } else {
-            //查詢購物車項
+            // 查詢購物車項
             String cartKey = CartConstant.CART_PREFIX + userInfoTo.getUserId();
-            //查詢所有的
+            // 查詢所有的
             List<CartItemVo> cartItems = getCartItems(cartKey);
             if (cartItems == null) {
                 throw new CartExceptionHandler();
             }
-            // 篩選出選中的
+            // 篩選出勾選中的
             cartItemVoList = cartItems.stream()
                 .filter(items -> items.getCheck())
                 .map(item -> {
-                    //更新為最新的價格（查詢資料庫）
-                    BigDecimal price = productFeignService.getPrice(item.getSkuId());
-                    item.setPrice(price);
+                    // 更新為最新的價格（查詢資料庫）
+                    R price = productFeignService.getPrice(item.getSkuId());
+                    String data = (String) price.get("data");
+                    item.setPrice(new BigDecimal(data));
                     return item;
                 }).collect(Collectors.toList());
         }

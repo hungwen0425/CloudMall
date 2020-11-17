@@ -18,116 +18,120 @@ import lombok.Data;
 @Data
 @TableName("oms_order_return_apply")
 public class OrderReturnApplyEntity implements Serializable {
-	private static final long serialVersionUID = 1L;
 
+	private static final long serialVersionUID = 1L;
 	/**
-	 * $column.comments
+	 * id
 	 */
 	@TableId
 	private Long id;
 	/**
-	 * $column.comments
+	 * order_id
 	 */
 	private Long orderId;
 	/**
-	 * $column.comments
+	 * 退貨商品id
 	 */
-	private Long companyAddressId;
+	private Long skuId;
 	/**
-	 * $column.comments
-	 */
-	private Long productId;
-	/**
-	 * $column.comments
+	 * 訂單編號
 	 */
 	private String orderSn;
 	/**
-	 * $column.comments
+	 * 申請時間
 	 */
 	private Date createTime;
 	/**
-	 * $column.comments
+	 * 會員用戶名
 	 */
 	private String memberUsername;
 	/**
-	 * $column.comments
+	 * 退款金額
 	 */
 	private BigDecimal returnAmount;
 	/**
-	 * $column.comments
+	 * 退貨人姓名
 	 */
 	private String returnName;
 	/**
-	 * $column.comments
+	 * 退貨人電話
 	 */
 	private String returnPhone;
 	/**
-	 * $column.comments
+	 * 申請狀態[0->待處理；1->退貨中；2->已完成；3->已拒絕]
 	 */
 	private Integer status;
 	/**
-	 * $column.comments
+	 * 處理時間
 	 */
 	private Date handleTime;
 	/**
-	 * $column.comments
+	 * 商品圖片
 	 */
-	private String productPic;
+	private String skuImg;
 	/**
-	 * $column.comments
+	 * 商品名稱
 	 */
-	private String productName;
+	private String skuName;
 	/**
-	 * $column.comments
+	 * 商品品牌
 	 */
-	private String productBrand;
+	private String skuBrand;
 	/**
-	 * $column.comments
+	 * 商品銷售屬性(JSON)
 	 */
-	private String productAttr;
+	private String skuAttrsVals;
 	/**
-	 * $column.comments
+	 * 退貨數量
 	 */
-	private Integer productCount;
+	private Integer skuCount;
 	/**
-	 * $column.comments
+	 * 商品單價
 	 */
-	private BigDecimal productPrice;
+	private BigDecimal skuPrice;
 	/**
-	 * $column.comments
+	 * 商品實際支付單價
 	 */
-	private BigDecimal productRealPrice;
+	private BigDecimal skuRealPrice;
 	/**
-	 * $column.comments
+	 * 原因
 	 */
 	private String reason;
 	/**
-	 * $column.comments
+	 * 描述
 	 */
-	private String description;
+	private String description述;
 	/**
-	 * $column.comments
+	 * 憑證圖片，以逗號隔開
 	 */
-	private String proofPics;
+	private String descPics;
 	/**
-	 * $column.comments
+	 * 處理備註
 	 */
 	private String handleNote;
 	/**
-	 * $column.comments
+	 * 處理人員
 	 */
 	private String handleMan;
 	/**
-	 * $column.comments
+	 * 收貨人
 	 */
 	private String receiveMan;
 	/**
-	 * $column.comments
+	 * 收貨時間
 	 */
 	private Date receiveTime;
 	/**
-	 * $column.comments
+	 * 收貨備註
 	 */
 	private String receiveNote;
+	/**
+	 * 收貨電話
+	 */
+	private String receivePhone;
+	/**
+	 * 公司收貨地址
+	 */
+	private String companyAddress;
 
 }

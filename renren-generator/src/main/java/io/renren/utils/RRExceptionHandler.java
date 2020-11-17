@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * 异常处理器
+ * 異常处理器
  * 
  * @author chenshun
  * @email sunlightcs@gmail.com
@@ -39,13 +39,13 @@ public class RRExceptionHandler implements HandlerExceptionResolver {
 				r = R.error();
 			}
 			
-			//记录异常日志
+			//记录異常日誌
 			logger.error(ex.getMessage(), ex);
 			
 			String json = JSON.toJSONString(r);
 			response.getWriter().print(json);
 		} catch (Exception e) {
-			logger.error("RRExceptionHandler 异常处理失败", e);
+			logger.error("RRExceptionHandler 異常处理失败", e);
 		}
 		return new ModelAndView();
 	}

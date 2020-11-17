@@ -23,7 +23,7 @@ import java.util.UUID;
  **/
 public class CartInterceptor implements HandlerInterceptor {
 
-    public static ThreadLocal<UserInfoTo> toThreadLocal = new ThreadLocal<>();
+    public static ThreadLocal<UserInfoTo> threadLocal = new ThreadLocal<>();
 
     /***
      * 目標方法執行之前
@@ -61,7 +61,7 @@ public class CartInterceptor implements HandlerInterceptor {
             userInfoTo.setUserKey(uuid);
         }
         // 目標方法執行之前
-        toThreadLocal.set(userInfoTo);
+        threadLocal.set(userInfoTo);
         return true;
     }
 
@@ -76,7 +76,7 @@ public class CartInterceptor implements HandlerInterceptor {
     @Override
     public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) throws Exception {
         // 查詢當前用戶的值
-        UserInfoTo userInfoTo = toThreadLocal.get();
+        UserInfoTo userInfoTo = threadLocal.get();
         // 如果沒有臨時用戶一定保存一個臨時用戶
         if (!userInfoTo.getTempUser()) {
             // 創建一個 cookie

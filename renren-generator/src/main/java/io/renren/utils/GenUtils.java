@@ -120,7 +120,7 @@ public class GenUtils {
             tableEntity.setPk(tableEntity.getColumns().get(0));
         }
 
-        //设置velocity资源加载器
+        //設置velocity资源加载器
         Properties prop = new Properties();
         prop.put("file.resource.loader.class", "org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader");
         Velocity.init(prop);
@@ -145,7 +145,7 @@ public class GenUtils {
         map.put("datetime", DateUtils.format(new Date(), DateUtils.DATE_TIME_PATTERN));
         VelocityContext context = new VelocityContext(map);
 
-        //获取模板列表
+        //獲取模板列表
         List<String> templates = getTemplates();
         for (String template : templates) {
             //渲染模板
@@ -218,7 +218,7 @@ public class GenUtils {
         }
         tableEntity.setColumns(columsList);
 
-        //设置velocity资源加载器
+        //設置velocity资源加载器
         Properties prop = new Properties();
         prop.put("file.resource.loader.class", "org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader");
         Velocity.init(prop);
@@ -242,7 +242,7 @@ public class GenUtils {
         map.put("datetime", DateUtils.format(new Date(), DateUtils.DATE_TIME_PATTERN));
         VelocityContext context = new VelocityContext(map);
 
-        //获取模板列表
+        //獲取模板列表
         List<String> templates = getMongoChildTemplates();
         for (String template : templates) {
             //渲染模板
@@ -282,18 +282,18 @@ public class GenUtils {
     }
 
     /**
-     * 获取設定資料
+     * 獲取設定資料
      */
     public static Configuration getConfig() {
         try {
             return new PropertiesConfiguration("generator.properties");
         } catch (ConfigurationException e) {
-            throw new RRException("获取設定文件失败，", e);
+            throw new RRException("獲取設定文件失败，", e);
         }
     }
 
     /**
-     * 获取文件名
+     * 獲取文件名
      */
     public static String getFileName(String template, String className, String packageName, String moduleName) {
         String packagePath = "main" + File.separator + "java" + File.separator;

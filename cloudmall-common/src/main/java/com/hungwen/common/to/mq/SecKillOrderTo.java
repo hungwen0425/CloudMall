@@ -5,9 +5,9 @@ import lombok.Data;
 import java.math.BigDecimal;
 
 /**
- * @Description TODO
+ * @Description
  * @Author Hunngwen Tseng
- * @Date 2020/6/16 18:15
+ * @Date 2020/11/11 18:15
  * @Version 1.0
  **/
 @Data

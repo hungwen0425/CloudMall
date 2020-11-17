@@ -14,7 +14,7 @@
 	/**
 	 * 添加路由,如果路由已经存在则会覆盖
 	 * @param addr: 地址
-	 * @param callback: 回调函數，调用回调函數的時候同時也会传入相应参數
+	 * @param callback: 回調函數，調用回調函數的時候同時也会传入相应参數
 	 */
 	Router.prototype.add = function(addr, callback) {
 		var self = this;
@@ -33,7 +33,7 @@
 	};
 
 	/**
-	 * 设置主頁地址
+	 * 設置主頁地址
 	 * @param index: 主頁地址
 	 */
 	Router.prototype.setIndex = function(index) {
@@ -74,7 +74,7 @@
 	};
 
 	/**
-	 * 開始路由，實际上只是為了当直接访问路由路由地址的時候能够及時调用回调
+	 * 開始路由，實际上只是為了當直接访问路由路由地址的時候能够及時調用回調
 	 */
 	Router.prototype.start = function() {
 		var self = this;
@@ -83,7 +83,7 @@
 	}
 
 	/**
-	 * 获取callback
+	 * 獲取callback
 	 * @return false or callback
 	 */
 	function getCb(addr, hashList) {

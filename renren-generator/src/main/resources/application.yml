@@ -37,7 +37,7 @@ spring:
 #mongodb:
 #  host: localhost
 #  port: 27017
-#  auth: false #是否使用密碼验証
+#  auth: false #是否使用密碼驗証
 #  username: tincery
 #  password: renren
 #  source: 123456

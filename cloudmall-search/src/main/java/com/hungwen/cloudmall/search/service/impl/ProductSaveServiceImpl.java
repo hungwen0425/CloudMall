@@ -48,7 +48,7 @@ public class ProductSaveServiceImpl implements ProductSaveService {
         }
 
         BulkResponse bulk = esRestClient.bulk(bulkRequest, CloudmallElasticSearchConfig.COMMON_OPTIONS);
-        //TODO 如果批量錯誤
+        // 如果批量錯誤
         boolean hasFailures = bulk.hasFailures();
         List<String> collect = Arrays.asList(bulk.getItems()).stream().map(item -> {
             return item.getId();

@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 //public interface SeckillFeignService {
 //
 //    /**
-//     * 根据skuId查询商品是否参加秒杀活动
+//     * 根據skuId查詢商品是否参加秒殺活動
 //     * @param skuId
 //     * @return
 //     */

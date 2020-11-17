@@ -16,7 +16,7 @@ import java.util.Map;
 public class MongoTableInfoAdaptor {
 
     /**
-     * 查询表資料的時候 mongo只能获得表名 其他只能手动填写
+     * 查詢表資料的時候 mongo只能獲得表名 其他只能手動填写
      *
      * @param names 表名
      */
@@ -31,15 +31,15 @@ public class MongoTableInfoAdaptor {
     public static Map<String, String> tableInfo(String name) {
         Map<String, String> tableInfo = new HashMap<>(4 * 4 / 3 + 1);
         tableInfo.put("engine", "mongo无引擎");
-        tableInfo.put("createTime", "mongo无法查询创建時間");
+        tableInfo.put("createTime", "mongo无法查詢创建時間");
         tableInfo.put("tableComment", "mongo无备注");
         tableInfo.put("tableName", name);
         return tableInfo;
     }
 
     /**
-     * 在查询列名的時候 需要将解析出的mongo資料适配成關系型資料庫所需要的資料形式
-     * 此方法只针对主Bean
+     * 在查詢列名的時候 需要将解析出的mongo資料适配成關系型資料庫所需要的資料形式
+     * 此方法只针對主Bean
      */
     public static List<Map<String, String>> columnInfo(MongoDefinition mongoDefinition) {
         List<MongoDefinition> child = mongoDefinition.getChild();

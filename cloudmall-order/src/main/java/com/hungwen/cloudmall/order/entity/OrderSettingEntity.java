@@ -17,32 +17,36 @@ import lombok.Data;
 @Data
 @TableName("oms_order_setting")
 public class OrderSettingEntity implements Serializable {
-	private static final long serialVersionUID = 1L;
 
+	private static final long serialVersionUID = 1L;
 	/**
-	 * $column.comments
+	 * id
 	 */
 	@TableId
 	private Long id;
 	/**
-	 * $column.comments
+	 * 秒殺訂單超時關閉時間(分)
 	 */
 	private Integer flashOrderOvertime;
 	/**
-	 * $column.comments
+	 * 正常訂單超時時間(分)
 	 */
 	private Integer normalOrderOvertime;
 	/**
-	 * $column.comments
+	 * 發貨後自動確認收貨時間（天）
 	 */
 	private Integer confirmOvertime;
 	/**
-	 * $column.comments
+	 * 自動完成交易時間，不能申請退貨（天）
 	 */
 	private Integer finishOvertime;
 	/**
-	 * $column.comments
+	 * 訂單完成後自動好評時間（天）
 	 */
 	private Integer commentOvertime;
+	/**
+	 * 會員等級【0-不限會員等級，全部通用；其他-對應的其他會員等級】
+	 */
+	private Integer memberLevel;
 
 }

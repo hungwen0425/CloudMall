@@ -3,9 +3,9 @@ package com.hungwen.common.to.mq;
 import lombok.Data;
 
 /**
- * @Description TODO
+ * @Description
  * @Author Hungwen Tseng
- * @Date 2020/5/6 20:09
+ * @Date 2020/11/16 20:09
  * @Version 1.0
  **/
 @Data

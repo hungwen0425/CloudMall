@@ -13,11 +13,12 @@
             <header>
                 <div class="min">
                     <ul class="header_ul_right">
-                        <li style="border: 0;" th:if="${session. loginUser == null}">
-                            <a href="http://auth.cloudmall.com/login.html" class="aa" >你好，請登入</a>
+                        <li style="width: 100px;">
+                            <a th:if="${session.loginUser != null}">歡迎, [[${session.loginUser.nickname}]]</a>
+                            <a th:if="${session.loginUser == null}" href="http://auth.cloudmall.com/login.html">你好，請登入</a>
                         </li>
-                        <li style="border: 0;" th:if="${session.loginUser != null}">
-                            [[${session.loginUser.nickname == null ? '歡迎' : session.loginUser.nickname}]]
+                        <li>
+                            <a th:if="${session.loginUser != null}" href="http://auth.cloudmall.com/loguot.html" class="li_2">立即退出</a>
                         </li>
                         <li th:if="${session.loginUser == null}">
                             <a href="http://auth.cloudmall.com/reg.html" style="color: red;">免費註冊</a> |
@@ -122,7 +123,7 @@
                             <ul>
                                 <li>驚喜價</li>
                                 <li>
-                                    NT <span th:text="${#numbers.formatDecimal(item.info.price, 3, 0)}">4499.00</span>
+                                    NT <span th:text="${#numbers.formatDecimal(item.info.price, 3, 0)}">4499</span>
                                 </li>
                                 <li style="color: red" th:if="${item.secKillInfoVo != null}">
                                     <span th:if="${#dates.createNow().getTime() < item.secKillInfoVo.startTime}">
@@ -130,7 +131,7 @@
                                     </span>
 
                                     <span th:if="${#dates.createNow().getTime() >= item.secKillInfoVo.startTime && #dates.createNow().getTime() <= item.secKillInfoVo.endTime}">
-                                        秒殺價格：[[${#numbers.formatDecimal(item.secKillInfoVo.seckillPrice,1,2)}]]
+                                        秒殺價格：[[${#numbers.formatDecimal(item.secKillInfoVo.seckillPrice, 1, 0)}]]
                                     </span>
                                 </li>
                                 <li>
@@ -259,20 +260,20 @@
                         <div class="box-btns clear">
                             <div class="box-btns-one">
                                 <form id="itemForm" action="http://cart.cloudmall.com/addToCart" method="post">
-                                    <input type="text" name="num" id="numInput" value="1"/>
+                                    <input type="hidden" name="num" id="numInput" value="1"/>
                                     <input type="hidden" name="skuId"/>
-                                    <div class="box-btns-one1">
-                                        <div>
-                                            <button type="button" id="jia">
-                                                +
-                                            </button>
-                                        </div>
-                                        <div>
-                                            <button type="button" id="jian">
-                                                -
-                                            </button>
-                                        </div>
-                                    </div>
+<!--                                    <div class="box-btns-one1">-->
+<!--                                        <div>-->
+<!--                                            <button type="button" id="jia">-->
+<!--                                                +-->
+<!--                                            </button>-->
+<!--                                        </div>-->
+<!--                                        <div>-->
+<!--                                            <button type="button" id="jian">-->
+<!--                                                - -->
+<!--                                            </button>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
                                 </form>
                             </div>
 
@@ -306,28 +307,28 @@
                                 <p>
                                     <a href="##">OPPO R11s Plus 雙卡雙待全面屏拍照手機香檳色 全網通(6G RAM+64G ROM)標配</a>
                                 </p>
-                                <p><strong class="J-p-20015341974">NT 3699.00</strong></p>
+                                <p><strong class="J-p-20015341974">NT 3699</strong></p>
                             </li>
                             <li>
                                 <a href="##"><img src="/static/item/img/5a12873eN41754123.jpg"/></a>
                                 <p>
                                     <a target="_blank" title="詹姆士（GEMRY） R19plus全網通4G 智能手機 雙卡雙待 6+128GB 鱷魚紋雅緻版（新品預約）" href="/item.html.bak/item.jd.com/20348283521.html">詹姆士（GEMRY） R19plus全網通4G 智能手機 雙卡雙待 6+128GB 鱷魚紋雅緻版（新品預約）</a>
                                 </p>
-                                <p><strong class="J-p-20348283521">NT 13999.00</strong></p>
+                                <p><strong class="J-p-20348283521">NT 13999</strong></p>
                             </li>
                             <li>
                                 <a href="##"><img src="/static/item/img/59ec0131Nf239df75.jpg"/></a>
                                 <p>
                                     <a target="_blank" title="斐納（TOMEFON） 德國家用無線無繩手持立式充電吸塵器 靜音大吸力吸塵器TF-X60" href="/item.html.bak/item.jd.com/16683419775.html">斐納（TOMEFON） 德國家用無線無繩手持立式充電吸塵器 靜音大吸力吸塵器TF-X60</a>
                                 </p>
-                                <p><strong class="J-p-16683419775">NT 1599.00</strong></p>
+                                <p><strong class="J-p-16683419775">NT 1599</strong></p>
                             </li>
                             <li>
                                 <a href="##"><img src="/static/item/img/59015444N27317512.jpg"/></a>
                                 <p>
                                     <a target="_blank" title="斐納（TOMEFON） 掃地機器人德國智能導航規劃全自動超薄掃地機器人吸塵器TF-D60 香檳金" href="/item.html.bak/item.jd.com/12187770381.html">斐納（TOMEFON） 掃地機器人德國智能導航規劃全自動超薄掃地機器人吸塵器TF-D60 香檳金</a>
                                 </p>
-                                <p><strong class="J-p-12187770381">NT 2599.00</strong></p>
+                                <p><strong class="J-p-12187770381">NT 2599</strong></p>
                             </li>
                         </ul>
                     </div>
@@ -341,14 +342,14 @@
                                 <a href="##"><img src="/static/item/img/59e55e01N369f98f2.jpg"/></a>
                                 <p>
                                     <a target="_blank" title="華為（HUAWEI） 華為 Mate10 4G手機  雙卡雙待 亮黑色 全網通(6GB RAM+128GB ROM)" href="/item.html.bak/item.jd.com/17931625443.html">華為（HUAWEI） 華為 Mate10 4G手機 雙卡雙待 亮黑色 全網通(6GB RAM+128GB ROM)</a>
-                                <p><strong class="J-p-17931625443">NT 4766.00</strong></p>
+                                <p><strong class="J-p-17931625443">NT 4766</strong></p>
                             </li>
                             <li>
                                 <a href="##"><img src="/static/item/img/584fcc3eNdb0ab94c.jpg"/></a>
                                 <p>
                                     <a target="_blank" title="華為 Mate 9 Pro 6GB+128GB版 琥珀金 移動聯通電信4G手機 雙卡雙待" href="/item.html.bak/item.jd.com/3749093.html">華為 Mate 9 Pro 6GB+128GB版 琥珀金 移動聯通電信4G手機 雙卡雙待</a>
                                 </p>
-                                <p><strong class="J-p-3749093">NT 4899.00</strong></p>
+                                <p><strong class="J-p-3749093">NT 4899</strong></p>
                             </li>
                             <li>
                                 <!--shopjieshao-->
@@ -356,14 +357,14 @@
                                 <p>
                                     <a target="_blank" title="華為（HUAWEI） 華為 Mate10 手機 亮黑色 全網通(4+64G)標準版" href="/item.html.bak/item.jd.com/12306211773.html">華為（HUAWEI） 華為 Mate10 手機 亮黑色 全網通(4+64G)標準版</a>
                                 </p>
-                                <p><strong class="J-p-12306211773">NT 4088.00</strong></p>
+                                <p><strong class="J-p-12306211773">NT 4088</strong></p>
                             </li>
                             <li>
                                 <a href="##"><img src="/static/item/img/5a002ba3N126c2f73.jpg"/></a>
                                 <p>
                                     <a target="_blank" title="斐納（TOMEFON） 掃地機器人德國智能導航規劃全自動超薄掃地機器人吸塵器TF-D60 香檳金" href="/item.html.bak/item.jd.com/12187770381.html">斐納（TOMEFON） 掃地機器人德國智能導航規劃全自動超薄掃地機器人吸塵器TF-D60 香檳金</a>
                                 </p>
-                                <p><strong class="J-p-12187770381">NT 2599.00</strong></p>
+                                <p><strong class="J-p-12187770381">NT 2599</strong></p>
                             </li>
                         </ul>
                         <img src="/static/item/img/5a084a1aNa1aa0a71.jpg"/>

@@ -5,7 +5,7 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 /**
- * 查询参數
+ * 查詢参數
  *
  * @author chenshun
  * @email sunlightcs@gmail.com
@@ -13,7 +13,7 @@ import java.util.Map;
  */
 public class Query extends LinkedHashMap<String, Object> {
 	private static final long serialVersionUID = 1L;
-	//当前頁碼
+	//當前頁碼
     private int page;
     //每頁条數
     private int limit;

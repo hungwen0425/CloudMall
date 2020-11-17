@@ -92,17 +92,17 @@ public class MemberResponseVo implements Serializable {
     private Date createTime;
 
     /**
-     * 社交登錄UID
+     * 社交登入UID
      */
     private String socialUid;
 
     /**
-     * 社交登錄TOKEN
+     * 社交登入TOKEN
      */
     private String accessToken;
 
     /**
-     * 社交登錄過期時間
+     * 社交登入過期時間
      */
     private long expiresIn;
 

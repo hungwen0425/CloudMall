@@ -41,5 +41,5 @@ public interface ProductFeignService {
      * @return
      */
     @GetMapping(value = "/product/skuinfo/{skuId}/price")
-    BigDecimal getPrice(@PathVariable("skuId") Long skuId);
+    R getPrice(@PathVariable("skuId") Long skuId);
 }

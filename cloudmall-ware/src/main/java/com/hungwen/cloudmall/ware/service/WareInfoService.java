@@ -1,6 +1,7 @@
 package com.hungwen.cloudmall.ware.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.hungwen.cloudmall.ware.vo.FareVo;
 import com.hungwen.common.utils.PageUtils;
 import com.hungwen.cloudmall.ware.entity.WareInfoEntity;
 
@@ -16,5 +17,8 @@ import java.util.Map;
 public interface WareInfoService extends IService<WareInfoEntity> {
 
     PageUtils queryPage(Map<String, Object> params);
+
+    FareVo getFare(Long addrId);
+
 }
 

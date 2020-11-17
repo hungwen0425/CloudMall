@@ -28,6 +28,17 @@ public class SpuInfoController {
     @Autowired
     private SpuInfoService spuInfoService;
 
+    /**
+     * 根據 skuId 查詢 spu 的 資料
+     * @param skuId
+     * @return
+     */
+    @GetMapping(value = "/skuId/{skuId}")
+    public R getSpuInfoBySkuId(@PathVariable("skuId") Long skuId) {
+        SpuInfoEntity spuInfoEntity = spuInfoService.getSpuInfoBySkuId(skuId);
+        return R.ok().setData(spuInfoEntity);
+    }
+
     // 商品上架
     @PostMapping(value = "/{spuId}/up")
     public R spuUp(@PathVariable("spuId") Long spuId) {

@@ -6,6 +6,7 @@ import com.baomidou.mybatisplus.annotation.TableName;
 import java.io.Serializable;
 import java.util.Date;
 import lombok.Data;
+import lombok.ToString;
 
 /**
  * 退貨原因主檔
@@ -14,31 +15,31 @@ import lombok.Data;
  * @email hungwen.tseng@gmail.com
  * @date 2020-08-25 14:57:51
  */
+@ToString
 @Data
 @TableName("oms_order_return_reason")
 public class OrderReturnReasonEntity implements Serializable {
-	private static final long serialVersionUID = 1L;
 
+	private static final long serialVersionUID = 1L;
 	/**
-	 * $column.comments
+	 * id
 	 */
 	@TableId
 	private Long id;
 	/**
-	 * $column.comments
+	 * 退貨原因名
 	 */
 	private String name;
 	/**
-	 * $column.comments
+	 * 排序
 	 */
 	private Integer sort;
 	/**
-	 * $column.comments
+	 * 啟用狀態
 	 */
 	private Integer status;
 	/**
-	 * $column.comments
+	 * create_time
 	 */
 	private Date createTime;
-
 }

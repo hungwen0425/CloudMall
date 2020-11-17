@@ -18,36 +18,35 @@ import lombok.Data;
 @Data
 @TableName("oms_refund_info")
 public class RefundInfoEntity implements Serializable {
-	private static final long serialVersionUID = 1L;
 
+	private static final long serialVersionUID = 1L;
 	/**
-	 * $column.comments
+	 * id
 	 */
 	@TableId
 	private Long id;
 	/**
-	 * $column.comments
+	 * 退款的訂單
 	 */
 	private Long orderReturnId;
 	/**
-	 * $column.comments
+	 * 退款金額
 	 */
 	private BigDecimal refund;
 	/**
-	 * $column.comments
+	 * 退款交易流水號
 	 */
 	private String refundSn;
 	/**
-	 * $column.comments
+	 * 退款狀態
 	 */
 	private Integer refundStatus;
 	/**
-	 * $column.comments
+	 * 退款渠道[1-支付寶，2-微信，3-銀聯，4-匯款]
 	 */
 	private Integer refundChannel;
 	/**
-	 * $column.comments
+	 *
 	 */
 	private String refundContent;
-
 }

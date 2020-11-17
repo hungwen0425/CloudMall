@@ -39,22 +39,22 @@ public class MongoDBCollectionFactory {
     }
 
     /***
-     * 通過表名获得查询对象
+     * 通過表名獲得查詢物件
      * @author gxz
      * @date  2020/5/9
      * @param collectionName mongo的集合名(表名)
-     * @return 連接查询对象
+     * @return 連接查詢物件
      **/
     public MongoCollection<Document> getCollection(String collectionName) {
         return mongoDatabase.getCollection(collectionName);
     }
 
     /***
-     * 获得当前資料庫的集合名称
-     * 注: mongo相对關系型資料庫较為特殊，查询表名无法分頁，用stream實现
+     * 獲得當前資料庫的集合名称
+     * 注: mongo相對關系型資料庫较為特殊，查詢表名无法分頁，用stream實现
      * @author gxz
      * @date  2020/5/9
-     * @param map 这是查询条件 和關系型資料庫一致
+     * @param map 這是查詢条件 和關系型資料庫一致
      * @return 集合名称
      **/
     public static List<String>  getCollectionNames(Map<String, Object> map) {
@@ -69,10 +69,10 @@ public class MongoDBCollectionFactory {
         return names.stream().skip(skip).limit(limit).collect(Collectors.toList());
     }
     /***
-     * 获得集合名称总數(表的數量) 為了适配MyBatisPlus的分頁插件 提供方法
+     * 獲得集合名称总數(表的數量) 為了适配MyBatisPlus的分頁插件 提供方法
      * @author gxz
      * @date  2020/5/9
-     * @param map 这是查询条件 和關系型資料庫一致
+     * @param map 這是查詢条件 和關系型資料庫一致
      * @return int
      **/
     public static int getCollectionTotal(Map<String, Object> map) {

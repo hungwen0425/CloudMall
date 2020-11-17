@@ -8,8 +8,8 @@ import java.util.*;
 
 
 /**
- * 解析表之后得到的資料實體
- * 换句话说这個類就是一张mongo一张表的内容
+ * 解析表之後得到的資料實體
+ * 换句話說這個類就是一張mongo一張表的内容
  *
  * @author gxz 514190950@qq.com
  */
@@ -17,11 +17,11 @@ import java.util.*;
 public class MongoDefinition implements Serializable {
     /***属性名**/
     private String propertyName;
-    /***属性類型 对应mongodb api $type   如果没有類型 表示这是一個顶层實體  而不是内嵌属性**/
+    /***属性類型 對应mongodb api $type   如果没有類型 表示這是一個顶层實體  而不是内嵌属性**/
     private Integer type;
     /***此属性是否是數组**/
     private boolean array = false;
-    /***如果此属性是对象  那么他仍然有此類型的子類**/
+    /***如果此属性是物件  那么他仍然有此類型的子類**/
     private List<MongoDefinition> child;
 
 

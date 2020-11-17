@@ -61,9 +61,9 @@ public class SysGeneratorService {
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
         ZipOutputStream zip = new ZipOutputStream(outputStream);
         for (String tableName : tableNames) {
-            //查询表資料
+            //查詢表資料
             Map<String, String> table = queryTable(tableName);
-            //查询列資料
+            //查詢列資料
             List<Map<String, String>> columns = queryColumns(tableName);
             //生成代碼
             GenUtils.generatorCode(table, columns, zip);

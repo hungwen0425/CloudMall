@@ -17,32 +17,31 @@ import lombok.Data;
 @Data
 @TableName("oms_order_operate_history")
 public class OrderOperateHistoryEntity implements Serializable {
-	private static final long serialVersionUID = 1L;
 
+	private static final long serialVersionUID = 1L;
 	/**
-	 * $column.comments
+	 * id
 	 */
 	@TableId
 	private Long id;
 	/**
-	 * $column.comments
+	 * 訂單id
 	 */
 	private Long orderId;
 	/**
-	 * $column.comments
+	 * 操作人[用戶；系統；後台管理員]
 	 */
 	private String operateMan;
 	/**
-	 * $column.comments
+	 * 操作時間
 	 */
 	private Date createTime;
 	/**
-	 * $column.comments
+	 * 訂單狀態【0->待付款；1->待發貨；2->已發貨；3->已完成；4->已關閉；5->無效訂單】
 	 */
 	private Integer orderStatus;
 	/**
-	 * $column.comments
+	 * 備註
 	 */
 	private String note;
-
 }

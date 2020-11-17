@@ -18,7 +18,7 @@ public class PageUtils implements Serializable {
 	private int pageSize;
 	//总頁數
 	private int totalPage;
-	//当前頁數
+	//當前頁數
 	private int currPage;
 	//列表資料
 	private List<?> list;
@@ -28,7 +28,7 @@ public class PageUtils implements Serializable {
 	 * @param list        列表資料
 	 * @param totalCount  总记录數
 	 * @param pageSize    每頁记录數
-	 * @param currPage    当前頁數
+	 * @param currPage    當前頁數
 	 */
 	public PageUtils(List<?> list, int totalCount, int pageSize, int currPage) {
 		this.list = list;

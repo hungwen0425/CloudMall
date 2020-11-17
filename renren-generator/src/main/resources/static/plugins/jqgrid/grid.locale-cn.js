@@ -71,14 +71,14 @@ $.jgrid.regional["cn"] = {
             number:"請输入有效數字",
             minValue:"输值必需大於等於 ",
             maxValue:"输值必需小于等於 ",
-            email: "这不是有效的e-mail地址",
+            email: "這不是有效的e-mail地址",
             integer: "請输入有效整數",
             date: "請输入有效時間",
             url: "无效网址。前缀必需為 ('http://' 或 'https://')",
-            nodefined : " 未定义！",
+            nodefined : " 未定義！",
             novalue : " 需要返回值！",
-            customarray : "自定义函數需要返回數组！",
-            customfcheck : "必需有自定义函數!"
+            customarray : "自定義函數需要返回數组！",
+            customfcheck : "必需有自定義函數!"
         }
     },
     view : {
@@ -118,15 +118,15 @@ $.jgrid.regional["cn"] = {
         bCancel: "取消"
     },
     errors : {
-        errcap : "错误",
-        nourl : "没有设置url",
+        errcap : "錯誤",
+        nourl : "没有設置url",
         norecords: "没有要处理的记录",
         model : "colNames 和 colModel 長度不等！"
     },
     formatter : {
         integer : {thousandsSeparator: ",", defaultValue: '0'},
-        number : {decimalSeparator:".", thousandsSeparator: ",", decimalPlaces: 2, defaultValue: '0.00'},
-        currency : {decimalSeparator:".", thousandsSeparator: ",", decimalPlaces: 2, prefix: "", suffix:"", defaultValue: '0.00'},
+        number : {decimalSeparator:".", thousandsSeparator: ",", decimalPlaces: 2, defaultValue: '0'},
+        currency : {decimalSeparator:".", thousandsSeparator: ",", decimalPlaces: 2, prefix: "", suffix:"", defaultValue: '0'},
         date : {
             dayNames:   [
                 "日", "一", "二", "三", "四", "五", "六",

@@ -15,6 +15,7 @@ package com.hungwen.common.exception;
  *  13: 購物車
  *  14: 物流
  *  15: 使用者
+ *  21: 庫存
  */
 public enum BizCodeEnum {
 

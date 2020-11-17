@@ -5,6 +5,9 @@ import java.util.List;
 import java.util.Map;
 
 import com.hungwen.cloudmall.ware.vo.SkuHasStockVo;
+import com.hungwen.cloudmall.ware.vo.WareSkuLockVo;
+import com.hungwen.common.exception.BizCodeEnum;
+import com.hungwen.common.exception.NoStockException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -28,6 +31,25 @@ public class WareSkuController {
 
     @Autowired
     private WareSkuService wareSkuService;
+
+    /**
+     * 鎖定庫存
+     * @param vo
+     * 庫存解鎖的場景
+     *      1）、下訂單成功，訂單過期沒有支付被系統自動取消或者被用戶手動取消，都要解鎖庫存
+     *      2）、下訂單成功，庫存鎖定成功，接下來的業務調用失敗，導致訂單回滾。之前鎖定的庫存就要自動解鎖
+     *      3）、
+     * @return
+     */
+    @PostMapping(value = "/lock/order")
+    public R orderLockStock(@RequestBody WareSkuLockVo vo) {
+        try {
+            boolean lockStock = wareSkuService.orderLockStock(vo);
+            return R.ok().setData(lockStock);
+        } catch (NoStockException e) {
+            return R.error(BizCodeEnum.NO_STOCK_EXCEPTION.getCode(), BizCodeEnum.NO_STOCK_EXCEPTION.getMessage());
+        }
+    }
 
     /**
      * 查詢 sku 是否有庫存

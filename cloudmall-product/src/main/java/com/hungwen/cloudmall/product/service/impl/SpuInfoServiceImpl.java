@@ -14,6 +14,7 @@ import com.hungwen.common.to.SkuReductionTo;
 import com.hungwen.common.to.SpuBoundTo;
 import com.hungwen.common.to.es.SkuEsModel;
 import com.hungwen.common.utils.R;
+import io.seata.spring.annotation.GlobalTransactional;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -76,10 +77,10 @@ public class SpuInfoServiceImpl extends ServiceImpl<SpuInfoDao, SpuInfoEntity> i
     }
 
     /**
-     * //TODO 高級部分完善
+     * @GlobalTransactional
+     * 高級部分完善
      * @param vo
      */
-    //@GlobalTransactional
     @Transactional(rollbackFor = RuntimeException.class)
     @Override
     public void saveSpuInfo(SpuSaveVo vo) {
@@ -306,5 +307,25 @@ public class SpuInfoServiceImpl extends ServiceImpl<SpuInfoDao, SpuInfoEntity> i
             //遠程調用失敗
             //TODO 重覆調用？接口冪等性:重試機制
         }
+    }
+
+    /**
+     * 根據 skuId 查詢 spu 的 資料
+     * @param skuId
+     * @return
+     */
+    @Override
+    public SpuInfoEntity getSpuInfoBySkuId(Long skuId) {
+        // 先查詢 sku 表裡的資料
+        SkuInfoEntity skuInfoEntity = skuInfoService.getById(skuId);
+        // 獲得 spuId
+        Long spuId = skuInfoEntity.getSpuId();
+        // 再通過 spuId 查詢 spuInfo  資料表裡的資料
+        SpuInfoEntity spuInfoEntity = this.baseMapper.selectById(spuId);
+        // 查詢品牌表的資料獲取品牌名
+        BrandEntity brandEntity = brandService.getById(spuInfoEntity.getBrandId());
+        spuInfoEntity.setBrandName(brandEntity.getName());
+
+        return spuInfoEntity;
     }
 }

@@ -1,7 +1,7 @@
 package io.renren.utils;
 
 /**
- * 自定义异常
+ * 自定義異常
  * 
  * @author chenshun
  * @email sunlightcs@gmail.com

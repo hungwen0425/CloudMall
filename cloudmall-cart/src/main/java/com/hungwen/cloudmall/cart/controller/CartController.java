@@ -28,10 +28,10 @@ public class CartController {
     private CartService cartService;
 
     /**
-     * 獲取當前用戶的購物車商品項
+     * 查詢當前用戶的購物車商品項
      * @return
      */
-    @GetMapping(value = "/currentUserCartItems")
+    @GetMapping(value = "/getCurrentCartItems")
     @ResponseBody
     public List<CartItemVo> getCurrentCartItems() {
         List<CartItemVo> cartItemVoList = cartService.getUserCartItems();

@@ -50,7 +50,7 @@ public class DbConfig {
         } else if ("postgresql".equalsIgnoreCase(database)) {
             return postgreSQLGeneratorDao;
         } else {
-            throw new RRException("不支持当前資料庫：" + database);
+            throw new RRException("不支持當前資料庫：" + database);
         }
     }
 

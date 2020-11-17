@@ -4,13 +4,15 @@ import lombok.Data;
 
 
 /**
- * @Description TODO
+ * @Description
  * @Author Hungwen Tseng
  * @Date 2020/6/16 18:17
  * @Version 1.0
  **/
 @Data
 public class StockLockedTo {
-    private Long id; // 庫存工作單 id
-    private StockDetailTo stockDetail; // 工作單詳情 id
+    // 庫存工作單 id
+    private Long id;
+    // 工作單詳情 id
+    private StockDetailTo stockDetail;
 }

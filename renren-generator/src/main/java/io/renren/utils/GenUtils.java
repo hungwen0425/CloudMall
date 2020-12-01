@@ -76,7 +76,7 @@ public class GenUtils {
         TableEntity tableEntity = new TableEntity();
         tableEntity.setTableName(table.get("tableName"));
         tableEntity.setComments(table.get("tableComment"));
-        //表名转换成Java類名
+        //表名轉换成Java類名
         String className = tableToJava(tableEntity.getTableName(), config.getStringArray("tablePrefix"));
         tableEntity.setClassName(className);
         tableEntity.setClassname(StringUtils.uncapitalize(className));
@@ -90,12 +90,12 @@ public class GenUtils {
             columnEntity.setComments(column.get("columnComment"));
             columnEntity.setExtra(column.get("extra"));
 
-            //列名转换成Java属性名
+            //列名轉换成Java屬性名
             String attrName = columnToJava(columnEntity.getColumnName());
             columnEntity.setAttrName(attrName);
             columnEntity.setAttrname(StringUtils.uncapitalize(attrName));
 
-            //列的資料類型，转换成Java類型
+            //列的資料類型，轉换成Java類型
             String attrType = config.getString(columnEntity.getDataType(), columnToJava(columnEntity.getDataType()));
             columnEntity.setAttrType(attrType);
 
@@ -115,12 +115,12 @@ public class GenUtils {
         }
         tableEntity.setColumns(columsList);
 
-        //没主键，则第一個字段為主键
+        //没主键，則第一個字段為主键
         if (tableEntity.getPk() == null) {
             tableEntity.setPk(tableEntity.getColumns().get(0));
         }
 
-        //設置velocity资源加载器
+        //設定velocity资源加载器
         Properties prop = new Properties();
         prop.put("file.resource.loader.class", "org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader");
         Velocity.init(prop);
@@ -145,7 +145,7 @@ public class GenUtils {
         map.put("datetime", DateUtils.format(new Date(), DateUtils.DATE_TIME_PATTERN));
         VelocityContext context = new VelocityContext(map);
 
-        //獲取模板列表
+        //查詢模板列表
         List<String> templates = getTemplates();
         for (String template : templates) {
             //渲染模板
@@ -160,7 +160,7 @@ public class GenUtils {
                 IOUtils.closeQuietly(sw);
                 zip.closeEntry();
             } catch (IOException e) {
-                throw new RRException("渲染模板失败，表名：" + tableEntity.getTableName(), e);
+                throw new RRException("渲染模板失敗，表名：" + tableEntity.getTableName(), e);
             }
         }
     }
@@ -186,7 +186,7 @@ public class GenUtils {
         boolean hasList = false;
         //表資料
         TableEntity tableEntity = mongoGeneratorEntity.toTableEntity();
-        //表名转换成Java類名
+        //表名轉换成Java類名
         String className = tableToJava(tableEntity.getTableName(), config.getStringArray("tablePrefix"));
         tableEntity.setClassName(className);
         tableEntity.setClassname(StringUtils.uncapitalize(className));
@@ -202,12 +202,12 @@ public class GenUtils {
             columnEntity.setDataType(column.get("dataType"));
             columnEntity.setExtra(column.get("extra"));
 
-            //列名转换成Java属性名
+            //列名轉换成Java屬性名
             String attrName = columnToJava(columnEntity.getColumnName());
             columnEntity.setAttrName(attrName);
             columnEntity.setAttrname(StringUtils.uncapitalize(attrName));
 
-            //列的資料類型，转换成Java類型
+            //列的資料類型，轉换成Java類型
             String attrType = config.getString(columnEntity.getDataType(), columnToJava(columnEntity.getDataType()));
             columnEntity.setAttrType(attrType);
 
@@ -218,7 +218,7 @@ public class GenUtils {
         }
         tableEntity.setColumns(columsList);
 
-        //設置velocity资源加载器
+        //設定velocity资源加载器
         Properties prop = new Properties();
         prop.put("file.resource.loader.class", "org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader");
         Velocity.init(prop);
@@ -242,7 +242,7 @@ public class GenUtils {
         map.put("datetime", DateUtils.format(new Date(), DateUtils.DATE_TIME_PATTERN));
         VelocityContext context = new VelocityContext(map);
 
-        //獲取模板列表
+        //查詢模板列表
         List<String> templates = getMongoChildTemplates();
         for (String template : templates) {
             //渲染模板
@@ -256,21 +256,21 @@ public class GenUtils {
                 IOUtils.closeQuietly(sw);
                 zip.closeEntry();
             } catch (IOException e) {
-                throw new RRException("渲染模板失败，表名：" + tableEntity.getTableName(), e);
+                throw new RRException("渲染模板失敗，表名：" + tableEntity.getTableName(), e);
             }
         }
 
     }
 
     /**
-     * 列名转换成Java属性名
+     * 列名轉换成Java屬性名
      */
     public static String columnToJava(String columnName) {
         return WordUtils.capitalizeFully(columnName, new char[]{'_'}).replace("_", "");
     }
 
     /**
-     * 表名转换成Java類名
+     * 表名轉换成Java類名
      */
     public static String tableToJava(String tableName, String[] tablePrefixArray) {
         if (null != tablePrefixArray && tablePrefixArray.length > 0) {
@@ -282,18 +282,18 @@ public class GenUtils {
     }
 
     /**
-     * 獲取設定資料
+     * 查詢設定資料
      */
     public static Configuration getConfig() {
         try {
             return new PropertiesConfiguration("generator.properties");
         } catch (ConfigurationException e) {
-            throw new RRException("獲取設定文件失败，", e);
+            throw new RRException("查詢設定文件失敗，", e);
         }
     }
 
     /**
-     * 獲取文件名
+     * 查詢文件名
      */
     public static String getFileName(String template, String className, String packageName, String moduleName) {
         String packagePath = "main" + File.separator + "java" + File.separator;

@@ -1,0 +1,10 @@
+/** Copyright 2020 bejson.com */
+package com.hungwen.cloudmall.product.vo;
+
+import lombok.Data;
+
+@Data
+public class Images {
+  private String imgUrl;
+  private int defaultImg;
+}

@@ -3,7 +3,7 @@
  * <p>
  * https://www.renren.io
  * <p>
- * 版权所有，侵权必究！
+ * 版權所有，侵權必究！
  */
 
 package io.renren.service;

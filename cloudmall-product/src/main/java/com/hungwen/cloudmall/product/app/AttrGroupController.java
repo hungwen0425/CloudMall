@@ -41,7 +41,7 @@ public class AttrGroupController {
     private AttrService attrService;
 
     /*
-     * 添加屬性與分組關聯關系
+     * 添加屬性與分組關聯關係
      */
     @PostMapping("/attr/relation")
     public R addRelation(@RequestBody List<AttrGroupRelationVo> vos){
@@ -88,7 +88,7 @@ public class AttrGroupController {
     }
 
     /*
-     * 删除属性与分组的關联關系
+     * 删除屬性與分組的關聯關係
      */
     @PostMapping("/attr/relation/delete")
     public R deleteRelation(@RequestBody AttrGroupRelationVo[] vos){

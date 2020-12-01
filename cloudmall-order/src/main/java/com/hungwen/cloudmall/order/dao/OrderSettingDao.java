@@ -5,7 +5,7 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Mapper;
 
 /**
- * 訂單設置表
+ * 訂單設定表
  * 
  * @author Hungwen Tseng
  * @email hungwen.tseng@gmail.com

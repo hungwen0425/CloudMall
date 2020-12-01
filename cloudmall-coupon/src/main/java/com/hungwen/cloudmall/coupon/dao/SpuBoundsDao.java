@@ -5,7 +5,7 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Mapper;
 
 /**
- * 商品spu積分設置
+ * 商品spu積分設定
  * 
  * @author Hungwen Tseng
  * @email hungwen.tseng@gmail.com

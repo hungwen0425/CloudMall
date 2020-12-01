@@ -17,6 +17,7 @@ import java.util.HashMap;
  **/
 @Configuration
 public class MyRabbitMQConfig {
+
     /**
      * 使用 JSON 序列化機制，進行消息轉換
      * @return
@@ -29,6 +30,7 @@ public class MyRabbitMQConfig {
     public void handle(Message message){
 
     }
+
     /**
      * 庫存服務默認的交換機
      * @return
@@ -39,6 +41,7 @@ public class MyRabbitMQConfig {
         TopicExchange topicExchange = new TopicExchange("stock-event-exchange", true, false);
         return topicExchange;
     }
+
     /**
      * 普通隊列
      * @return
@@ -49,6 +52,7 @@ public class MyRabbitMQConfig {
         Queue queue = new Queue("stock.release.stock.queue", true, false, false);
         return queue;
     }
+
     /**
      * 延遲隊列
      * @return
@@ -62,6 +66,7 @@ public class MyRabbitMQConfig {
         Queue queue = new Queue("stock.delay.queue", true, false, false,arguments);
         return queue;
     }
+
     /**
      * 交換機與普通隊列綁定
      * @return
@@ -75,6 +80,7 @@ public class MyRabbitMQConfig {
                 null);
         return binding;
     }
+
     /**
      * 交換機與延遲隊列綁定
      * @return

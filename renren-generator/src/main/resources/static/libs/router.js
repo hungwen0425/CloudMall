@@ -12,9 +12,9 @@
 	};
 
 	/**
-	 * 添加路由,如果路由已经存在则会覆盖
+	 * 添加路由,如果路由已经存在則會覆盖
 	 * @param addr: 地址
-	 * @param callback: 回調函數，調用回調函數的時候同時也会传入相应参數
+	 * @param callback: 回調函數，調用回調函數的時候同時也會傳入相應参數
 	 */
 	Router.prototype.add = function(addr, callback) {
 		var self = this;
@@ -33,7 +33,7 @@
 	};
 
 	/**
-	 * 設置主頁地址
+	 * 設定主頁地址
 	 * @param index: 主頁地址
 	 */
 	Router.prototype.setIndex = function(index) {
@@ -44,7 +44,7 @@
 
 
 	/**
-	 * 跳转到指定地址
+	 * 跳轉到指定地址
 	 * @param addr: 地址值
 	 */
 	Router.prototype.go = function(addr) {
@@ -74,7 +74,7 @@
 	};
 
 	/**
-	 * 開始路由，實际上只是為了當直接访问路由路由地址的時候能够及時調用回調
+	 * 開始路由，實际上只是為了當直接訪問路由路由地址的時候能够及時調用回調
 	 */
 	Router.prototype.start = function() {
 		var self = this;

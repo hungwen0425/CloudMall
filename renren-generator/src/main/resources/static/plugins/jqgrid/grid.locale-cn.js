@@ -28,7 +28,7 @@ if(!$.jgrid.hasOwnProperty("regional")) {
 $.jgrid.regional["cn"] = {
     defaults : {
         recordtext: "{0} - {1}\u3000共 {2} 条", // 共字前是全角空格
-        emptyrecords: "无資料顯示",
+        emptyrecords: "無資料顯示",
         loadtext: "读取中...",
 		savetext: "Saving...",
         pgtext : " {0} 共 {1} 頁",
@@ -51,14 +51,14 @@ $.jgrid.regional["cn"] = {
         caption: "搜索...",
         Find: "查找",
         Reset: "重置",
-        odata: [{ oper:'eq', text:'等於\u3000\u3000'},{ oper:'ne', text:'不等\u3000\u3000'},{ oper:'lt', text:'小于\u3000\u3000'},{ oper:'le', text:'小于等於'},{ oper:'gt', text:'大於\u3000\u3000'},{ oper:'ge', text:'大於等於'},{ oper:'bw', text:'開始于'},{ oper:'bn', text:'不開始于'},{ oper:'in', text:'属于\u3000\u3000'},{ oper:'ni', text:'不属于'},{ oper:'ew', text:'结束于'},{ oper:'en', text:'不结束于'},{ oper:'cn', text:'包含\u3000\u3000'},{ oper:'nc', text:'不包含'},{ oper:'nu', text:'不存在'},{ oper:'nn', text:'存在'}, {oper:'bt', text:'between'}],
+        odata: [{ oper:'eq', text:'等於\u3000\u3000'},{ oper:'ne', text:'不等\u3000\u3000'},{ oper:'lt', text:'小于\u3000\u3000'},{ oper:'le', text:'小于等於'},{ oper:'gt', text:'大於\u3000\u3000'},{ oper:'ge', text:'大於等於'},{ oper:'bw', text:'開始于'},{ oper:'bn', text:'不開始于'},{ oper:'in', text:'屬于\u3000\u3000'},{ oper:'ni', text:'不屬于'},{ oper:'ew', text:'结束于'},{ oper:'en', text:'不结束于'},{ oper:'cn', text:'包含\u3000\u3000'},{ oper:'nc', text:'不包含'},{ oper:'nu', text:'不存在'},{ oper:'nn', text:'存在'}, {oper:'bt', text:'between'}],
         groupOps: [ { op: "AND", text: "所有" },    { op: "OR",  text: "任一" } ],
 		operandTitle : "Click to select search operation.",
 		resetTitle : "Reset Search Value"
     },
     edit : {
-        addCaption: "添加记录",
-        editCaption: "编辑记录",
+        addCaption: "添加記錄",
+        editCaption: "编辑記錄",
         bSubmit: "提交",
         bCancel: "取消",
         bClose: "關閉",
@@ -74,38 +74,38 @@ $.jgrid.regional["cn"] = {
             email: "這不是有效的e-mail地址",
             integer: "請输入有效整數",
             date: "請输入有效時間",
-            url: "无效网址。前缀必需為 ('http://' 或 'https://')",
+            url: "無效网址。前缀必需為 ('http://' 或 'https://')",
             nodefined : " 未定義！",
             novalue : " 需要返回值！",
-            customarray : "自定義函數需要返回數组！",
+            customarray : "自定義函數需要返回數組！",
             customfcheck : "必需有自定義函數!"
         }
     },
     view : {
-        caption: "查看记录",
+        caption: "查看記錄",
         bClose: "關閉"
     },
     del : {
         caption: "删除",
-        msg: "删除所选记录？",
+        msg: "删除所選記錄？",
         bSubmit: "删除",
         bCancel: "取消"
     },
     nav : {
         edittext: "",
-        edittitle: "编辑所选记录",
+        edittitle: "编辑所選記錄",
         addtext:"",
-        addtitle: "添加新记录",
+        addtitle: "添加新記錄",
         deltext: "",
-        deltitle: "删除所选记录",
+        deltitle: "删除所選記錄",
         searchtext: "",
         searchtitle: "查找",
         refreshtext: "",
         refreshtitle: "刷新表格",
         alertcap: "注意",
-        alerttext: "請选择记录",
+        alerttext: "請選择記錄",
         viewtext: "",
-        viewtitle: "查看所选记录",
+        viewtitle: "查看所選記錄",
 		savetext: "",
 		savetitle: "Save row",
 		canceltext: "",
@@ -113,14 +113,14 @@ $.jgrid.regional["cn"] = {
 		selectcaption : "Actions..."
     },
     col : {
-        caption: "选择列",
-        bSubmit: "确定",
+        caption: "選择列",
+        bSubmit: "確定",
         bCancel: "取消"
     },
     errors : {
         errcap : "錯誤",
-        nourl : "没有設置url",
-        norecords: "没有要处理的记录",
+        nourl : "没有設定url",
+        norecords: "没有要處理的記錄",
         model : "colNames 和 colModel 長度不等！"
     },
     formatter : {

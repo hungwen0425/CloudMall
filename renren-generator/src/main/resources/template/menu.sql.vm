@@ -1,11 +1,11 @@
--- 菜單SQL
+-- 選單SQL
 INSERT INTO `sys_menu` (`parent_id`, `name`, `url`, `perms`, `type`, `icon`, `order_num`)
     VALUES ('1', '${comments}', '${moduleName}/${pathName}', NULL, '1', 'config', '6');
 
--- 按钮父菜單ID
+-- 按钮父選單ID
 set @parentId = @@identity;
 
--- 菜單對应按钮SQL
+-- 選單對應按钮SQL
 INSERT INTO `sys_menu` (`parent_id`, `name`, `url`, `perms`, `type`, `icon`, `order_num`)
     SELECT @parentId, '查看', null, '${moduleName}:${pathName}:list,${moduleName}:${pathName}:info', '2', null, '6';
 INSERT INTO `sys_menu` (`parent_id`, `name`, `url`, `perms`, `type`, `icon`, `order_num`)

@@ -85,10 +85,10 @@
 <!--            <artifactId>spring-cloud-starter-alibaba-seata</artifactId>-->
 <!--        </dependency>-->
         <!-- Sentinel 場景啟動器 - 流量控制、熔斷降級、系统負載保護等多個維度保護服務的穩定性 -->
-<!--        <dependency>-->
-<!--            <groupId>com.alibaba.cloud</groupId>-->
-<!--            <artifactId>spring-cloud-starter-alibaba-sentinel</artifactId>-->
-<!--        </dependency>-->
+        <dependency>
+            <groupId>com.alibaba.cloud</groupId>
+            <artifactId>spring-cloud-starter-alibaba-sentinel</artifactId>
+        </dependency>
         <!--        為了使用Sentinel1.7.1版本的控制台 -->
 <!--       <dependency>-->
 <!--            <groupId>com.alibaba.csp</groupId>-->
@@ -103,7 +103,7 @@
                 </dependency>-->
 
         <!--        引入sleuth链路追踪的可视化观察界面zipkin
-                    因為zipkin里引入了sleuth，所以不需要再單獨引入sleuth-->
+                    因為zipkin裡引入了sleuth，所以不需要再單獨引入sleuth-->
         <!--        <dependency>
                     <groupId>org.springframework.cloud</groupId>
                     <artifactId>spring-cloud-starter-zipkin</artifactId>

@@ -185,7 +185,7 @@
                                     <dd><a href="/static/order/confirm//static/order/confirm/">雲端商城會員</a></dd>
                                     <dd><a href="/static/order/confirm//static/order/confirm/">俄語站</a></dd>
                                     <dd><a href="/static/order/confirm//static/order/confirm/">定期送</a></dd>
-                                    <dd><a href="/static/order/confirm//static/order/confirm/">秒殺</a></dd>
+                                    <dd><a href="/static/order/confirm//static/order/confirm/">限時搶購</a></dd>
                                     <dd><a href="/static/order/confirm//static/order/confirm/">雲端商城金融科技</a></dd>
                                     <dd><a href="/static/order/confirm//static/order/confirm/">出海招商</a></dd>
                                 </ol>
@@ -587,11 +587,11 @@
                     </li>
                     <li>|</li>
                     <li>
-                        <a href="/static/order/confirm//static/order/confirm/##">聯系我們</a>
+                        <a href="/static/order/confirm//static/order/confirm/##">聯繫我們</a>
                     </li>
                     <li>|</li>
                     <li>
-                        <a href="/static/order/confirm//static/order/confirm/##">聯系客服</a>
+                        <a href="/static/order/confirm//static/order/confirm/##">聯繫客服</a>
                     </li>
                     <li>|</li>
                     <li>
@@ -728,11 +728,11 @@
                     console.log(data);
                     $("#fareEle").text(data.data.fare);
                     var total = [[${orderConfirmData.total}]];
-                    //設置運費
+                    //設定運費
                     var payPrice =  total * 1 + data.data.fare * 1;
                     $("#payPriceEle").text(payPrice);
                     $("#payPriceInput").val(payPrice);
-                    //設置收貨人資料
+                    //設定收貨人資料
                     $("#receiveAddressEle").text(data.data.address.province + " " + data.data.address.city + " " + data.data.address.region + " " + data.data.address.detailAddress);
                     $("#receiverEle").text(data.data.address.name);
                 });

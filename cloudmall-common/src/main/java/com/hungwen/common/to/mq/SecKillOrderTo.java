@@ -25,11 +25,11 @@ public class SecKillOrderTo {
      */
     private Long skuId;
     /**
-     * 秒殺價格
+     * 限時搶購價格
      */
     private BigDecimal seckillPrice;
     /**
-     * 秒殺總量
+     * 限時搶購總量
      */
     private Integer num;
     /**

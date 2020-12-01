@@ -16,7 +16,7 @@ import java.io.IOException;
  * @Description:
  * @Created: with IntelliJ IDEA.
  * @author: Hungwen Tseng
- * @createTime: 2020-11-11 16:37
+ * @createTime: 2020-11-30 16:37
  **/
 @Slf4j
 @Component
@@ -28,7 +28,7 @@ public class OrderSeckillListener {
 
     @RabbitHandler
     public void listener(SecKillOrderTo orderTo, Channel channel, Message message) throws IOException {
-        log.info("準備創建秒殺單的詳細資料...");
+        log.info("準備創建限時搶購單的詳細資料...");
         try {
             orderService.createSeckillOrder(orderTo);
             channel.basicAck(message.getMessageProperties().getDeliveryTag(),false);

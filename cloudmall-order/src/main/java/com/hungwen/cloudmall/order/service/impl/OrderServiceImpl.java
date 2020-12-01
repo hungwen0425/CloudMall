@@ -23,9 +23,6 @@ import com.hungwen.common.to.mq.OrderTo;
 import com.hungwen.common.to.mq.SecKillOrderTo;
 import com.hungwen.common.utils.R;
 import com.hungwen.common.vo.MemberResponseVo;
-import com.lly835.bestpay.model.PayResponse;
-import com.lly835.bestpay.service.BestPayService;
-import io.seata.spring.annotation.GlobalTransactional;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.BeanUtils;
@@ -79,8 +76,8 @@ public class OrderServiceImpl extends ServiceImpl<OrderDao, OrderEntity> impleme
     private RabbitTemplate rabbitTemplate;
     @Autowired
     private PaymentInfoService paymentInfoService;
-    @Autowired
-    private BestPayService bestPayService;
+//    @Autowired
+//    private BestPayService bestPayService;
 
     @Override
     public PageUtils queryPage(Map<String, Object> params) {
@@ -147,9 +144,9 @@ public class OrderServiceImpl extends ServiceImpl<OrderDao, OrderEntity> impleme
      * @param vo
      * @return
      */
-    // @Transactional(isolation = Isolation.READ_COMMITTED) 設置事務的隔離級別
-    // @Transactional(propagation = Propagation.REQUIRED)   設置事務的傳播級別
-    @GlobalTransactional(rollbackFor = Exception.class)
+    // @Transactional(isolation = Isolation.READ_COMMITTED) 設定事務的隔離級別
+    // @Transactional(propagation = Propagation.REQUIRED)   設定事務的傳播級別
+    // @GlobalTransactional(rollbackFor = Exception.class)
     @Transactional(rollbackFor = Exception.class)
     @Override
     public SubmitOrderResponseVo submitOrder(OrderSubmitVo vo) {
@@ -255,10 +252,9 @@ public class OrderServiceImpl extends ServiceImpl<OrderDao, OrderEntity> impleme
     @Override
     public PageUtils queryPageWithItem(Map<String, Object> params) {
         MemberResponseVo memberResponseVo = LoginUserInterceptor.loginUser.get();
-        IPage<OrderEntity> page = this.page(
-                new Query<OrderEntity>().getPage(params),
-                new QueryWrapper<OrderEntity>()
-                        .eq("member_id",memberResponseVo.getId()).orderByDesc("create_time")
+        IPage<OrderEntity> page = this.page(new Query<OrderEntity>().getPage(params),
+                new QueryWrapper<OrderEntity>().eq("member_id" ,memberResponseVo.getId())
+                                               .orderByDesc("create_time")
         );
         // 遍歷所有訂單集合
         List<OrderEntity> orderEntityList = page.getRecords().stream().map(order -> {
@@ -269,7 +265,6 @@ public class OrderServiceImpl extends ServiceImpl<OrderDao, OrderEntity> impleme
             return order;
         }).collect(Collectors.toList());
         page.setRecords(orderEntityList);
-
         return new PageUtils(page);
     }
     /**
@@ -355,36 +350,37 @@ public class OrderServiceImpl extends ServiceImpl<OrderDao, OrderEntity> impleme
      */
     @Override
     public String asyncNotify(String notifyData) {
-        // 簽名效驗
-        PayResponse payResponse = bestPayService.asyncNotify(notifyData);
-        log.info("payResponse={}", payResponse);
-        // 2. 金額效驗（從資料庫查訂單）
-        OrderEntity orderEntity = this.getOrderByOrderSn(payResponse.getOrderId());
-
-        // 如果查詢出來的資料是 null 的話
-        // 比較嚴重(正常情況下是不會發生的)發出告警：釘釘、簡訊
-        if (orderEntity == null) {
-            //TODO 發出告警，釘釘，簡訊
-            throw new RuntimeException("通過訂單編號查詢出來的結果是null");
-        }
-        // 判斷訂單狀態狀態是否為已支付或者是已取消,如果不是訂單狀態不是已支付狀態
-        Integer status = orderEntity.getStatus();
-        if (status.equals(OrderStatusEnum.PAYED.getCode()) || status.equals(OrderStatusEnum.CANCLED.getCode())) {
-            throw new RuntimeException("該訂單已失效, orderNo=" + payResponse.getOrderId());
-        }
-        // 3. 修改訂單支付狀態
-        // 支付成功狀態
-        String orderSn = orderEntity.getOrderSn();
-        this.updateOrderStatus(orderSn,OrderStatusEnum.PAYED.getCode(),PayConstant.WXPAY);
-        //4.告訴微信不要再重復通知了
-        return "<xml>\n" +
-                "  <return_code><![CDATA[SUCCESS]]></return_code>\n" +
-                "  <return_msg><![CDATA[OK]]></return_msg>\n" +
-                "</xml>";
+//        // 簽名效驗
+//        PayResponse payResponse = bestPayService.asyncNotify(notifyData);
+//        log.info("payResponse={}", payResponse);
+//        // 2. 金額效驗（從資料庫查訂單）
+//        OrderEntity orderEntity = this.getOrderByOrderSn(payResponse.getOrderId());
+//
+//        // 如果查詢出來的資料是 null 的話
+//        // 比較嚴重(正常情況下是不會發生的)發出告警：釘釘、簡訊
+//        if (orderEntity == null) {
+//            //TODO 發出告警，釘釘，簡訊
+//            throw new RuntimeException("通過訂單編號查詢出來的結果是null");
+//        }
+//        // 判斷訂單狀態狀態是否為已支付或者是已取消,如果不是訂單狀態不是已支付狀態
+//        Integer status = orderEntity.getStatus();
+//        if (status.equals(OrderStatusEnum.PAYED.getCode()) || status.equals(OrderStatusEnum.CANCLED.getCode())) {
+//            throw new RuntimeException("該訂單已失效, orderNo=" + payResponse.getOrderId());
+//        }
+//        // 3. 修改訂單支付狀態
+//        // 支付成功狀態
+//        String orderSn = orderEntity.getOrderSn();
+//        this.updateOrderStatus(orderSn,OrderStatusEnum.PAYED.getCode(),PayConstant.WXPAY);
+//        //4.告訴微信不要再重復通知了
+//        return "<xml>\n" +
+//                "  <return_code><![CDATA[SUCCESS]]></return_code>\n" +
+//                "  <return_msg><![CDATA[OK]]></return_msg>\n" +
+//                "</xml>";
+        return null;
     }
 
     /**
-     * 創建秒殺單
+     * 創建限時搶購單
      * @param orderTo
      */
     @Override
@@ -453,15 +449,15 @@ public class OrderServiceImpl extends ServiceImpl<OrderDao, OrderEntity> impleme
         }
         // 1. 訂單價格相關的
         orderEntity.setTotalAmount(total);
-        // 設置應付總額(總額+運費)
+        // 設定應付總額(總額+運費)
         orderEntity.setPayAmount(total.add(orderEntity.getFreightAmount()));
         orderEntity.setCouponAmount(coupon);
         orderEntity.setPromotionAmount(promotion);
         orderEntity.setIntegrationAmount(intergration);
-        // 設置積分成長值 資料
+        // 設定積分成長值 資料
         orderEntity.setIntegration(integrationTotal);
         orderEntity.setGrowth(growthTotal);
-        // 設置刪除狀態(0-未刪除，1-已刪除)
+        // 設定刪除狀態(0-未刪除，1-已刪除)
         orderEntity.setDeleteStatus(0);
     }
 
@@ -486,7 +482,7 @@ public class OrderServiceImpl extends ServiceImpl<OrderDao, OrderEntity> impleme
         orderEntity.setFreightAmount(fare);
         // 查詢到收貨地址 資料
         MemberAddressVo address = fareResp.getAddress();
-        // 設置收貨人 資料
+        // 設定收貨人 資料
         orderEntity.setReceiverName(address.getName());
         orderEntity.setReceiverPhone(address.getPhone());
         orderEntity.setReceiverPostCode(address.getPostCode());
@@ -494,7 +490,7 @@ public class OrderServiceImpl extends ServiceImpl<OrderDao, OrderEntity> impleme
         orderEntity.setReceiverCity(address.getCity());
         orderEntity.setReceiverRegion(address.getRegion());
         orderEntity.setReceiverDetailAddress(address.getDetailAddress());
-        // 設置訂單相關的狀態 資料
+        // 設定訂單相關的狀態 資料
         orderEntity.setStatus(OrderStatusEnum.CREATE_NEW.getCode());
         orderEntity.setAutoConfirmDay(7);
         orderEntity.setConfirmStatus(0);

@@ -83,7 +83,7 @@ public class CartInterceptor implements HandlerInterceptor {
             Cookie cookie = new Cookie(CartConstant.TEMP_USER_COOKIE_NAME, userInfoTo.getUserKey());
             // 擴大作用域
             cookie.setDomain("cloudmall.com");
-            // 設置過期時間
+            // 設定過期時間
             cookie.setMaxAge(CartConstant.TEMP_USER_COOKIE_TIMEOUT);
             response.addCookie(cookie);
         }

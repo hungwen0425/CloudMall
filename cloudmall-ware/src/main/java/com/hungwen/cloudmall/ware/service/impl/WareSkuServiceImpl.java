@@ -221,7 +221,7 @@ public class WareSkuServiceImpl extends ServiceImpl<WareSkuDao, WareSkuEntity> i
             // 查出 wms_ware_order_task 工作單的資料
             Long id = to.getId();
             WareOrderTaskEntity orderTaskInfo = wareOrderTaskService.getById(id);
-            // 獲取訂單號查詢訂單狀態
+            // 查詢訂單號查詢訂單狀態
             String orderSn = orderTaskInfo.getOrderSn();
             // 遠程查詢訂單資料
             R orderData = orderFeignService.getOrderStatus(orderSn);

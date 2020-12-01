@@ -12,11 +12,11 @@ spring:
     name: cloudmall-coupon
 #  jackson:
 #    date-format: yyyy-MM-dd HH:mm:ss
-#  thymeleaf:
-#    cache: false
-#  redis:
-#    host: 192.168.56.10
-#    pool: 6379
+  thymeleaf:
+    cache: false
+  redis:
+    host: 192.168.56.10
+    pool: 6379
 
 mybatis-plus:
   mapper-locations: classpath:mapper/**/*.xml
@@ -39,8 +39,8 @@ logging:
 #    org.springframework.cloud.sleuth: debug
 
 #暴露所有端點
-management:
-  endpoints:
-    web:
-      exposure:
-        include: '*'
+#management:
+#  endpoints:
+#    web:
+#      exposure:
+#        include: '*'

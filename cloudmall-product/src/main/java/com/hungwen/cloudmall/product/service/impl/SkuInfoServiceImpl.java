@@ -1,9 +1,12 @@
 package com.hungwen.cloudmall.product.service.impl;
 
+import com.alibaba.fastjson.TypeReference;
 import com.alibaba.nacos.client.utils.StringUtils;
 import com.hungwen.cloudmall.product.entity.SkuImagesEntity;
 import com.hungwen.cloudmall.product.entity.SpuInfoDescEntity;
+import com.hungwen.cloudmall.product.feign.SecKillFeignService;
 import com.hungwen.cloudmall.product.service.*;
+import com.hungwen.cloudmall.product.vo.SecKillSkuVo;
 import com.hungwen.cloudmall.product.vo.SkuItemSaleAttrVo;
 import com.hungwen.cloudmall.product.vo.SkuItemVo;
 import com.hungwen.cloudmall.product.vo.SpuItemAttrGroupVo;
@@ -40,8 +43,8 @@ public class SkuInfoServiceImpl extends ServiceImpl<SkuInfoDao, SkuInfoEntity> i
     private SkuImagesService skuImagesService;
     @Autowired
     private SkuSaleAttrValueService skuSaleAttrValueService;
-//    @Autowired
-//    private SecKillFeignService secKillFeignService;
+    @Autowired
+    private SecKillFeignService secKillFeignService;
 
     @Override
     public PageUtils queryPage(Map<String, Object> params) {
@@ -145,26 +148,23 @@ public class SkuInfoServiceImpl extends ServiceImpl<SkuInfoDao, SkuInfoEntity> i
 
         // Long spuId = info.getSpuId();
         // Long catalogId = info.getCatalogId();
-
-//        CompletableFuture<Void> seckillFuture = CompletableFuture.runAsync(() -> {
-//            //3、遠程調用查詢當前 sku 是否參與秒殺優惠活動
-//            R skuSeckilInfo = seckillFeignService.getSkuSeckilInfo(skuId);
-//            if (skuSeckilInfo.getCode() == 0) {
-//                //查詢成功
-//                SeckillSkuVo seckilInfoData = skuSeckilInfo.getData("data", new TypeReference<SeckillSkuVo>() {
-//                });
-//                skuItemVo.setSeckillSkuVo(seckilInfoData);
-//
-//                if (seckilInfoData != null) {
-//                    long currentTime = System.currentTimeMillis();
-//                    if (currentTime > seckilInfoData.getEndTime()) {
-//                        skuItemVo.setSeckillSkuVo(null);
-//                    }
-//                }
-//            }
-//        }, executor);
+        CompletableFuture<Void> seckillFuture = CompletableFuture.runAsync(() -> {
+            //3、遠程調用查詢當前 sku 是否參與限時搶購優惠活動
+            R skuSeckilInfo = secKillFeignService.getSkuSeckilInfo(skuId);
+            if (skuSeckilInfo.getCode() == 0) {
+                // 查詢成功
+                SecKillSkuVo seckilInfoData = skuSeckilInfo.getData("data", new TypeReference<SecKillSkuVo>(){});
+                skuItemVo.setSecKillSkuVo(seckilInfoData);
+                if (seckilInfoData != null) {
+                    long currentTime = System.currentTimeMillis();
+                    if (currentTime > seckilInfoData.getEndTime()) {
+                        skuItemVo.setSecKillSkuVo(null);
+                    }
+                }
+            }
+        }, executor);
         //等到所有任務都完成
-        CompletableFuture.allOf(saleAttrFuture, descFuture, baseAttrFuture, imageFuture).get();
+        CompletableFuture.allOf(saleAttrFuture, descFuture, baseAttrFuture, imageFuture, seckillFuture).get();
         return skuItemVo;
     }
 

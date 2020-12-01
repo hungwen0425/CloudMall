@@ -213,7 +213,7 @@ public class CategoryServiceImpl extends ServiceImpl<CategoryDao, CategoryEntity
     }
 
     /**
-     * 緩存里的資料如何和資料庫的資料保持一致？？
+     * 緩存裡的資料如何和資料庫的資料保持一致？？
      * 緩存資料一致性
      * 1)、雙寫模式
      * 2)、失效模式
@@ -298,7 +298,7 @@ public class CategoryServiceImpl extends ServiceImpl<CategoryDao, CategoryEntity
 //        // 先從緩存中查詢分類資料，如果沒有再從資料庫中查詢，並且分類資料是以 JSON 的形式存放到 Reids 中的
 //        String catelogJson = springRedisTemplate.opsForValue().get("catelogJson");
 //        //1. 空結果緩存：解決緩存穿透
-//        //2. 設置過期時間 (加隨機值)：解決緩存雪崩
+//        //2. 設定過期時間 (加隨機值)：解決緩存雪崩
 //        //3. 加鎖：解決緩存擊穿（使用分布式鎖）
 //        if(StringUtils.isEmpty(catelogJson)){
 //            Map<String, List<Catelog2Vo>> catelogJsonFromDb = getCatelogJsonFromDbWithRedisLock();
@@ -312,14 +312,14 @@ public class CategoryServiceImpl extends ServiceImpl<CategoryDao, CategoryEntity
 //
 //    /**
 //     * 使用分布式鎖來實現多個服務共享同一緩存中的資料
-//     *  1. 設置讀寫鎖，失敗則表明其他線程先於該線程獲取到了鎖，則執行自旋，成功則表明獲取到了鎖
+//     *  1. 設定讀寫鎖，失敗則表明其他線程先於該線程獲取到了鎖，則執行自旋，成功則表明獲取到了鎖
 //     *  2. 獲取鎖成功，查詢資料庫，查詢分類資料
 //     *  3. 釋放鎖
 //     * @return
 //     */
 //    public Map<String, List<Catelog2Vo>> getCatelogJsonFromDbWithRedisLock() {
 //        String uuid= UUID.randomUUID().toString();
-//        // 設置 Redis 分布式鎖，成功則返回 true，否則返回 false，該操作是原子性的
+//        // 設定 Redis 分布式鎖，成功則返回 true，否則返回 false，該操作是原子性的
 //        Boolean lock = springRedisTemplate.opsForValue().setIfAbsent("lock", uuid, 300, TimeUnit.SECONDS);
 //        if(lock==null || !lock){
 //            // 加鎖失敗，重試
@@ -417,7 +417,7 @@ public class CategoryServiceImpl extends ServiceImpl<CategoryDao, CategoryEntity
 //        //先從緩存中查詢分類資料，如果沒有再從資料庫中查詢，並且分類資料是以JSON的形式存放到Reids中的
 //        String catelogJson = springRedisTemplate.opsForValue().get("catelogJson");
 //        //1. 空結果緩存：解決緩存穿透
-//        //2. 設置過期時間(加隨機值)：解決緩存雪崩
+//        //2. 設定過期時間(加隨機值)：解決緩存雪崩
 //        //3. 加鎖：解決緩存擊穿
 //        //使用 DCL（雙端檢鎖機制）來完成對於資料庫的訪問
 //        if(StringUtils.isEmpty(catelogJson)){

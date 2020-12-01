@@ -12,7 +12,7 @@ spring:
     cache: false
 #    sentinel:
 #      transport:
-#        #設定sentinel dashboard地址
+#        #設定sentinel dashboard 地址
 #        dashboard: localhost:8080
   redis:
     host: 192.168.56.10
@@ -20,7 +20,7 @@ spring:
   session:
     store-type: redis
 
-#開啟feign對sentinel的支持
+#開啟 feign 對 sentinel 的支持
 #feign:
 #  sentinel:
 #    enabled: true
@@ -36,8 +36,8 @@ logging:
     console: "%d{yyyy-MM-dd} [%thread] - %msg%n"
 
 #暴露所有端點
-#management:
-#  endpoints:
-#    web:
-#      exposure:
-#        include: '*'
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'

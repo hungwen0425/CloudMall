@@ -51,10 +51,10 @@ public class MongoScanner {
     private void scan() {
         // 初始化
         initColNames();
-        // 解析属性值
+        // 解析屬性值
         mongoDefinition = scanType();
         MongoManager.putInfo(collection.getNamespace().getCollectionName(), mongoDefinition);
-        // 解析完成之後释放链接资源
+        // 解析完成之後釋放链接资源
         this.collection = null;
 
     }
@@ -65,7 +65,7 @@ public class MongoScanner {
 
 
     /**
-     * 功能描述:分组發送聚合函數(獲得一级属性名)
+     * 功能描述:分組發送聚合函數(獲得一級屬性名)
      *
      * @author : gxz
      */
@@ -81,7 +81,7 @@ public class MongoScanner {
         filed.append("allkeys", new BasicDBObject("$addToSet", "$arrayofkeyvalue.k"));
         BasicDBObject $group = new BasicDBObject("$group", filed);
         List<BasicDBObject> dbStages = Arrays.asList($project, $skip, $limit, $unwind, $group);
-        // System.out.println(dbStages);  發送的聚合函數   獲得所有参數名称
+        // System.out.println(dbStages);  發送的聚合函數   獲得所有参數名稱
         AggregateIterable<Document> aggregate = collection.aggregate(dbStages);
         Document document = aggregate.first();
         if (document == null) {
@@ -102,12 +102,12 @@ public class MongoScanner {
 
 
     /**
-     * 如果一個文档是物件類型  獲得這個属性的下一级的属性名的集合
-     * 例子: user:{name:"張三",age:12}  传入user  返回[name,age]
+     * 如果一個文檔是物件類型  獲得這個屬性的下一級的屬性名的集合
+     * 例子: user:{name:"張三",age:12}  傳入user  返回[name,age]
      *
      * @param parameterName 上层参數名  這個参數名可以包含一個或多個.
-     *                      注: 参數传递之前需确認:  1.上层属性一定是物件類型
-     * @return 返回這個属性内的所有属性名
+     *                      注: 参數傳递之前需確認:  1.上层屬性一定是物件類型
+     * @return 返回這個屬性内的所有屬性名
      */
     public Set<String> getNextParameterNames(String parameterName) {
         Document condition = new Document(parameterName, new Document("$exists", true));
@@ -129,17 +129,17 @@ public class MongoScanner {
                 names.addAll(documentNames);
             }
         }
-        logger.info("解析" + parameterName + "有" + names.size() + "個子属性");
+        logger.info("解析" + parameterName + "有" + names.size() + "個子屬性");
         return names;
     }
 
 
     /**
-     * 功能描述:提供属性名 解析属性類型
-     * 獲取相应的属性資料  封装成generator物件
+     * 功能描述:提供屬性名 解析屬性類型
+     * 查詢相應的屬性資料  封装成generator物件
      *
      * @return : 解析之後的Model {@see #MongoDefinition}
-     * @param: propertyName 属性名 可以是层级名  比如 name 也可以是info.name
+     * @param: propertyName 屬性名 可以是层級名  比如 name 也可以是info.name
      * @see MongoDefinition
      */
 
@@ -161,7 +161,7 @@ public class MongoScanner {
                     if (i == 3) {
                         result.setChild(this.produceChildList(propertyName));
                     }
-                    //1是double 2是string 3是物件 4是數组 16是int 18 是long
+                    //1是double 2是string 3是物件 4是數組 16是int 18 是long
                     result.setType(i);
                     logger.info("解析[" + propertyName + "]是[List][" + Type.typeInfo(result.getType()) + "]");
                     return result;
@@ -174,8 +174,8 @@ public class MongoScanner {
                     if (i == 3) {
                         result.setChild(this.produceChildList(propertyName));
                     }
-                    //1是double 2是string 3是物件 4是數组 16是int 18 是long
-                    //到這里就是數组了
+                    //1是double 2是string 3是物件 4是數組 16是int 18 是long
+                    //到這裡就是數組了
                     result.setType(i);
                     logger.info("解析[" + propertyName + "]是[" + Type.typeInfo(result.getType()) + "]");
                     return result;
@@ -205,7 +205,7 @@ public class MongoScanner {
 
 
     /**
-     * 功能描述:解析這個集合的列名  用ForkJoin框架實现
+     * 功能描述:解析這個集合的列名  用ForkJoin框架實現
      */
     private void initColNames() {
         long start = System.currentTimeMillis();
@@ -233,7 +233,7 @@ public class MongoScanner {
     }
 
     /**
-     * 功能描述:forkJoin多線程框架的實现  通過业務拆分解析類型
+     * 功能描述:forkJoin多線程框架的實現  通過业務拆分解析類型
      */
     class ForkJoinProcessType extends RecursiveTask<List<MongoDefinition>> {
         List<String> names;
@@ -267,7 +267,7 @@ public class MongoScanner {
     }
 
     /**
-     * 功能描述:forkJoin多線程框架的實现  通過业務拆分獲得属性名
+     * 功能描述:forkJoin多線程框架的實現  通過业務拆分獲得屬性名
      */
     class ForkJoinGetProcessName extends RecursiveTask<List<String>> {
         private int begin; //查詢開始位置
@@ -290,7 +290,7 @@ public class MongoScanner {
                 pre.fork();
                 ForkJoinGetProcessName next = new ForkJoinGetProcessName(middle + 1, end);
                 next.fork();
-                return distinctAndJoin(pre.join(), next.join()); //去重合并
+                return distinctAndJoin(pre.join(), next.join()); //去重合併
             }
         }
     }

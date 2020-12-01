@@ -60,7 +60,7 @@ public class PurchaseServiceImpl extends ServiceImpl<PurchaseDao, PurchaseEntity
                     (item.getStatus() == WareConstant.PurchaseStatusEnum.ASSIGNED.getCode());
             return flag;
         }).map(item -> {
-            //將採購單狀態設置為已接收，並且只更新狀態和時間字段
+            //將採購單狀態設定為已接收，並且只更新狀態和時間字段
             PurchaseEntity purchaseEntity = new PurchaseEntity();
             purchaseEntity.setId(item.getId());
             purchaseEntity.setStatus(WareConstant.PurchaseStatusEnum.RECEIVED.getCode());
@@ -104,7 +104,7 @@ public class PurchaseServiceImpl extends ServiceImpl<PurchaseDao, PurchaseEntity
     @Transactional
     public void mergePurchase(MergeVo mergeVo) {
         Long purchaseId = mergeVo.getPurchaseId();
-        // 如果 purchaseId 不存在，保存 PurchaseEntity 並設置狀態和時間戳
+        // 如果 purchaseId 不存在，保存 PurchaseEntity 並設定狀態和時間戳
         // 保存到 wms_purchase
         if(purchaseId == null){
             PurchaseEntity purchaseEntity = new PurchaseEntity();
@@ -155,7 +155,7 @@ public class PurchaseServiceImpl extends ServiceImpl<PurchaseDao, PurchaseEntity
         // 1. 改變採購項的狀態
         List<PurchaseFinishItem> finishVoItems = finishVo.getItems();
         AtomicBoolean flag= new AtomicBoolean(true);
-        // 設置採購項的狀態
+        // 設定採購項的狀態
         List<PurchaseDetailEntity> detailEntities = finishVoItems.stream().map(item -> {
             PurchaseDetailEntity detailEntity = new PurchaseDetailEntity();
             detailEntity.setId(item.getItemId());

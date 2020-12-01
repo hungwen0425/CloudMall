@@ -49,10 +49,10 @@ public class MemberServiceImpl extends ServiceImpl<MemberDao, MemberEntity> impl
     @Override
     public void register(MemberUserRegisterVo vo) {
         MemberEntity memberEntity = new MemberEntity();
-        // 設置默認等級
+        // 設定默認等級
         MemberLevelEntity levelEntity = memberLevelDao.getDefaultLevel();
         memberEntity.setLevelId(levelEntity.getId());
-        // 設置其它的默認資料
+        // 設定其它的默認資料
         // 檢查使用者名和手機號碼是否唯一。感知異常，異常機制
         checkPhoneUnique(vo.getPhone());
         checkUserNameUnique(vo.getUserName());

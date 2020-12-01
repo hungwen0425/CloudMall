@@ -35,6 +35,10 @@ public class MyRabbitConfig {
         return rabbitTemplate;
     }
 
+    /**
+     * 使用 Json 序列化機制，進行消息轉換
+     * @return
+     */
     @Bean
     public MessageConverter messageConverter() {
         return new Jackson2JsonMessageConverter();
@@ -44,11 +48,11 @@ public class MyRabbitConfig {
      * 定制 RabbitTemplate
      * 1. 服務收到消息就會回調
      *      1. spring.rabbitmq.publisher-confirms: true
-     *      2. 設置確認回調
+     *      2. 設定確認回調
      * 2. 消息正確抵達隊列就會進行回調
      *      1. spring.rabbitmq.publisher-returns: true
      *         spring.rabbitmq.template.mandatory: true
-     *      2. 設置確認回調 ReturnCallback
+     *      2. 設定確認回調 ReturnCallback
      * 3、消費端確認 ( 保證每個消息都被正確消費，此時才可以 broker 刪除這個消息 )
      *      1. 默認是自動確認的，只要消息接收到，客戶端會自動確認，服務端就會移除這個消息
      *         問題：我們收到很多消息，自動回覆給服務器 ack，只有一個消息處理成功
@@ -59,7 +63,7 @@ public class MyRabbitConfig {
     // @PostConstruct  //MyRabbitConfig物件創建完成以後，執行這個方法
     public void initRabbitTemplate() {
         /**
-         * 設置確認回調
+         * 設定確認回調
          * 1、只要消息抵達 Broker 就 ack=true
          * correlationData：當前消息的唯一關聯資料(這個是消息的唯一id)
          * ack：消息是否成功收到

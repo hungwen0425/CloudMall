@@ -18,7 +18,7 @@ import com.hungwen.common.utils.R;
 
 
 /**
- * 訂單設置表
+ * 訂單設定表
  *
  * @author Hungwen Tseng
  * @email hungwen.tseng@gmail.com

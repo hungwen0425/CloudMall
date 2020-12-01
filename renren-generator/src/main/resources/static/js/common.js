@@ -6,7 +6,7 @@ $.jgrid.defaults.styleUI = 'Bootstrap';
 //工具集合Tools
 window.T = {};
 
-// 獲取請求参數
+// 查詢請求参數
 // 使用示例
 // location.href = http://localhost:8080/index.html?id=123
 // T.p('id') --> 123;
@@ -32,7 +32,7 @@ function hasPermission(permission) {
     }
 }
 
-//重写alert
+//重寫alert
 window.alert = function(msg, callback){
 	parent.layer.alert(msg, function(index){
 		parent.layer.close(index);
@@ -42,40 +42,40 @@ window.alert = function(msg, callback){
 	});
 }
 
-//重写confirm式样框
+//重寫confirm式樣框
 window.confirm = function(msg, callback){
-	parent.layer.confirm(msg, {btn: ['确定','取消']},
-	function(){//确定事件
+	parent.layer.confirm(msg, {btn: ['確定','取消']},
+	function(){//確定事件
 		if(typeof(callback) === "function"){
 			callback("ok");
 		}
 	});
 }
 
-//选择一条记录
+//選择一条記錄
 function getSelectedRow() {
     var grid = $("#jqGrid");
     var rowKey = grid.getGridParam("selrow");
     if(!rowKey){
-    	alert("請选择一条记录");
+    	alert("請選择一条記錄");
     	return ;
     }
     
     var selectedIDs = grid.getGridParam("selarrrow");
     if(selectedIDs.length > 1){
-    	alert("只能选择一条记录");
+    	alert("只能選择一条記錄");
     	return ;
     }
     
     return selectedIDs[0];
 }
 
-//选择多条记录
+//選择多条記錄
 function getSelectedRows() {
     var grid = $("#jqGrid");
     var rowKey = grid.getGridParam("selrow");
     if(!rowKey){
-    	alert("請选择一条记录");
+    	alert("請選择一条記錄");
     	return ;
     }
     

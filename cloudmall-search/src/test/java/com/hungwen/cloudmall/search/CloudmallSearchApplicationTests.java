@@ -63,7 +63,7 @@ public class CloudmallSearchApplicationTests {
 		user.setAge(20);
 		user.setGender("男");
 		String jsonString = JSON.toJSONString(user);
-		//設置要保存的內容
+		//設定要保存的內容
 		indexRequest.source(jsonString, XContentType.JSON);
 		//執行創建索引和保存資料
 		IndexResponse index = client.index(indexRequest, CloudmallElasticSearchConfig.COMMON_OPTIONS);

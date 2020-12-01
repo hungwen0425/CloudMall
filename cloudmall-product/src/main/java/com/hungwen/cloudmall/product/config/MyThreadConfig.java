@@ -10,7 +10,7 @@ import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
 /**
- * @Description: 線程池配置類
+ * @Description: 線程池設定類
  * @Created: with IntelliJ IDEA.
  * @author: Hungwen Tseng
  * @createTime: 2020-10-23 20:24

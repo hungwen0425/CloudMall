@@ -10,7 +10,7 @@ spring:
         server-addr: 127.0.0.1:8848
   #    sentinel:
   #      transport:
-  #        #配置 sentinel dashboard地址
+  #        #設定 sentinel dashboard地址
   #        dashboard: localhost:8080
   redis:
     port: 6379
@@ -21,7 +21,7 @@ spring:
   #    enabled: true
   session:
     store-type: redis
-#配置線程池
+#設定線程池
 cloudmall:
   thread:
     coreSize: 20

@@ -18,7 +18,7 @@ import com.hungwen.common.utils.R;
 
 
 /**
- * 秒殺活動
+ * 限時搶購活動
  *
  * @author Hungwen Tseng
  * @email hungwen.tseng@gmail.com

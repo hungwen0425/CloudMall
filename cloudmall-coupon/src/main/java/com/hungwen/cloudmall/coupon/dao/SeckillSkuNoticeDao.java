@@ -5,7 +5,7 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Mapper;
 
 /**
- * 秒殺商品通知訂閱
+ * 限時搶購商品通知訂閱
  * 
  * @author Hungwen Tseng
  * @email hungwen.tseng@gmail.com

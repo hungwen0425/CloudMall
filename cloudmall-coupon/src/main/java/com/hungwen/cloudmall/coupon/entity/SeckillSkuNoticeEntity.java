@@ -8,7 +8,7 @@ import java.util.Date;
 import lombok.Data;
 
 /**
- * 秒殺商品通知訂閱
+ * 限時搶購商品通知訂閱
  * 
  * @author Hungwen Tseng
  * @email hungwen.tseng@gmail.com

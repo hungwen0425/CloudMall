@@ -15,13 +15,13 @@ import java.util.*;
  */
 
 public class MongoDefinition implements Serializable {
-    /***属性名**/
+    /***屬性名**/
     private String propertyName;
-    /***属性類型 對应mongodb api $type   如果没有類型 表示這是一個顶层實體  而不是内嵌属性**/
+    /***屬性類型 對應mongodb api $type   如果没有類型 表示這是一個顶层實體  而不是内嵌屬性**/
     private Integer type;
-    /***此属性是否是數组**/
+    /***此屬性是否是數組**/
     private boolean array = false;
-    /***如果此属性是物件  那么他仍然有此類型的子類**/
+    /***如果此屬性是物件  那么他仍然有此類型的子類**/
     private List<MongoDefinition> child;
 
 

@@ -4,7 +4,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
- * 日期处理
+ * 日期處理
  * 
  * @author chenshun
  * @email sunlightcs@gmail.com

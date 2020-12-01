@@ -102,7 +102,7 @@
                         </li>
                         <span>|</span>
                         <li>
-                            <a href="http://order.cloudmall.com/list.html">我的訂單</a>
+                            <a href="http://member.cloudmall.com/memberOrder.html">我的訂單</a>
                         </li>
                     </ul>
                 </div>
@@ -159,7 +159,7 @@
                 <nav>
                   <ul>
                     <li>
-                      <a href="/static/#">秒殺</a>
+                      <a href="/static/#">限時搶購</a>
                     </li>
                     <li>
                       <a href="/static/#">優惠券</a>
@@ -430,7 +430,7 @@
                                                                 <input type="radio" name="a" style="vertical-align:middle;" />單程
                                                                 <input type="radio" name="a" style="vertical-align:middle;" />往返
                                                             </p>
-                                                            <input type="text" placeholder="出发城市" />
+                                                            <input type="text" placeholder="出發城市" />
                                                             <input type="text" placeholder="到達城市" />
                                                             <input type="text" placeholder="日期" />
                                                           </div>
@@ -444,7 +444,7 @@
                                                         <a class="active" style="width: 50%;">國內港澳台</a>
                                                         <a style="width: 50%;">促銷活動</a>
                                                         <div class="ser_ol_div1">
-                                                            <input type="text" placeholder="出发城市" style="margin-top: 10px;" />
+                                                            <input type="text" placeholder="出發城市" style="margin-top: 10px;" />
                                                             <input type="text" placeholder="到達城市" />
                                                             <input type="text" placeholder="日期" />
                                                             <input type="text" placeholder="酒店 商圈 地標" />
@@ -500,7 +500,7 @@
                 <p class="section_second_header_img"></p>
                 <div class="section_second_header_left">
                     <p></p>
-                    <span class="">秒殺</span>
+                    <span class="">限時搶購</span>
                     <span>總有你想不到的低價</span>
                     <span></span>
                 </div>
@@ -518,33 +518,8 @@
                 <div class="swiper-container swiper_section_second_list_left">
                     <div class="swiper-wrapper">
                         <div class="swiper-slide">
-                            <ul>
-                                <li>
-                                    <img src="/static/index/img/section_second_list_img1.jpg" />
-                                    <p>花王 (Merries) 妙而舒 紙尿褲 大號 L54片 尿不濕（9-14千克） （日本官方直采） 花王 (Merries) 妙而舒 紙尿褲 大號 L54片 尿不濕（9-14千</p>
-                                    <span>NT 83.9</span><s>NT 99.9</s>
-                                </li>
-                                <li>
-                                    <img src="/static/index/img/section_second_list_img2.jpg" />
-                                    <p>華為mate9 4GB+32GB版 月光銀 移動聯通電信4G手機 雙卡</p>
-                                    <span>NT 17.90</span><s>NT 29.90</s>
-                                </li>
-                                <li>
-                                    <img src="/static/index/img/section_second_list_img3.jpg" />
-                                    <p>超能 植翠低泡洗衣液（鮮艷亮麗）2kg/袋裝（新老包裝隨機</p>
-                                    <span>NT 20.70</span><s>NT 44.90</s>
-                                </li>
-                                <li>
-                                    <img src="/static/index/img/section_second_list_img4.jpg" />
-                                    <p>長城（GreatWall）紅酒 特選5年橡木桶解百納幹紅葡萄酒 整</p>
-                                    <span>NT 399</span><s>NT 599</s>
-                                </li>
-                                <li>
-                                    <img src="/static/index/img/section_second_list_img5.jpg" />
-                                    <p>惠普(HP)暗影精靈2代Pro 15.6英寸遊戲筆記本電腦(i5-7300H</p>
-                                    <span>NT 5999</span><s>NT 6499</s>
-                                </li>
-                            </ul>
+                            <!-- 動態拼裝限時搶購商品信息 -->
+                            <ul id="seckillSkuContent"></ul>
                         </div>
                         <div class="swiper-slide">
                             <ul>
@@ -603,6 +578,21 @@
         function search() {
           var keyword=$("#searchText").val()
           window.location.href="http://search.cloudmall.com/list.html?keyword=" + keyword;
+        }
+
+        $.get("http://seckill.cloudmall.com/getCurrentSeckillSkus", function (res) {
+            if (res.data.length > 0) {
+                res.data.forEach(function (item) {
+                    $("<li onclick='toDetail(" + item.skuId + ")'></li>")
+                        .append($("<img style='width: 130px; height: 130px' src='" + item.skuInfo.skuDefaultImg + "' />"))
+                        .append($("<p>"+item.skuInfo.skuTitle+"</p>")).append($("<span>" + item.seckillPrice + "</span>"))
+                        .append($("<s>" + item.skuInfo.price + "</s>")).appendTo("#seckillSkuContent");
+                })
+            }
+        })
+
+        function toDetail(skuId) {
+            location.href = "http://item.cloudmall.com/" + skuId + ".html";
         }
     </script>
     <script type="text/javascript" src="/static/index/js/text.js"></script>

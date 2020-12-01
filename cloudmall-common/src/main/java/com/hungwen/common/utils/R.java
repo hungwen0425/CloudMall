@@ -18,7 +18,7 @@ public class R extends HashMap<String, Object> {
 
 	// 利用 fastjson
 	public <T> T getData(TypeReference<T> typeReference){
-		Object data = get("data"); //默认map
+		Object data = get("data"); //默認map
 		String jsonString = JSON.toJSONString(data);
 		T t = JSON.parseObject(jsonString, typeReference);
 		return t;

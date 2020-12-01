@@ -8,7 +8,7 @@ import java.util.Date;
 import lombok.Data;
 
 /**
- * 訂單設置表
+ * 訂單設定表
  * 
  * @author Hungwen Tseng
  * @email hungwen.tseng@gmail.com
@@ -25,7 +25,7 @@ public class OrderSettingEntity implements Serializable {
 	@TableId
 	private Long id;
 	/**
-	 * 秒殺訂單超時關閉時間(分)
+	 * 限時搶購訂單超時關閉時間(分)
 	 */
 	private Integer flashOrderOvertime;
 	/**

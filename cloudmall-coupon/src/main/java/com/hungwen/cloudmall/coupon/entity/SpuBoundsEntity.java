@@ -9,7 +9,7 @@ import java.util.Date;
 import lombok.Data;
 
 /**
- * 商品spu積分設置
+ * 商品spu積分設定
  * 
  * @author Hungwen Tseng
  * @email hungwen.tseng@gmail.com

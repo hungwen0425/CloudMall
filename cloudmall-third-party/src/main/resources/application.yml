@@ -1,0 +1,27 @@
+spring:
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+    alicloud:
+      access-key: LTAI4GHDJxDbSZfWqyHE6UMh
+      secret-key: EQkQ0tQpXTYbZU3hY3h65iEACdz5CN
+      oss:
+        endpoint: oss-cn-hongkong.aliyuncs.com
+        bucket: cloudmall
+      sms:
+      host: https://smsmsgs.market.alicloudapi.com
+      path: /sms/
+      skin: 5
+      sign: 1
+      appcode: 980eb5fac51d4fb58dbc4b1b58dc379e
+  application:
+    name: cloudmall-third-party
+
+server:
+  port: 30000
+
+logging:
+  level:
+    com.hungwen.cloudmall.thirdparty: debug
+

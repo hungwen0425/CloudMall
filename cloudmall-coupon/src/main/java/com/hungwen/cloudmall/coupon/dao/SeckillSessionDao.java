@@ -5,7 +5,7 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Mapper;
 
 /**
- * 秒殺活動場次
+ * 限時搶購活動場次
  * 
  * @author Hungwen Tseng
  * @email hungwen.tseng@gmail.com

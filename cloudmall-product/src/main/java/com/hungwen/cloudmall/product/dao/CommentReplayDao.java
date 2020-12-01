@@ -5,7 +5,7 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Mapper;
 
 /**
- * 商品評價回覆關系
+ * 商品評價回覆關係
  * 
  * @author Hungwen Tseng
  * @email hungwen.tseng@gmail.com

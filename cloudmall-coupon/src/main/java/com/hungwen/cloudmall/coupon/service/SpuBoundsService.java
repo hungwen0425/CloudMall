@@ -7,7 +7,7 @@ import com.hungwen.cloudmall.coupon.entity.SpuBoundsEntity;
 import java.util.Map;
 
 /**
- * 商品spu積分設置
+ * 商品spu積分設定
  *
  * @author Hungwen Tseng
  * @email hungwen.tseng@gmail.com

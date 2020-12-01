@@ -7,7 +7,7 @@ import com.hungwen.cloudmall.coupon.entity.SeckillSkuNoticeEntity;
 import java.util.Map;
 
 /**
- * 秒殺商品通知訂閱
+ * 限時搶購商品通知訂閱
  *
  * @author Hungwen Tseng
  * @email hungwen.tseng@gmail.com

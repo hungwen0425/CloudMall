@@ -18,6 +18,7 @@ import java.util.HashMap;
  **/
 @Configuration
 public class MyRabbitMQConfig {
+
     // 容器中的 Queue、Exchange、Binding 會自動創建 ( 在 RabbitMQ 沒有) 的情況下
     /**
      * 死信隊列 (Dead Queue)
@@ -39,6 +40,7 @@ public class MyRabbitMQConfig {
         Queue queue = new Queue("order.delay.queue", true, false, false, arguments);
         return queue;
     }
+
     /**
      * 普通隊列 (Normal Queue)
      * @return
@@ -48,6 +50,7 @@ public class MyRabbitMQConfig {
         Queue queue = new Queue("order.release.order.queue", true, false, false);
         return queue;
     }
+
     /**
      * TopicExchange
      * @return
@@ -62,6 +65,7 @@ public class MyRabbitMQConfig {
          * */
         return new TopicExchange("order-event-exchange", true, false);
     }
+
     /**
      * 創建訂單的 Binding
      * @return
@@ -75,8 +79,11 @@ public class MyRabbitMQConfig {
          * String routingKey,
          * Map<String, Object> arguments
          * */
-        return new Binding("order.delay.queue", Binding.DestinationType.QUEUE,"order-event-exchange",
-                            "order.create.order",null);
+        return new Binding("order.delay.queue",
+                Binding.DestinationType.QUEUE,
+                "order-event-exchange",
+                "order.create.order",
+                null);
     }
 
     @Bean
@@ -84,17 +91,21 @@ public class MyRabbitMQConfig {
         return new Binding("order.release.order.queue",
                 Binding.DestinationType.QUEUE,"order-event-exchange","order.release.order",null);
     }
+
     /**
      * 訂單釋放直接和庫存釋放進行綁定
      * @return
      */
     @Bean
     public Binding orderReleaseOtherBinding() {
-        return new Binding("stock.release.stock.queue", Binding.DestinationType.QUEUE,"order-event-exchange",
-                           "order.release.other.#",null);
+        return new Binding("stock.release.stock.queue",
+                Binding.DestinationType.QUEUE,
+                "order-event-exchange",
+                "order.release.other.#",null);
     }
+
     /**
-     * 商品秒殺隊列
+     * 商品限時搶購隊列
      * @return
      */
     @Bean
@@ -103,12 +114,19 @@ public class MyRabbitMQConfig {
         return queue;
     }
 
+    /**
+     * 商品限時搶購隊列與交換機進行綁定
+     * @return
+     */
     @Bean
     public Binding orderSecKillOrrderQueueBinding() {
         //String destination, DestinationType destinationType, String exchange, String routingKey,
         // 			Map<String, Object> arguments
-        Binding binding = new Binding("order.seckill.order.queue", Binding.DestinationType.QUEUE,
-                "order-event-exchange","order.seckill.order",null);
+        Binding binding = new Binding("order.seckill.order.queue",
+                Binding.DestinationType.QUEUE,
+                "order-event-exchange",
+                "order.seckill.order",
+                null);
         return binding;
     }
 }

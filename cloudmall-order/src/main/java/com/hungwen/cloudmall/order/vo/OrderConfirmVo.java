@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * @Description: 订单确认页需要用的数據
+ * @Description: 订單確認頁需要用的資料
  * @Created: with IntelliJ IDEA.
  * @author: Hungwen Tseng
  * @createTime: 2020-11-09 18:59

@@ -16,6 +16,7 @@ import java.util.concurrent.ExecutionException;
  * @email hungwen.tseng@gmail.com
  * @date 2020-08-25 14:57:51
  */
+
 public interface OrderService extends IService<OrderEntity> {
 
     PageUtils queryPage(Map<String, Object> params);
@@ -28,7 +29,11 @@ public interface OrderService extends IService<OrderEntity> {
     SubmitOrderResponseVo submitOrder(OrderSubmitVo vo);
 
     OrderEntity getOrderByOrderSn(String orderSn);
-
+    /**
+     * 分頁查詢當前登入用戶的所有訂單 資料
+     * @param params
+     * @return
+     */
     PageUtils queryPageWithItem(Map<String, Object> params);
 
     PayVo getOrderPay(String orderSn);
@@ -51,7 +56,7 @@ public interface OrderService extends IService<OrderEntity> {
      */
     String asyncNotify(String notifyData);
     /**
-     * 創建秒殺單
+     * 創建限時搶購單
      * @param orderTo
      */
     void createSeckillOrder(SecKillOrderTo orderTo);

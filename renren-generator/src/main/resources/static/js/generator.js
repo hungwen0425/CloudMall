@@ -5,8 +5,8 @@ $(function () {
         colModel: [			
 			{ label: '表名', name: 'tableName', width: 100, key: true },
 			{ label: 'Engine', name: 'engine', width: 70},
-			{ label: '表备注', name: 'tableComment', width: 100 },
-			{ label: '创建時間', name: 'createTime', width: 100 }
+			{ label: '表備註', name: 'tableComment', width: 100 },
+			{ label: '創建時間', name: 'createTime', width: 100 }
         ],
 		viewrecords: true,
         height: 385,

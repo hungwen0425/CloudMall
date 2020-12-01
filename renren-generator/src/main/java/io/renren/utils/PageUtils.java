@@ -12,11 +12,11 @@ import java.util.List;
  */
 public class PageUtils implements Serializable {
 	private static final long serialVersionUID = 1L;
-	//总记录數
+	//總記錄數
 	private int totalCount;
-	//每頁记录數
+	//每頁記錄數
 	private int pageSize;
-	//总頁數
+	//總頁數
 	private int totalPage;
 	//當前頁數
 	private int currPage;
@@ -26,8 +26,8 @@ public class PageUtils implements Serializable {
 	/**
 	 * 分頁
 	 * @param list        列表資料
-	 * @param totalCount  总记录數
-	 * @param pageSize    每頁记录數
+	 * @param totalCount  總記錄數
+	 * @param pageSize    每頁記錄數
 	 * @param currPage    當前頁數
 	 */
 	public PageUtils(List<?> list, int totalCount, int pageSize, int currPage) {

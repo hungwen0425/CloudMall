@@ -12,7 +12,7 @@ import java.util.concurrent.ConcurrentHashMap;
  */
 public class MongoManager {
 
-    /***mongo掃描很消耗性能 尤其是子類的封装  使用缓存**/
+    /***mongo掃描很消耗性能 尤其是子類的封装  使用緩存**/
     private static Map<String, MongoDefinition> mongoCache = new ConcurrentHashMap<>();
 
     public static Map<String, MongoDefinition> getCache() {

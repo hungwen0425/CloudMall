@@ -125,13 +125,13 @@
                                 <li>
                                     NT <span th:text="${#numbers.formatDecimal(item.info.price, 3, 0)}">4499</span>
                                 </li>
-                                <li style="color: red" th:if="${item.secKillInfoVo != null}">
-                                    <span th:if="${#dates.createNow().getTime() < item.secKillInfoVo.startTime}">
-                                        商品預計在[[${#dates.format(new java.util.Date(item.secKillInfoVo.startTime),'yyyy-MM-dd HH:mm:ss')}]]進行秒殺
+                                <li style="color: red" th:if="${item.secKillSkuVo != null}">
+                                    <span th:if="${#dates.createNow().getTime() < item.secKillSkuVo.startTime}">
+                                        商品預計在[[${#dates.format(new java.util.Date(item.secKillInfoVo.startTime),'yyyy-MM-dd HH:mm:ss')}]]進行限時搶購
                                     </span>
 
-                                    <span th:if="${#dates.createNow().getTime() >= item.secKillInfoVo.startTime && #dates.createNow().getTime() <= item.secKillInfoVo.endTime}">
-                                        秒殺價格：[[${#numbers.formatDecimal(item.secKillInfoVo.seckillPrice, 1, 0)}]]
+                                    <span th:if="${#dates.createNow().getTime() >= item.secKillSkuVo.startTime && #dates.createNow().getTime() <= item.secKillSkuVo.endTime}">
+                                        限時搶購價格：[[${#numbers.formatDecimal(item.secKillInfoVo.seckillPrice, 1, 0)}]]
                                     </span>
                                 </li>
                                 <li>
@@ -256,39 +256,35 @@
                                 </dl>
                             </div>
                         </div>
-
                         <div class="box-btns clear">
                             <div class="box-btns-one">
-                                <form id="itemForm" action="http://cart.cloudmall.com/addToCart" method="post">
-                                    <input type="hidden" name="num" id="numInput" value="1"/>
-                                    <input type="hidden" name="skuId"/>
-<!--                                    <div class="box-btns-one1">-->
-<!--                                        <div>-->
-<!--                                            <button type="button" id="jia">-->
-<!--                                                +-->
-<!--                                            </button>-->
-<!--                                        </div>-->
-<!--                                        <div>-->
-<!--                                            <button type="button" id="jian">-->
-<!--                                                - -->
-<!--                                            </button>-->
-<!--                                        </div>-->
-<!--                                    </div>-->
-                                </form>
-                            </div>
+                                <input type="text" name="" id="numInput" value="1"/>
+                                <div class="box-btns-one1">
 
-                            <div id="addToCart" th:if="${item.secKillInfoVo == null || (#dates.createNow().getTime() < item.secKillInfoVo.startTime || #dates.createNow().getTime() > item.secKillInfoVo.endTime)}"
-                                 th:attr="skuId=${item.info.skuId}" style="cursor:pointer;" class="box-btns-two">
-                                <a href="#">
+                                    <div>
+                                        <button id="jia">
+                                            +
+                                        </button>
+                                    </div>
+                                    <div>
+                                        <button id="jian">
+                                            -
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="box-btns-two" th:if="${item.secKillSkuVo != null && (#dates.createNow().getTime() >= item.secKillSkuVo.startTime && #dates.createNow().getTime() <= item.secKillSkuVo.getEndTime())}">
+                                <a href="#" id="secKillA" th:attr="skuId=${item.info.skuId}, sessionId=${item.secKillSkuVo.promotionSessionId}, code=${item.secKillSkuVo.randomCode}">
+                                    立即搶購
+                                </a>
+                            </div>
+                            <div class="box-btns-two" th:if="${item.secKillSkuVo == null || (#dates.createNow().getTime() < item.secKillSkuVo.startTime || #dates.createNow().getTime() > item.secKillSkuVo.getEndTime())}">
+                                <a href="#" id="addToCartA" th:attr="skuId=${item.info.skuId}">
                                     加入購物車
                                 </a>
                             </div>
-
-                            <div id="secKillA" th:if="${item.secKillInfoVo != null && (#dates.createNow().getTime() >= item.secKillInfoVo.startTime && #dates.createNow().getTime() <= item.secKillInfoVo.endTime)}"
-                                 th:attr="skuId=${item.info.skuId},sessionId=${item.secKillInfoVo.promotionSessionId},code=${item.secKillInfoVo.randomCode}" style="cursor:pointer;" class="box-btns-two">
-                                <a href="#">
-                                    立即搶購
-                                </a>
+                            <div class="box-btns-three">
+                                <img src="/static/item/img/e4ed3606843f664591ff1f68f7fda12d.png" alt=""/> 分享
                             </div>
                         </div>
                     </div>
@@ -480,7 +476,7 @@
                                                 <h3>全國聯保</h3>
                                             </span>
                                             <div class="wenZi">
-                                                憑質保證書及商城商城發票，可享受全國聯保服務（奢侈品、鐘表除外；奢侈品、鐘表由商城聯系保修，享受法定三包售後服務），與您親臨商場選購的商品享受相同的質量保證。商城商城還為您提供具有競爭力的商品價格和運費政策，請您放心購買！
+                                                憑質保證書及商城商城發票，可享受全國聯保服務（奢侈品、鐘表除外；奢侈品、鐘表由商城聯繫保修，享受法定三包售後服務），與您親臨商場選購的商品享受相同的質量保證。商城商城還為您提供具有競爭力的商品價格和運費政策，請您放心購買！
                                                 <br/>
 
                                                 註：因廠家會在沒有任何提前通知的情況下更改產品包裝、產地或者一些附件，本司不能確保客戶收到的貨物與商城圖片、產地、附件說明完全一致。只能確保為原廠正貨！並且保證與當時市場上同樣主流新品一致。若本商城沒有及時更新，請大家諒解！
@@ -499,8 +495,8 @@
                                             <div class="jingDong">
                                                 <span class="oZhu">商城價</span>：商城價為商品的銷售價，是您最終決定是否購買商品的依據。<br/>
                                                 <span class="oZhu">劃線價</span>：商品展示的劃橫線價格為參考價，該價格可能是品牌專櫃標價、商品弔牌價或由品牌供應商提供的正品零售價（如廠商指導價、建議零售價等）或該商品在商城平臺上曾經展示過的銷售價；由於地區、時間的差異性和市場行情波動，品牌專櫃標價、商品弔牌價等可能會與您購物時展示的不一致，該價格僅供您參考。<br/>
-                                                <span class="oZhu">折扣</span>：如無特殊說明，折扣指銷售商在原價、或劃線價（如品牌專櫃標價、商品弔牌價、廠商指導價、廠商建議零售價）等某一價格基礎上計算出的優惠比例或優惠金額；如有疑問，您可在購買前聯系銷售商進行咨詢。<br/>
-                                                <span class="oZhu">異常問題</span>：商品促銷資料以商品詳情頁“促銷”欄中的資料為準；商品的具體售價以訂單結算頁價格為準；如您發現活動商品售價或促銷資料有異常，建議購買前先聯系銷售商咨詢。
+                                                <span class="oZhu">折扣</span>：如無特殊說明，折扣指銷售商在原價、或劃線價（如品牌專櫃標價、商品弔牌價、廠商指導價、廠商建議零售價）等某一價格基礎上計算出的優惠比例或優惠金額；如有疑問，您可在購買前聯繫銷售商進行咨詢。<br/>
+                                                <span class="oZhu">異常問題</span>：商品促銷資料以商品詳情頁“促銷”欄中的資料為準；商品的具體售價以訂單結算頁價格為準；如您發現活動商品售價或促銷資料有異常，建議購買前先聯繫銷售商咨詢。
                                             </div>
                                         </div>
                                     </div>
@@ -662,7 +658,7 @@
             return false;
         });
 
-        // 立即秒殺商品
+        // 立即限時搶購商品
         $("#secKillA").click(function () {
             var isLogin = [[${session.loginUser != null}]];
             // 1、判斷是否已登入 簡單限流
@@ -672,7 +668,7 @@
                 var num = $("#numInput").val();
                 location.href = "http://seckill.cloudmall.com/kill?killId=" + killId + "&key=" + key + "&num=" + num;
             } else {
-                alert("登入後才可以參與秒殺活動！");
+                alert("登入後才可以參與限時搶購活動！");
             }
             return false;
         });

@@ -23,7 +23,7 @@ import org.springframework.data.redis.serializer.StringRedisSerializer;
 public class MyCacheConfig {
 
     /**
-     * 配置文件的配置沒有用上
+     * 設定文件的設定沒有用上
      * @return
      */
     @Bean
@@ -34,7 +34,7 @@ public class MyCacheConfig {
         config = config.serializeValuesWith(RedisSerializationContext.SerializationPair.fromSerializer(new GenericJackson2JsonRedisSerializer()));
 
         CacheProperties.Redis redisProperties = cacheProperties.getRedis();
-        //將配置文件中所有的配置都生效
+        //將設定文件中所有的設定都生效
         if (redisProperties.getTimeToLive() != null) {
             config = config.entryTtl(redisProperties.getTimeToLive());
         }

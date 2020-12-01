@@ -80,7 +80,7 @@
       this.getDataList()
     },
     methods: {
-      // 獲取資料列表
+      // 查詢資料列表
       getDataList () {
         this.dataListLoading = true
         #[[this.$http({]]#
@@ -113,7 +113,7 @@
         this.pageIndex = val
         this.getDataList()
       },
-      // 多选
+      // 多選
       selectionChangeHandle (val) {
         this.dataListSelections = val
       },
@@ -129,8 +129,8 @@
         var ids = id ? [id] : this.dataListSelections.map(item => {
           return item.${pk.attrname}
         })
-        #[[this.$confirm(`确定對[id=${ids.join(',')}]進行[${id ? '删除' : '批量删除'}]操作?`, '提示', {]]#
-          confirmButtonText: '确定',
+        #[[this.$confirm(`確定對[id=${ids.join(',')}]進行[${id ? '删除' : '批量删除'}]操作?`, '提示', {]]#
+          confirmButtonText: '確定',
           cancelButtonText: '取消',
           type: 'warning'
         }).then(() => {

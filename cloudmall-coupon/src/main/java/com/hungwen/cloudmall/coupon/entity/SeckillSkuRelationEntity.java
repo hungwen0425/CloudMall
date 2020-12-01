@@ -9,7 +9,7 @@ import java.util.Date;
 import lombok.Data;
 
 /**
- * 秒殺活動商品關聯
+ * 限時搶購活動商品關聯
  * 
  * @author Hungwen Tseng
  * @email hungwen.tseng@gmail.com
@@ -39,11 +39,11 @@ public class SeckillSkuRelationEntity implements Serializable {
 	 */
 	private Long skuId;
 	/**
-	 * 秒殺價格
+	 * 限時搶購價格
 	 */
 	private BigDecimal seckillPrice;
 	/**
-	 * 秒殺總量
+	 * 限時搶購總量
 	 */
 	private BigDecimal seckillCount;
 	/**

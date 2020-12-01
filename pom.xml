@@ -15,6 +15,7 @@
     </properties>
 
     <modules>
+        <module>cloudmall-admin</module>
         <module>cloudmall-auth-server</module>
         <module>cloudmall-cart</module>
         <module>cloudmall-common</module>
@@ -24,10 +25,9 @@
         <module>cloudmall-order</module>
         <module>cloudmall-product</module>
         <module>cloudmall-search</module>
+        <module>cloudmall-seckill</module>
         <module>cloudmall-third-party</module>
         <module>cloudmall-ware</module>
-        <module>renren-fast</module>
-        <module>renren-generator</module>
     </modules>
 
 </project>

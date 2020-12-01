@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * 異常处理器
+ * 異常處理器
  * 
  * @author chenshun
  * @email sunlightcs@gmail.com
@@ -34,18 +34,18 @@ public class RRExceptionHandler implements HandlerExceptionResolver {
 				r.put("code", ((RRException) ex).getCode());
 				r.put("msg", ((RRException) ex).getMessage());
 			}else if(ex instanceof DuplicateKeyException){
-				r = R.error("資料庫中已存在該记录");
+				r = R.error("資料庫中已存在該記錄");
 			}else{
 				r = R.error();
 			}
 			
-			//记录異常日誌
+			//記錄異常日誌
 			logger.error(ex.getMessage(), ex);
 			
 			String json = JSON.toJSONString(r);
 			response.getWriter().print(json);
 		} catch (Exception e) {
-			logger.error("RRExceptionHandler 異常处理失败", e);
+			logger.error("RRExceptionHandler 異常處理失敗", e);
 		}
 		return new ModelAndView();
 	}

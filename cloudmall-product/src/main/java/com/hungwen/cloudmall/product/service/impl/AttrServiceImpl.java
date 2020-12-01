@@ -147,8 +147,8 @@ public class AttrServiceImpl extends ServiceImpl<AttrDao, AttrEntity> implements
         }
         // 2、設定分類資料
         Long catelogId = attrEntity.getCatelogId();
-        List<Long> catelogPath = Arrays.asList(categoryService.findCatelogPath(catelogId));
-        //respVo.setCatelogPath();
+        Long[] catelogPath = categoryService.findCatelogPath(catelogId);
+        // respVo.setCatelogPath();
         respVo.setCatelogPath(catelogPath);
 
         CategoryEntity categoryEntity = categoryDao.selectById(catelogId);

@@ -10,6 +10,13 @@ spring:
             - RewritePath=/api/(?<segment>/?.*),/$\{segment}
           # http://localhost:88/api/product/category/list/tree  --> http://localhost:10000/product/category/list/tree
 
+        - id: coupon_route
+          uri: lb://cloudmall-coupon
+          predicates:
+            - Path=/api/coupon/**
+          filters:
+            - RewritePath=/api/(?<segment>/?.*),/$\{segment}
+
         - id: third_party_route
           uri: lb://cloudmall-third-party
           predicates:
@@ -71,7 +78,15 @@ spring:
           predicates:
             - Host=order.cloudmall.com
 
+        - id: cloudmall_member_route
+          uri: lb://cloudmall-member
+          predicates:
+            - Host=member.cloudmall.com
 
+        - id: cloudmall_seckill_route
+          uri: lb://cloudmall-seckill
+          predicates:
+            - Host=seckill.cloudmall.com
     nacos:
       discovery:
         server-addr: 127.0.0.1:8848
@@ -84,3 +99,10 @@ server:
 logging:
   level:
     com.hungwen.cloudmall.gateway: debug
+
+#暴露所有端點
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'

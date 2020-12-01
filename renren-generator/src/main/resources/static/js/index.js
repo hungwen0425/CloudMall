@@ -1,4 +1,4 @@
-//iframe自适应
+//iframe自适應
 $(window).on('resize', function() {
 	var $content = $('.content');
 	$content.height($(this).height() - 120);
@@ -42,7 +42,7 @@ function routerList(router, menus){
 			//替换iframe的url
 			vm.main = url.replace('#', '');
 
-			//导航菜單展開
+			//導航選單展開
 			$(".treeview-menu li").removeClass("active");
 			$("a[href='"+url+"']").parents("li").addClass("active");
 

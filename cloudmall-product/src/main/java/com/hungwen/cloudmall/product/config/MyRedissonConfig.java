@@ -25,10 +25,10 @@ public class MyRedissonConfig {
      */
     @Bean(destroyMethod="shutdown")
     public RedissonClient redisson() throws IOException {
-        //1、創建配置
+        // 1. 創建設定
         Config config = new Config();
         config.useSingleServer().setAddress("redis://192.168.56.10:6379");
-        //2、根據 Config 創建出 RedissonClient 實例
+        // 2. 根據 Config 創建出 RedissonClient 實例
         RedissonClient redissonClient = Redisson.create(config);
         return redissonClient;
     }

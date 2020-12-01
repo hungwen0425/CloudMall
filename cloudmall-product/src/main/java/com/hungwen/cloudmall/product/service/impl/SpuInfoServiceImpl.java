@@ -14,7 +14,6 @@ import com.hungwen.common.to.SkuReductionTo;
 import com.hungwen.common.to.SpuBoundTo;
 import com.hungwen.common.to.es.SkuEsModel;
 import com.hungwen.common.utils.R;
-import io.seata.spring.annotation.GlobalTransactional;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -118,9 +117,9 @@ public class SpuInfoServiceImpl extends ServiceImpl<SpuInfoDao, SpuInfoEntity> i
         attrValueService.saveProductAttr(collect);
         
         // 4.1 保存 spu 的積分資料 cloudmall_sms -> sms_spu_bounds
-        Bounds bounds = vo.getBounds();
+        BrandVo brandVo = vo.getBrandVo();
         SpuBoundTo spuBoundTo = new SpuBoundTo();
-        BeanUtils.copyProperties(bounds, spuBoundTo);
+        BeanUtils.copyProperties(brandVo, spuBoundTo);
         spuBoundTo.setSpuId(infoEntity.getId());
         R r = couponFeignService.saveSpuBounds(spuBoundTo);
         if (r.getCode() != 0) {
@@ -273,7 +272,7 @@ public class SpuInfoServiceImpl extends ServiceImpl<SpuInfoDao, SpuInfoEntity> i
             SkuEsModel esModel = new SkuEsModel();
             esModel.setSkuPrice(sku.getPrice());
             esModel.setSkuImg(sku.getSkuDefaultImg());
-            // 設置庫存資料
+            // 設定庫存資料
             if (finalStockMap == null) {
                 esModel.setHasStock(true);
             } else {
@@ -291,7 +290,7 @@ public class SpuInfoServiceImpl extends ServiceImpl<SpuInfoDao, SpuInfoEntity> i
             CategoryEntity categoryEntity = categoryService.getById(sku.getCatalogId());
             esModel.setCatalogId(categoryEntity.getCatId());
             esModel.setCatalogName(categoryEntity.getName());
-            // 設置檢索屬性
+            // 設定檢索屬性
             esModel.setAttrs(attrsList);
             BeanUtils.copyProperties(sku,esModel);
             return esModel;

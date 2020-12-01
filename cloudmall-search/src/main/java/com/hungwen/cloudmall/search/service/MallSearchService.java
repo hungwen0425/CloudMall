@@ -13,7 +13,7 @@ import com.hungwen.cloudmall.search.vo.SearchResult;
 public interface MallSearchService {
 
     /**
-     * @param param 檢索的所有参数
+     * @param param 檢索的所有参數
      * @return  返回檢索的结果，裡面包含頁面需要的所有資料
      */
     SearchResult search(SearchParam param);

@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.PathVariable;
  * @author: Hungwen Tseng
  * @createTime: 2020-10-10 15:53
  **/
-
 @FeignClient(value = "cloudmall-seckill", fallback = SeckillFeignServiceFallBack.class)
 public interface SecKillFeignService {
 

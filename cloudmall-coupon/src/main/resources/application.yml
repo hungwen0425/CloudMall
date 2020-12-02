@@ -10,8 +10,8 @@ spring:
         server-addr: 127.0.0.1:8848
   application:
     name: cloudmall-coupon
-#  jackson:
-#    date-format: yyyy-MM-dd HH:mm:ss
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
   thymeleaf:
     cache: false
   redis:
@@ -32,15 +32,3 @@ server:
 logging:
   level:
     com.hungwen.cloudmall.coupon: debug
-#logging:
-#  level:
-#    com.hungwen.cloudmall: info
-#    org.springframework.cloud.openfeign: debug
-#    org.springframework.cloud.sleuth: debug
-
-#暴露所有端點
-#management:
-#  endpoints:
-#    web:
-#      exposure:
-#        include: '*'

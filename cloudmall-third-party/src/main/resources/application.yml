@@ -3,6 +3,10 @@ spring:
     nacos:
       discovery:
         server-addr: 127.0.0.1:8848
+    sentinel:
+      transport:
+        dashboard: 127.0.0.1:8083
+        port: 8719
     alicloud:
       access-key: LTAI4GHDJxDbSZfWqyHE6UMh
       secret-key: EQkQ0tQpXTYbZU3hY3h65iEACdz5CN
@@ -24,4 +28,11 @@ server:
 logging:
   level:
     com.hungwen.cloudmall.thirdparty: debug
+
+# 暴露所有端點
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
 

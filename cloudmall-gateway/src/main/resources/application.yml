@@ -99,10 +99,3 @@ server:
 logging:
   level:
     com.hungwen.cloudmall.gateway: debug
-
-#暴露所有端點
-management:
-  endpoints:
-    web:
-      exposure:
-        include: '*'

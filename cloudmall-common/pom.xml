@@ -79,22 +79,11 @@
             <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
         </dependency>
 
-        <!-- Seata 場景啟動器 - 解决分布式事務 -->
-<!--        <dependency>-->
-<!--            <groupId>com.alibaba.cloud</groupId>-->
-<!--            <artifactId>spring-cloud-starter-alibaba-seata</artifactId>-->
-<!--        </dependency>-->
         <!-- Sentinel 場景啟動器 - 流量控制、熔斷降級、系统負載保護等多個維度保護服務的穩定性 -->
         <dependency>
             <groupId>com.alibaba.cloud</groupId>
             <artifactId>spring-cloud-starter-alibaba-sentinel</artifactId>
         </dependency>
-        <!--        為了使用Sentinel1.7.1版本的控制台 -->
-<!--       <dependency>-->
-<!--            <groupId>com.alibaba.csp</groupId>-->
-<!--            <artifactId>sentinel-datasource-nacos</artifactId>-->
-<!--            <version>1.7.1</version>-->
-<!--       </dependency>-->
 
         <!--        引入sleuth链路追踪 -->
         <!--        <dependency>

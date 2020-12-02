@@ -145,6 +145,11 @@ public class SeckillServiceImpl implements SeckillService {
         });
     }
 
+    public List<SeckillSkuRedisTo> blockHandler(BlockException e) {
+        log.error("getCurrentSeckillSkusResource 被限流了,{}", e.getMessage());
+        return null;
+    }
+
     /**
      * 查詢當前可以參加限時搶購商品的資料
      * @return
@@ -187,11 +192,6 @@ public class SeckillServiceImpl implements SeckillService {
         } catch (BlockException e) {
             log.error("資源被限流{}", e.getMessage());
         }
-        return null;
-    }
-
-    public List<SeckillSkuRedisTo> blockHandler(BlockException e) {
-        log.error("getCurrentSeckillSkusResource 被限流了,{}", e.getMessage());
         return null;
     }
 

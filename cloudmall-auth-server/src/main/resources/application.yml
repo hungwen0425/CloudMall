@@ -13,9 +13,13 @@ spring:
   session:
     store-type: redis
 
+# 開啟 feign 對 sentinel 的支持
+feign:
+  sentinel:
+    enabled: true
+
 server:
   port: 20000
   servlet:
     session:
       timeout: 30m
-

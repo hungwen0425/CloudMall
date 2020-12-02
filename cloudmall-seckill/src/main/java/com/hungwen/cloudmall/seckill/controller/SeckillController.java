@@ -3,6 +3,7 @@ package com.hungwen.cloudmall.seckill.controller;
 import com.hungwen.cloudmall.seckill.service.SeckillService;
 import com.hungwen.cloudmall.seckill.to.SeckillSkuRedisTo;
 import com.hungwen.common.utils.R;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,7 +20,7 @@ import java.util.List;
  * @author: Hungwen Tseng
  * @createTime: 2020-11-29 11:01
  **/
-
+@Slf4j
 @Controller
 public class SeckillController {
 
@@ -33,6 +34,7 @@ public class SeckillController {
     @GetMapping(value = "/getCurrentSeckillSkus")
     @ResponseBody
     public R getCurrentSeckillSkus() {
+        log.info("getCurrentSeckillSkus 正在運行中");
         // 查詢當前可以參加限時搶購商品的資料
         List<SeckillSkuRedisTo> vos = seckillService.getCurrentSeckillSkus();
         return R.ok().setData(vos);

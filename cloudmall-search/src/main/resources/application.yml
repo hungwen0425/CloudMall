@@ -10,24 +10,14 @@ spring:
         server-addr: 127.0.0.1:8848
   thymeleaf:
     cache: false
-#    sentinel:
-#      transport:
-#        #設定sentinel dashboard 地址
-#        dashboard: localhost:8080
+  sentinel:
+    transport:
+      dashboard: localhost:8083
   redis:
     host: 192.168.56.10
     port: 6379
   session:
     store-type: redis
-
-#開啟 feign 對 sentinel 的支持
-#feign:
-#  sentinel:
-#    enabled: true
-#  thymeleaf:
-#    cache: false
-#  session:
-#    store-type: redis
 
 logging:
   level:
@@ -35,9 +25,3 @@ logging:
   pattern:
     console: "%d{yyyy-MM-dd} [%thread] - %msg%n"
 
-#暴露所有端點
-management:
-  endpoints:
-    web:
-      exposure:
-        include: '*'

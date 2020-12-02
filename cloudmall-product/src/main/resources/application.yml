@@ -20,7 +20,6 @@ spring:
   session:
     store-type: redis
 
-
 mybatis-plus:
   mapper-locations: classpath:mapper/**/*.xml
   global-config:
@@ -34,7 +33,7 @@ server:
 
 logging:
   level:
-    #com.hungwen.cloudmall.product: debug
+    com.hungwen.cloudmall.product: info
     root: warn
   pattern:
     console: "%d{yyyy-MM-dd} [%thread] - %msg%n"

@@ -8,22 +8,11 @@ spring:
     nacos:
       discovery:
         server-addr: 127.0.0.1:8848
-    sentinel:
-      transport:
-        # 配置 sentinel dashboard 地址
-        dashboard: 127.0.0.1:8080
-        # 默認 8719 port，假如被占用會自動從 8719 開始依次 +1 掃描，直至找到未被占用的 port
-        port: 8719
   redis:
     host: 192.168.56.10
     port: 6379
   thymeleaf:
     cache: false
-
-# 開啟 feign 對 sentinel 的支持
-feign:
-  sentinel:
-    enabled: true
   # 配置異步任務線程池
   task:
     execution:
@@ -32,9 +21,3 @@ feign:
         max-size: 50
   session:
     store-type: redis
-#暴露所有端點
-management:
-  endpoints:
-    web:
-      exposure:
-        include: '*'

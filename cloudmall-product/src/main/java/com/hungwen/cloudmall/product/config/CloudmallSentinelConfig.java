@@ -1,4 +1,4 @@
-package com.hungwen.cloudmall.seckill.config;
+package com.hungwen.cloudmall.product.config;
 
 import com.alibaba.csp.sentinel.adapter.servlet.callback.UrlBlockHandler;
 import com.alibaba.csp.sentinel.adapter.servlet.callback.WebCallbackManager;
@@ -16,13 +16,12 @@ import java.io.IOException;
  * @Description: 自定義阻塞返回方法
  * @Created: with IntelliJ IDEA.
  * @author: Hungwen Tesng
- * @createTime: 2020-11-29 11:30
+ * @createTime: 2020-12-02 11:30
  **/
-
 @Configuration
-public class CloudmallSecKillSentinelConfig {
+public class CloudmallSentinelConfig {
 
-    public CloudmallSecKillSentinelConfig() {
+    public CloudmallSentinelConfig() {
 
         WebCallbackManager.setUrlBlockHandler(new UrlBlockHandler() {
             @Override
@@ -31,7 +30,6 @@ public class CloudmallSecKillSentinelConfig {
                 response.setCharacterEncoding("UTF-8");
                 response.setContentType("application/json");
                 response.getWriter().write(JSON.toJSONString(error));
-
             }
         });
     }

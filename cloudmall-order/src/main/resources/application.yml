@@ -35,4 +35,4 @@ logging:
   level:
     com.hungwen.cloudmall.order: info
     org.springframework.cloud.openfeign: debug
-#    org.springframework.cloud.sleuth: debug
+    org.springframework.cloud.sleuth: debug

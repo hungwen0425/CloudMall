@@ -85,18 +85,17 @@
             <artifactId>spring-cloud-starter-alibaba-sentinel</artifactId>
         </dependency>
 
-        <!--        引入sleuth链路追踪 -->
-        <!--        <dependency>
-                    <groupId>org.springframework.cloud</groupId>
-                    <artifactId>spring-cloud-starter-sleuth</artifactId>
-                </dependency>-->
+<!--        &lt;!&ndash;  引入sleuth链路追踪  &ndash;&gt;-->
+<!--        <dependency>-->
+<!--            <groupId>org.springframework.cloud</groupId>-->
+<!--            <artifactId>spring-cloud-starter-sleuth</artifactId>-->
+<!--        </dependency>-->
 
-        <!--        引入sleuth链路追踪的可视化观察界面zipkin
-                    因為zipkin裡引入了sleuth，所以不需要再單獨引入sleuth-->
-        <!--        <dependency>
-                    <groupId>org.springframework.cloud</groupId>
-                    <artifactId>spring-cloud-starter-zipkin</artifactId>
-                </dependency>-->
+        <!--  引入 Sleuth 链路追踪的可视化观察界面 Zipkin，因為 Zipkin 裡引入了 Sleuth，所以不需要再單獨引入 Sleuth-->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-zipkin</artifactId>
+        </dependency>
 
         <dependency>
             <groupId>javax.validation</groupId>

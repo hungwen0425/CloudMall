@@ -1,6 +1,5 @@
 package com.hungwen.cloudmall.ware;
 
-import com.alibaba.cloud.seata.GlobalTransactionAutoConfiguration;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.amqp.rabbit.annotation.EnableRabbit;
 import org.springframework.boot.SpringApplication;
@@ -12,7 +11,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @EnableRabbit
 @EnableFeignClients(basePackages = "com.hungwen.cloudmall.ware.feign")
 @EnableDiscoveryClient
-@SpringBootApplication(exclude = GlobalTransactionAutoConfiguration.class)
+@SpringBootApplication
 public class CloudmallWareApplication {
 
     public static void main(String[] args) {

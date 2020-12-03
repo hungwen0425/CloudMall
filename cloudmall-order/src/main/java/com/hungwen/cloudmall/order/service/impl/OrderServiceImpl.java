@@ -95,7 +95,7 @@ public class OrderServiceImpl extends ServiceImpl<OrderDao, OrderEntity> impleme
     public OrderConfirmVo confirmOrder() throws ExecutionException, InterruptedException {
         OrderConfirmVo confirmVo = new OrderConfirmVo();
         MemberResponseVo memberRespVo = LoginUserInterceptor.loginUser.get();
-        // 解決Feign異步 ThreadLocal 問題
+        // 解決 Feign 異步 ThreadLocal 問題
         // 查詢當前線程的資料
         RequestAttributes requestAttributes = RequestContextHolder.getRequestAttributes();
 

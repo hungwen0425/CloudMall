@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <title>購物車</title>
-        <link rel="icon" href="/static/car/img/心04.png" type="/image/x-icon"/>
+        <link rel="icon" href="/static/cart/img/04.png" type="/image/x-icon"/>
         <link rel="stylesheet" href="/static/cart/css/One_bdyStyle.css">
         <link rel="stylesheet" href="/static/cart/css/index.css">
         <script src="/static/cart/js/jquery-3.1.1.min.js" charset="utf-8"></script>
@@ -748,7 +748,7 @@
             const checked = $(this).prop("checked");
             location.href = "http://cart.cloudmall.com/checkItem?skuId=" + skuId + "&checked=" + (checked ? 1 : 0);
         });
-
+        // 商品數量增減
         $(".countOpsBtn").click(function () {
             const skuId = $(this).parent().attr("skuId");
             const num = $(this).parent().find(".countOpsNum").text();

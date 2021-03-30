@@ -17,13 +17,6 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class CloudmallElasticSearchConfig {
 
-    // @Bean
-    // public RestHighLevelClient esRestClient(){
-    //     RestHighLevelClient client = new RestHighLevelClient(
-    //             RestClient.builder(new HttpHost("192.168.137.14", 9200, "http")));
-    //     return  client;
-    // }
-
     public static final RequestOptions COMMON_OPTIONS;
     static {
         RequestOptions.Builder builder = RequestOptions.DEFAULT.toBuilder();
@@ -36,8 +29,7 @@ public class CloudmallElasticSearchConfig {
 
     @Bean
     public RestHighLevelClient esRestClient(){
-        RestHighLevelClient client = new RestHighLevelClient(
-                RestClient.builder(new HttpHost("192.168.56.10", 9200, "http")));
+        RestHighLevelClient client = new RestHighLevelClient(RestClient.builder(new HttpHost("192.168.56.10", 9200, "http")));
         return client;
     }
 }

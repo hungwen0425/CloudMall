@@ -6,10 +6,7 @@ import com.hungwen.cloudmall.product.entity.SkuImagesEntity;
 import com.hungwen.cloudmall.product.entity.SpuInfoDescEntity;
 import com.hungwen.cloudmall.product.feign.SecKillFeignService;
 import com.hungwen.cloudmall.product.service.*;
-import com.hungwen.cloudmall.product.vo.SecKillSkuVo;
-import com.hungwen.cloudmall.product.vo.SkuItemSaleAttrVo;
-import com.hungwen.cloudmall.product.vo.SkuItemVo;
-import com.hungwen.cloudmall.product.vo.SpuItemAttrGroupVo;
+import com.hungwen.cloudmall.product.vo.*;
 import com.hungwen.common.utils.R;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -111,61 +108,83 @@ public class SkuInfoServiceImpl extends ServiceImpl<SkuInfoDao, SkuInfoEntity> i
         return skuInfoEntities;
     }
 
-    @Override
+//    @Override // 異步
+//    public SkuItemVo item(Long skuId) throws ExecutionException, InterruptedException {
+//        SkuItemVo skuItemVo = new SkuItemVo();
+//
+//        CompletableFuture<SkuInfoEntity> infoFuture = CompletableFuture.supplyAsync(() -> {
+//            // 1. 查詢 sku 基本資料  pms_sku_info
+//            SkuInfoEntity info = this.getById(skuId);
+//            skuItemVo.setInfo(info);
+//            return info;
+//        }, executor);
+//
+//        CompletableFuture<Void> saleAttrFuture = infoFuture.thenAcceptAsync((res) -> {
+//            // 3. 查詢 spu 的銷售屬性組合
+//            List<SkuItemSaleAttrVo> saleAttrVos = skuSaleAttrValueService.getSaleAttrBySpuId(res.getSpuId());
+//            skuItemVo.setSaleAttrs(saleAttrVos);
+//        }, executor);
+//
+//        CompletableFuture<Void> descFuture = infoFuture.thenAcceptAsync((res) -> {
+//            // 4. 查詢 spu 的介紹    pms_spu_info_desc
+//            SpuInfoDescEntity spuInfoDescEntity = spuInfoDescService.getById(res.getSpuId());
+//            skuItemVo.setDesc(spuInfoDescEntity);
+//        }, executor);
+//
+//        CompletableFuture<Void> baseAttrFuture = infoFuture.thenAcceptAsync((res) -> {
+//            // 5. 查詢 spu 的規格參數資料
+//            List<SpuItemAttrGroupVo> attrGroupVos = attrGroupService.getAttrGroupWithAttrsBySpuId(res.getSpuId(), res.getCatalogId());
+//            skuItemVo.setAttrGroups(attrGroupVos);
+//        }, executor);
+//
+//        CompletableFuture<Void> imageFuture = CompletableFuture.runAsync(() -> {
+//            // 2. sku 的圖片資料    pms_sku_images
+//            List<SkuImagesEntity> imagesEntities = skuImagesService.getImagesBySkuId(skuId);
+//            skuItemVo.setImages(imagesEntities);
+//        }, executor);
+//
+//        // Long spuId = info.getSpuId();
+//        // Long catalogId = info.getCatalogId();
+//        CompletableFuture<Void> seckillFuture = CompletableFuture.runAsync(() -> {
+//            //6、遠程調用查詢當前 sku 是否參與限時搶購優惠活動
+//            R secKillSkuVo = secKillFeignService.getSkuSeckilInfo(skuId);
+//            if (secKillSkuVo.getCode() == 0) {
+//                SecKillSkuVo data = secKillSkuVo.getData(new TypeReference<SecKillSkuVo>() {
+//                });
+//                skuItemVo.setSecKillSkuVo(data);
+//            }
+//        }, executor);
+//        //等到所有任務都完成
+//        CompletableFuture.allOf(saleAttrFuture, descFuture, baseAttrFuture, imageFuture, seckillFuture).get();
+//        return skuItemVo;
+//    }
+
+
+    @Override // 同步
     public SkuItemVo item(Long skuId) throws ExecutionException, InterruptedException {
         SkuItemVo skuItemVo = new SkuItemVo();
-
-        CompletableFuture<SkuInfoEntity> infoFuture = CompletableFuture.supplyAsync(() -> {
-            // 1. 查詢 sku 基本資料  pms_sku_info
-            SkuInfoEntity info = this.getById(skuId);
-            skuItemVo.setInfo(info);
-            return info;
-        }, executor);
-
-        CompletableFuture<Void> saleAttrFuture = infoFuture.thenAcceptAsync((res) -> {
-            // 3. 查詢 spu 的銷售屬性組合
-            List<SkuItemSaleAttrVo> saleAttrVos = skuSaleAttrValueService.getSaleAttrBySpuId(res.getSpuId());
-            skuItemVo.setSaleAttrs(saleAttrVos);
-        }, executor);
-
-        CompletableFuture<Void> descFuture = infoFuture.thenAcceptAsync((res) -> {
-            // 4. 查詢 spu 的介紹    pms_spu_info_desc
-            SpuInfoDescEntity spuInfoDescEntity = spuInfoDescService.getById(res.getSpuId());
-            skuItemVo.setDesc(spuInfoDescEntity);
-        }, executor);
-
-        CompletableFuture<Void> baseAttrFuture = infoFuture.thenAcceptAsync((res) -> {
-            // 5. 查詢 spu 的規格參數資料
-            List<SpuItemAttrGroupVo> attrGroupVos = attrGroupService.getAttrGroupWithAttrsBySpuId(res.getSpuId(), res.getCatalogId());
-            skuItemVo.setAttrGroups(attrGroupVos);
-        }, executor);
-
-        CompletableFuture<Void> imageFuture = CompletableFuture.runAsync(() -> {
-            // 2. sku 的圖片資料    pms_sku_images
-            List<SkuImagesEntity> imagesEntities = skuImagesService.getImagesBySkuId(skuId);
-            skuItemVo.setImages(imagesEntities);
-        }, executor);
-
-        // Long spuId = info.getSpuId();
-        // Long catalogId = info.getCatalogId();
-        CompletableFuture<Void> seckillFuture = CompletableFuture.runAsync(() -> {
-            //3、遠程調用查詢當前 sku 是否參與限時搶購優惠活動
-            R skuSeckilInfo = secKillFeignService.getSkuSeckilInfo(skuId);
-            if (skuSeckilInfo.getCode() == 0) {
-                // 查詢成功
-                SecKillSkuVo seckilInfoData = skuSeckilInfo.getData("data", new TypeReference<SecKillSkuVo>(){});
-                skuItemVo.setSecKillSkuVo(seckilInfoData);
-                if (seckilInfoData != null) {
-                    long currentTime = System.currentTimeMillis();
-                    if (currentTime > seckilInfoData.getEndTime()) {
-                        skuItemVo.setSecKillSkuVo(null);
-                    }
-                }
-            }
-        }, executor);
-        //等到所有任務都完成
-        CompletableFuture.allOf(saleAttrFuture, descFuture, baseAttrFuture, imageFuture, seckillFuture).get();
+        // 1. 查詢 sku 基本資料  pms_sku_info
+        SkuInfoEntity info = this.getById(skuId);
+        skuItemVo.setInfo(info);
+        // 2. sku 的圖片資料    pms_sku_images
+        List<SkuImagesEntity> imagesEntities = skuImagesService.getImagesBySkuId(skuId);
+        skuItemVo.setImages(imagesEntities);
+        // 3. 查詢 spu 的銷售屬性組合
+        List<SkuItemSaleAttrVo> saleAttrVos = skuSaleAttrValueService.getSaleAttrBySpuId(info.getSpuId());
+        skuItemVo.setSaleAttrs(saleAttrVos);
+        // 4. 查詢 spu 的介紹    pms_spu_info_desc
+        SpuInfoDescEntity spuInfoDescEntity = spuInfoDescService.getById(info.getSpuId());
+        skuItemVo.setDesc(spuInfoDescEntity);
+        // 5. 查詢 spu 的規格參數資料
+        List<SpuItemAttrGroupVo> attrGroupVos = attrGroupService.getAttrGroupWithAttrsBySpuId(info.getSpuId(), info.getCatalogId());
+        skuItemVo.setAttrGroups(attrGroupVos);
+        //6、遠程調用查詢當前 sku 是否參與限時搶購優惠活動
+        R secKillSkuVo = secKillFeignService.getSkuSeckilInfo(skuId);
+        if (secKillSkuVo.getCode() == 0) {
+            SecKillSkuVo data = secKillSkuVo.getData(new TypeReference<SecKillSkuVo>() {
+            });
+            skuItemVo.setSecKillSkuVo(data);
+        }
         return skuItemVo;
     }
-
 }

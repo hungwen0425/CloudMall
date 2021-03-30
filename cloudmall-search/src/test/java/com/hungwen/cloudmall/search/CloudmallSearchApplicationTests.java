@@ -41,6 +41,7 @@ public class CloudmallSearchApplicationTests {
 
 	@Test
 	public void contextLoads() {
+		System.out.println(client);
 	}
 
 	@Data
@@ -50,7 +51,7 @@ public class CloudmallSearchApplicationTests {
 		private Integer age;
 	}
 	/**
-	 * 測試ES資料
+	 * 測試 ES 之存儲資料
 	 * 更新也可以
 	 * https://www.elastic.co/guide/en/elasticsearch/client/java-rest/current/java-rest-high-document-index.html
 	 */
@@ -71,6 +72,7 @@ public class CloudmallSearchApplicationTests {
 	}
 
 	/**
+	 * 檢索銀行
 	 * @throws IOException
 	 */
 	@Test
@@ -116,20 +118,20 @@ public class CloudmallSearchApplicationTests {
 	 */
 	@Test
 	public void searchData() throws IOException {
-		//1. 創建檢索請求
+		// 1. 創建檢索請求
 		SearchRequest searchRequest = new SearchRequest();
-		//1.1）指定索引
+		// 1.1）指定索引
 		searchRequest.indices("bank");
-		//1.2）構造檢索條件
+		// 1.2）構造檢索條件
 		SearchSourceBuilder sourceBuilder = new SearchSourceBuilder();
 		sourceBuilder.query(QueryBuilders.matchQuery("address","Mill"));
-		//1.2.1)按照年齡分布進行聚合
+		// 1.2.1) 按照年齡分布進行聚合
 		TermsAggregationBuilder ageAgg = AggregationBuilders.terms("ageAgg").field("age").size(10);
 		sourceBuilder.aggregation(ageAgg);
-		//1.2.2)計算平均年齡
+		// 1.2.2) 計算平均年齡
 		AvgAggregationBuilder ageAvg = AggregationBuilders.avg("ageAvg").field("age");
 		sourceBuilder.aggregation(ageAvg);
-		//1.2.3)計算平均薪資
+		// 1.2.3) 計算平均薪資
 		AvgAggregationBuilder balanceAvg = AggregationBuilders.avg("balanceAvg").field("balance");
 		sourceBuilder.aggregation(balanceAvg);
 		System.out.println("檢索條件："+sourceBuilder);

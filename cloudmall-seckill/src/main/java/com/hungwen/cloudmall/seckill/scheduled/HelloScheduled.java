@@ -27,8 +27,8 @@ import org.springframework.stereotype.Component;
 public class HelloScheduled {
 
     /**
-     * 1. 在Spring中表達式是6位組成，不允許第七位的年份
-     * 2. 在周幾的的位置,1-7代表周一到周日
+     * 1. 在 Spring 中表達式是 6 位組成，不允許第 7 位的年份
+     * 2. 在周幾的的位置，1-7 代表周一到周日
      * 3. 定時任務不該阻塞。默認是阻塞的
      *      3.1  可以讓業務以異步的方式，自己提交到線程池
      *              CompletableFuture.runAsync(() -> {

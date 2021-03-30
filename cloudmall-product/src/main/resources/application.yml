@@ -33,7 +33,4 @@ server:
 
 logging:
   level:
-    com.hungwen.cloudmall.product: info
-    root: warn
-  pattern:
-    console: "%d{yyyy-MM-dd} [%thread] - %msg%n"
+    com.hungwen.cloudmall.product: debug

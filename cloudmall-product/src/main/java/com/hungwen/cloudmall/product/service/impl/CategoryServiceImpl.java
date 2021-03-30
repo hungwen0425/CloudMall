@@ -159,7 +159,7 @@ public class CategoryServiceImpl extends ServiceImpl<CategoryDao, CategoryEntity
         return categoryEntities;
     }
 
-    @Cacheable(value="category",key = "#root.methodName")
+    @Cacheable(value="category", key = "#root.methodName")
     @Override
     public Map<String, List<Catelog2Vo>> getCatalogJson() {
         System.out.println("查詢了資料庫");
@@ -594,6 +594,7 @@ public class CategoryServiceImpl extends ServiceImpl<CategoryDao, CategoryEntity
 
 //    1.@Override
 //    public Map<String, List<Catelog2Vo>> getCatalogJson() {
+//        log.debug("查詢了資料庫......");
 //        // 1. 查詢商品選單一級分類
 //        List<CategoryEntity> level1Categoers = getLevel1Categorys();
 //        // 封裝資料
@@ -623,5 +624,5 @@ public class CategoryServiceImpl extends ServiceImpl<CategoryDao, CategoryEntity
 //            return catelog2Vos;
 //        }));
 //        return parent_cid;
-//    }.1
+//    }1.
 }

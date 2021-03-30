@@ -65,10 +65,11 @@ public class CartController {
      * @return
      */
     @GetMapping(value = "/addToCart")
-    public String addToCart(@RequestParam("skuId") Long skuId, @RequestParam("num") Integer num, RedirectAttributes attributes)
-            throws ExecutionException, InterruptedException {
+    public String addToCart(@RequestParam("skuId") Long skuId, @RequestParam("num") Integer num, RedirectAttributes attributes) throws ExecutionException, InterruptedException {
+
         cartService.addToCart(skuId, num);
         attributes.addAttribute("skuId", skuId);
+
         return "redirect:http://cart.cloudmall.com/addToCartSuccessPage.html";
     }
 

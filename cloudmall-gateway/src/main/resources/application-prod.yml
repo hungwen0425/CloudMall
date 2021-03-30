@@ -1,0 +1,101 @@
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: product_route
+          uri: lb://cloudmall-product
+          predicates:
+            - Path=/api/product/**
+          filters:
+            - RewritePath=/api/(?<segment>/?.*),/$\{segment}
+          # http://localhost:88/api/product/category/list/tree  --> http://localhost:10000/product/category/list/tree
+
+        - id: coupon_route
+          uri: lb://cloudmall-coupon
+          predicates:
+            - Path=/api/coupon/**
+          filters:
+            - RewritePath=/api/(?<segment>/?.*),/$\{segment}
+
+        - id: third_party_route
+          uri: lb://cloudmall-third-party
+          predicates:
+            - Path=/api/thirdparty/**
+          filters:
+            - RewritePath=/api/thirdparty/(?<segment>/?.*),/$\{segment}
+
+        - id: member_route
+          uri: lb://cloudmall-member
+          predicates:
+            - Path=/api/member/**
+          filters:
+            - RewritePath=/api/(?<segment>/?.*),/$\{segment}
+
+        - id: ware_route
+          uri: lb://cloudmall-ware
+          predicates:
+            - Path=/api/ware/**
+          filters:
+            - RewritePath=/api/(?<segment>/?.*),/$\{segment}
+
+        - id: order_route
+          uri: lb://cloudmall-order
+          predicates:
+            - Path=/api/order/**
+          filters:
+            - RewritePath=/api/(?<segment>/?.*),/$\{segment}
+
+        - id: admin_route
+          uri: lb://cloudmall-admin
+          predicates:
+            - Path=/api/**
+          filters:
+            - RewritePath=/api/(?<segment>/?.*), /cloudmall-admin/$\{segment}
+        # http://localhost:88/api/cloudmall-admin/captcha.jpg  --> http://localhost:8080/cloudmall-admin/captcha.jpg
+
+        - id: cloudmall_host_route
+          uri: lb://cloudmall-product
+          predicates:
+            - Host=cloudmall.com,item.cloudmall.com
+
+        - id: cloudmall_search_route
+          uri: lb://cloudmall-search
+          predicates:
+            - Host=search.cloudmall.com
+
+        - id: cloudmall_auth_route
+          uri: lb://cloudmall-auth-server
+          predicates:
+            - Host=auth.cloudmall.com
+
+        - id: cloudmall_cart_route
+          uri: lb://cloudmall-cart
+          predicates:
+            - Host=cart.cloudmall.com
+
+        - id: cloudmall_order_route
+          uri: lb://cloudmall-order
+          predicates:
+            - Host=order.cloudmall.com
+
+        - id: cloudmall_member_route
+          uri: lb://cloudmall-member
+          predicates:
+            - Host=member.cloudmall.com
+
+        - id: cloudmall_seckill_route
+          uri: lb://cloudmall-seckill
+          predicates:
+            - Host=seckill.cloudmall.com
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+    application:
+      name: cloudmall-gateway
+
+server:
+  port: 88
+
+logging:
+  level:
+    com.hungwen.cloudmall.gateway: debug

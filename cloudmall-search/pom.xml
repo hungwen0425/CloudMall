@@ -12,7 +12,7 @@
 	<artifactId>cloudmall-search</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>cloudmall-search</name>
-	<description>檢索服務</description>
+	<description>ElasticSearch - 檢索服務</description>
 
 	<properties>
 		<java.version>1.8</java.version>

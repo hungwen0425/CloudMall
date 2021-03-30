@@ -122,19 +122,21 @@
                             <ul>
                                 <li>驚喜價</li>
                                 <li>
-                                    NT <span th:text="${#numbers.formatDecimal(item.info.price, 3, 0)}">4499</span>
+                                    <span>NNT </span>
+                                    <span th:text="${#numbers.formatDecimal(item.info.price,3,0)}">4499.00</span>
                                 </li>
                                 <li style="color: red" th:if="${item.secKillSkuVo != null}">
                                     <span th:if="${#dates.createNow().getTime() < item.secKillSkuVo.startTime}">
-                                        商品預計在[[${#dates.format(new java.util.Date(item.secKillInfoVo.startTime),'yyyy-MM-dd HH:mm:ss')}]]進行限時搶購
+                                        商品將會在[[${#dates.format(new java.util.Date(item.secKillSkuVo.startTime),"yyyy-MM-dd HH:mm:ss")}]]進行限時搶購
                                     </span>
-
                                     <span th:if="${#dates.createNow().getTime() >= item.secKillSkuVo.startTime && #dates.createNow().getTime() <= item.secKillSkuVo.endTime}">
-                                        限時搶購價格：[[${#numbers.formatDecimal(item.secKillInfoVo.seckillPrice, 1, 0)}]]
+                                        限時搶購價  [[${#numbers.formatDecimal(item.seckillSkuVo.seckillPrice,1,0)}]]
                                     </span>
                                 </li>
                                 <li>
-                                    <a href=""></a>
+                                    <a href="/static/item/">
+                                        預約說明
+                                    </a>
                                 </li>
                             </ul>
                         </div>

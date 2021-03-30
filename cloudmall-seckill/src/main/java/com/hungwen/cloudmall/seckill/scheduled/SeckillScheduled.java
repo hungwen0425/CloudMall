@@ -34,7 +34,8 @@ public class SeckillScheduled {
     // 限時搶購商品上架功能的鎖
     private final String upload_lock = "seckill:upload:lock";
     // TODO 保證冪等性問題
-    // @Scheduled(cron = "*/5 * * * * ? ")
+    // cron 每分鐘、每小時、每天、每周、每月、每年定時執行
+    // @Scheduled(cron = "*/5 * * * * ? ") // 每 5 秒執行一次
     @Scheduled(cron = "0 0 1/1 * * ? ")
     public void uploadSeckillSkuLatest3Days() {
         // 1.重復上架無需處理

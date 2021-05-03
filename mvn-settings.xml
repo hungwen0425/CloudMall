@@ -1,13 +1,12 @@
 <settings>
     <mirrors>
         <mirror>
-            <id>google-maven-central</id>
-            <name>Google Maven Central</name>
+            <id>nexus-aliyun</id>
             <mirrorOf>central</mirrorOf>
-            <url>https://maven-central.storage.googleapis.com</url>
+            <name>Nexus aliyun</name>
+            <url>https://maven.aliyun.com/nexus/content/groups/public</url>
         </mirror>
     </mirrors>
-
     <profiles>
         <profile>
             <id>jdk-1.8</id>

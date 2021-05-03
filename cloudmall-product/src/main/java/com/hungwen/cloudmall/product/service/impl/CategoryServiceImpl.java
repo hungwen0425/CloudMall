@@ -136,7 +136,7 @@ public class CategoryServiceImpl extends ServiceImpl<CategoryDao, CategoryEntity
             //1. 找到子選單
             categoryEntity.setChildren(getChildrens(categoryEntity, all));
             return categoryEntity;
-        }).sorted((menu1, menu2)->{
+        }).sorted((menu1, menu2)-> {
             //2. 選單的排序
             return (menu1.getSort() == null ? 0:menu1.getSort()) - (menu2.getSort() == null ? 0:menu2.getSort());
         }).collect(Collectors.toList());

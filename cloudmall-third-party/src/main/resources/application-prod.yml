@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: cloudmall-third-party
+  alicloud:
+    sms:
+      host: https://smsmsgs.market.alicloudapi.com
+      path: /sms/
+      skin: 1
+      sign: 1
+      appcode:
+server:
+  port: 8080

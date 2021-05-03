@@ -3,7 +3,7 @@
         type: com.alibaba.druid.pool.DruidDataSource
         druid:
             driver-class-name: com.mysql.cj.jdbc.Driver
-            url: jdbc:mysql://mysql-master.kubesphere-sample-prod:3306/cloudmall-admin?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
+            url: jdbc:mysql://mysql.kubesphere-sample-prod:3306/cloudmall-admin?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
             username: renren
             password: 123456
             initial-size: 10

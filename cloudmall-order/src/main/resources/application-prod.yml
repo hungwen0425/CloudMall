@@ -2,7 +2,7 @@ spring:
   datasource:
     username: root
     password: 123456
-    url: jdbc:mysql://mysql-master.cloudmall:3306/cloudmall_oms
+    url: jdbc:mysql://mysql.kubesphere-sample-prod:3306/cloudmall_oms
     driver-class-name: com.mysql.cj.jdbc.Driver
 mybatis-plus:
   global-config:

@@ -2,7 +2,7 @@ spring:
   datasource:
     username: root
     password: 1234
-    url: jdbc:mysql://mysql-master.cloudmall:3306/cloudmall_wms
+    url: jdbc:mysql://mysql.kubesphere-sample-prod:3306/cloudmall_wms
     driver-class-name: com.mysql.cj.jdbc.Driver
   application:
     name: cloudmall-ware

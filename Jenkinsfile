@@ -73,7 +73,7 @@ pipeline {
       }
     }
 
-    stage('部署到開發環境') {
+    stage('部署到K8S') {
       when{
         branch 'master'
       }
